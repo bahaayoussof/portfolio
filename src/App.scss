@@ -120,9 +120,10 @@
 		transition: all 0.3s ease-in-out;
 
 		svg {
-			width: 15px;
-			height: 15px;
+			width: 17px;
+			height: 17px;
 			color: var(--gray-color);
+			margin-top: 5px;
 		}
 
 		&:hover {
