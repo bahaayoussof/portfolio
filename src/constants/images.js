@@ -4,7 +4,6 @@ import api from "../assets/api.png";
 import cpp from "../assets/cpp.png";
 import css from "../assets/css.png";
 import figma from "../assets/figma.png";
-import react_circle from "../assets/react_circle.png";
 import git from "../assets/git.png";
 import graphql from "../assets/graphql.png";
 import html from "../assets/html.png";
@@ -42,7 +41,6 @@ export default {
 	cpp,
 	css,
 	figma,
-	react_circle,
 	git,
 	graphql,
 	html,
