@@ -17,20 +17,13 @@
 	z-index: 2;
 }
 
-.app__navbar-logo {
+.app__navbar-head {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-
-	img {
-		width: 90px;
-		height: 20px;
-
-		@media screen and (min-width: 2000px) {
-			width: 180px;
-			height: 40px;
-		}
-	}
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  letter-spacing: 1px;
 }
 
 .app__navbar-links {
