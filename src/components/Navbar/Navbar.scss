@@ -21,9 +21,13 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-  text-transform: uppercase;
-  color: var(--secondary-color);
-  letter-spacing: 1px;
+
+	h1 {
+		font-family: var(--font-head);
+		color: var(--secondary-color);
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
 }
 
 .app__navbar-links {
@@ -99,9 +103,10 @@
 	background-color: var(--secondary-color);
 
 	svg {
-		width: 70%;
-		height: 70%;
+		width: 75%;
+		height: 75%;
 		color: var(--white-color);
+		cursor: pointer;
 	}
 
 	div {
@@ -111,7 +116,7 @@
 		right: 0;
 		z-index: 5;
 		padding: 1rem;
-		width: 80%;
+		width: 50%;
 		height: 100vh;
 
 		display: flex;
@@ -127,10 +132,10 @@
 		box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
 
 		svg {
-			width: 35px;
-			height: 35px;
+			width: 33px;
+			height: 33px;
+			margin: 0.5rem;
 			color: var(--secondary-color);
-			margin: 0.5rem 1rem;
 		}
 
 		ul {

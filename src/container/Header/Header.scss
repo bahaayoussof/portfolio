@@ -82,17 +82,8 @@
 		}
 	}
 
-  // .resume-button {
-	// 	margin-top: 3rem;
-
-  //   a {
-  //     text-decoration: none;
-  //     font-size: 1rem;
-  //   }
-  // }
-
 	.resume-button {
-		background-color: #E45826;
+		background-color: var(--secondary-color);
 		margin-top: 3rem;
 
 		a {
@@ -107,9 +98,9 @@
 			}
 		}
 
-    &:hover {
-      background-color: #F76E11;
-    }
+		&:hover {
+			background-color: #f76e11;
+		}
 	}
 
 	span {

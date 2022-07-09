@@ -39,10 +39,10 @@ const Header = () => {
 					</div>
 
 					<div className="resume-button app__flex">
-            <a
-							href="https://docs.google.com/document/d/11_m6XDJp3TUD4TJHLGQpm0ZjRIj-tAqRKY8CMSXJT1A/edit?usp=sharing"
+						<a
+							href="https://docs.google.com/document/d/11_m6XDJp3TUD4TJHLGQpm0ZjRIj-tAqRKY8CMSXJT1A/edit"
 							target="_blank"
-							download
+							download="bahaa"
 						>
 							Resume
 						</a>

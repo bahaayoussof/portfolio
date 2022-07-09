@@ -1,6 +1,7 @@
 import React from "react";
 import { BsGithub } from "react-icons/bs";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 const SocialMedia = () => {
 	return (
@@ -16,8 +17,8 @@ const SocialMedia = () => {
 				</a>
 			</div>
 			<div>
-				<a href="https://facebook.com/baha2youssof" target="_blank">
-					<FaFacebookF />
+				<a href="https://leetcode.com/bahaayoussof/" target="_blank">
+					<SiLeetcode />
 				</a>
 			</div>
 		</div>
