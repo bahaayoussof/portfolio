@@ -38,8 +38,9 @@ const Header = () => {
 						<p className="p-text">Freelancer</p>
 					</div>
 
-					<div className="resume-button app__flex">
+					<div className="app__flex">
 						<a
+							className="resume-button"
 							href="https://docs.google.com/document/d/11_m6XDJp3TUD4TJHLGQpm0ZjRIj-tAqRKY8CMSXJT1A/edit"
 							target="_blank"
 							download="bahaa"
