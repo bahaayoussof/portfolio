@@ -39,7 +39,7 @@ const Work = () => {
 			</h2>
 
 			<div className="app__work-filter">
-				{["UI/UX", "web App", "Mobile App", "React JS", "Bootstrap", "All"].map(
+				{["UI/UX", "Web App", "Mobile App", "React JS", "Bootstrap", "Material UI", "All"].map(
 					(item, index) => (
 						<div
 							key={index}
@@ -59,8 +59,8 @@ const Work = () => {
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
 				className="app__work-portfolio"
 			>
-				{filterWork.map((work, index) => (
-					<div className="app__work-item app__flex" key={index}>
+				{filterWork.map(work => (
+					<div className="app__work-item app__flex" key={work._id}>
 						<div className="app__work-img app__flex">
 							<img src={urlFor(work.imgUrl)} alt={work.name} />
 
@@ -109,8 +109,4 @@ const Work = () => {
 	);
 };
 
-export default AppWrap(
-  MotionWrap(Work, "app__works"),
-  "work",
-  "app__primarybg"
-);
+export default AppWrap(MotionWrap(Work, "app__works"), "work", "app__primarybg");

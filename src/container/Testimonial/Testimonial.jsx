@@ -32,7 +32,7 @@ const Testimonial = () => {
 
 	return (
 		<>
-			{testimonials.length && (
+			{testimonials.length ? (
 				<>
 					<div className="app__testimonial-item app__flex">
 						<img src={urlFor(test.imgurl)} alt="testimonial" />
@@ -65,7 +65,7 @@ const Testimonial = () => {
 						</div>
 					</div>
 				</>
-			)}
+			) : null}
 
 			<div className="app__testimonial-brands app__flex">
 				{brands.map(brand => (
