@@ -141,7 +141,7 @@ export const projects = [
 		projectLink: "",
 		codeLink: "https://github.com/bahaayoussof/kanban-board",
 		imageUrl: images.kanban,
-		tags: ["React JS", "All"],
+		tags: ["React JS", "Wep App", "All"],
 	},
 	{
 		id: "6",
