@@ -1,40 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { client } from "../../client";
-import "./Footer.scss";
+import emailjs from "@emailjs/browser";
 
+import "./Footer.scss";
 const Footer = () => {
-	const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+	const formRef = useRef();
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-	const { name, email, message } = formData;
-
-	const inputChangeHandler = e => {
-		const { name, value } = e.target;
-
-		setFormData({
-			...formData,
-			[name]: value,
-		});
-	};
-
-	const submitHandler = () => {
+	const submitHandler = e => {
+		e.preventDefault();
 		setLoading(true);
 
-		const contact = {
-			_type: "contact",
-			name: name,
-			email: email,
-			message: message,
-		};
-
-		client.create(contact).then(() => {
-			setLoading(false);
-			setIsFormSubmitted(true);
-		});
+		emailjs
+			.sendForm("service_ethure6", "template_easeyqg", formRef.current, "5JmXH7MZatKry6YuU")
+			.then(
+				result => {
+					console.log(result.text);
+					setIsFormSubmitted(true);
+				},
+				error => {
+					console.log(error.text);
+				}
+			);
 	};
 
 	return (
@@ -58,41 +48,26 @@ const Footer = () => {
 			</div>
 
 			{!isFormSubmitted ? (
-				<div className="app__footer-form app__flex">
+				<form ref={formRef} className="app__footer-form app__flex" onSubmit={submitHandler}>
 					<div className="app__flex">
-						<input
-							className="p-text"
-							type="text"
-							placeholder="Your Name"
-							name="name"
-							value={name}
-							onChange={inputChangeHandler}
-						/>
+						<input className="p-text" type="text" placeholder="Your Name" name="user_name" />
 					</div>
 					<div className="app__flex">
 						<input
 							className="p-text"
 							type="email"
 							placeholder="Your Email"
-							name="email"
-							value={email}
-							onChange={inputChangeHandler}
+							name="user_email"
 						/>
 					</div>
 
 					<div>
-						<textarea
-							className="p-text"
-							placeholder="Your Message"
-							value={message}
-							name="message"
-							onChange={inputChangeHandler}
-						/>
+						<textarea className="p-text" placeholder="Your Message" name="message" />
 					</div>
-					<button type="button" className="p-text" onClick={submitHandler}>
+					<button type="submit" className="p-text">
 						{!loading ? "Send Message" : "Sending..."}
 					</button>
-				</div>
+				</form>
 			) : (
 				<div>
 					<h3 className="head-text">Thank you for getting in touch!</h3>

@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { urlFor, client } from "../../client";
-import "./Work.scss";
+import { projects } from "../../data";
 
+import "./Work.scss";
 const Work = () => {
 	const [activeFilter, setActiveFilter] = useState("All");
 	const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-	const [works, setWorks] = useState([]);
-	const [filterWork, setFilterWork] = useState([]);
-
-	useEffect(() => {
-		const query = '*[_type == "works"]';
-		client.fetch(query).then(data => {
-			setWorks(data);
-			setFilterWork(data);
-		});
-	}, []);
+	const [works, setWorks] = useState(projects);
+	const [filterWork, setFilterWork] = useState(projects);
 
 	const workFilterHandler = project => {
 		setActiveFilter(project);
@@ -39,7 +31,7 @@ const Work = () => {
 			</h2>
 
 			<div className="app__work-filter">
-				{["UI/UX", "web App", "Mobile App", "React JS", "Bootstrap", "All"].map(
+				{["Web App", "Material UI", "React JS", "Bootstrap", "All"].map(
 					(item, index) => (
 						<div
 							key={index}
@@ -62,7 +54,7 @@ const Work = () => {
 				{filterWork.map((work, index) => (
 					<div className="app__work-item app__flex" key={index}>
 						<div className="app__work-img app__flex">
-							<img src={urlFor(work.imgUrl)} alt={work.name} />
+							<img src={work.imageUrl} alt={work.name} />
 
 							<motion.div
 								whileHover={{ opacity: [0, 1] }}
@@ -109,8 +101,4 @@ const Work = () => {
 	);
 };
 
-export default AppWrap(
-  MotionWrap(Work, "app__works"),
-  "work",
-  "app__primarybg"
-);
+export default AppWrap(MotionWrap(Work, "app__works"), "work", "app__primarybg");
