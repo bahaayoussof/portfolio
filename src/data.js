@@ -5,7 +5,7 @@ export const abouts = [
 		id: "1",
 		title: "Web Development",
 		description:
-			"I'm a JavaScript developer with a good understanding of OOP principles. and I have a solid foundation in web development.",
+			"I'm a JavaScript developer with a good understanding of OOP principles, and I have a solid foundation in web development.",
 		imageUrl: images.about04,
 	},
 	{
@@ -26,6 +26,7 @@ export const skills = [
 	{ id: "6", name: "CSS", icon: images.css },
 	{ id: "7", name: "JavaScript", icon: images.javascript },
 	{ id: "8", name: "BootStrap", icon: images.bootstrap },
+	{ id: "8", name: "Redux Toolkit", icon: images.redux },
 ];
 
 export const experiences = [
