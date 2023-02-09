@@ -50,7 +50,13 @@ const Footer = () => {
 			{!isFormSubmitted ? (
 				<form ref={formRef} className="app__footer-form app__flex" onSubmit={submitHandler}>
 					<div className="app__flex">
-						<input className="p-text" type="text" placeholder="Your Name" name="user_name" />
+						<input
+							className="p-text"
+							type="text"
+							placeholder="Your Name"
+							name="user_name"
+							required
+						/>
 					</div>
 					<div className="app__flex">
 						<input
@@ -58,11 +64,12 @@ const Footer = () => {
 							type="email"
 							placeholder="Your Email"
 							name="user_email"
+							required
 						/>
 					</div>
 
 					<div>
-						<textarea className="p-text" placeholder="Your Message" name="message" />
+						<textarea className="p-text" placeholder="Your Message" name="message" required />
 					</div>
 					<button type="submit" className="p-text">
 						{!loading ? "Send Message" : "Sending..."}

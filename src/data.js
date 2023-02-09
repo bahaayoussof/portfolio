@@ -26,6 +26,7 @@ export const skills = [
 	{ id: "6", name: "CSS", icon: images.css },
 	{ id: "7", name: "JavaScript", icon: images.javascript },
 	{ id: "8", name: "BootStrap", icon: images.bootstrap },
+	{ id: "9", name: "Redux Toolkit", icon: images.redux },
 ];
 
 export const experiences = [
