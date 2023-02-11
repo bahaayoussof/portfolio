@@ -160,6 +160,6 @@ export const projects = [
 		projectLink: "https://by-admin-dashboard.vercel.app/",
 		codeLink: "https://github.com/bahaayoussof/admin-dashboard",
 		imageUrl: images.dashboard,
-		tags: ["Coming Soon!", "Material UI", "All", "Wep App", "React JS"],
+		tags: ["React JS", "Material UI", "All", "Wep App"],
 	},
 ];
