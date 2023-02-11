@@ -34,6 +34,7 @@ import menu from "../assets/menu.png";
 import colorGenerator from "../assets/colorGenerator.png";
 import kanban from "../assets/kanban.png";
 import materialTemp from "../assets/materialTemp.png";
+import dashboard from "../assets/dashboard.png";
 
 import test from "../assets/test.png";
 
@@ -83,6 +84,7 @@ export default {
 	colorGenerator,
 	kanban,
 	materialTemp,
+	dashboard,
 	test,
 	adidas,
 	amazon,

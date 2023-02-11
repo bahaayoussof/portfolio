@@ -157,9 +157,9 @@ export const projects = [
 		id: "7",
 		title: "Admin Dashboard",
 		description: "ReactJs admin dashboard",
-		projectLink: "",
-		codeLink: "",
-		imageUrl: images.comingSoon,
+		projectLink: "https://by-admin-dashboard.vercel.app/",
+		codeLink: "https://github.com/bahaayoussof/admin-dashboard",
+		imageUrl: images.dashboard,
 		tags: ["Coming Soon!", "Material UI", "All", "Wep App", "React JS"],
 	},
 ];
