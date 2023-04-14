@@ -49,7 +49,7 @@ const Skills = () => {
 											<p className="p-text">{work.company}</p>
 										</motion.div>
 										<ReactTooltip
-											id={work.name}
+											id={work.id}
 											effect="solid"
 											arrowColor="#fff"
 											className="skills-tooltip"

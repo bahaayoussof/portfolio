@@ -47,14 +47,14 @@ export const experiences = [
 		year: "2022",
 		works: [
 			{
-				id: "1",
+				id: "2",
 				name: "React Developer",
 				company: "Side Project",
 				description:
 					"I worked on LostChild: A platform to help recover missing and abducted children",
 			},
 			{
-				id: "2",
+				id: "3",
 				name: "Frontend Developer",
 				company: "Smart Cards Applications",
 				description: "I worked as a Frontend developer - React Js",
@@ -66,9 +66,9 @@ export const experiences = [
 		year: "2023",
 		works: [
 			{
-				id: "1",
+				id: "4",
 				name: "Frontend Developer",
-				company: "Damen E-payments",
+				company: "Damen E-payment",
 				description: "I am currently working as a Frontend developer",
 			},
 		],
