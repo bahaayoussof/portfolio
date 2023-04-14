@@ -36,7 +36,8 @@ export const experiences = [
 		works: [
 			{
 				id: "1",
-				name: "Frontend Developer",
+				name: "work 1",
+				title: "Frontend Developer",
 				company: "Freelancing",
 				description: "I worked as a frontend developer",
 			},
@@ -48,14 +49,16 @@ export const experiences = [
 		works: [
 			{
 				id: "2",
-				name: "React Developer",
+				name: "work 2",
+				title: "React Developer",
 				company: "Side Project",
 				description:
 					"I worked on LostChild: A platform to help recover missing and abducted children",
 			},
 			{
 				id: "3",
-				name: "Frontend Developer",
+				name: "work 3",
+				title: "Frontend Developer",
 				company: "Smart Cards Applications",
 				description: "I worked as a Frontend developer - React Js",
 			},
@@ -67,7 +70,8 @@ export const experiences = [
 		works: [
 			{
 				id: "4",
-				name: "Frontend Developer",
+				name: "work 4",
+				title: "Frontend Developer",
 				company: "Damen E-payment",
 				description: "I am currently working as a Frontend developer",
 			},

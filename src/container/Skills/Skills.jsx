@@ -45,11 +45,11 @@ const Skills = () => {
 											data-tip
 											data-for={work.name}
 										>
-											<h4 className="bold-text">{work.name}</h4>
+											<h4 className="bold-text">{work.title}</h4>
 											<p className="p-text">{work.company}</p>
 										</motion.div>
 										<ReactTooltip
-											id={work.id}
+											id={work.name}
 											effect="solid"
 											arrowColor="#fff"
 											className="skills-tooltip"
