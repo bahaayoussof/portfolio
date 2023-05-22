@@ -1,7 +1,7 @@
 ## Portfolio
 My Portfolio is live now check it and give me your feedback
 
-###### Life Site
+###### Check out the live site.
 > [Bahaa Youssof](https://bahaayoussof.vercel.app/)
 
 ###### Preview Image
