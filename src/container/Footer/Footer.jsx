@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
+import emailjs from "@emailjs/browser";
 
 import "./Footer.scss";
 const Footer = () => {
@@ -9,47 +10,67 @@ const Footer = () => {
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-	const getEmailMessage = ({ username, email, message } = {}) => {
-		return `
-        <p>You have received a new message from your portfolio contact form:</p>
-        <div style="padding: 12px">
-            <p style="margin: 0">Name: ${username}</p>
-            <p style="margin: 12px 0">Email: ${email}</p>
-            <p style="margin: 0">Message: ${message}</p>
-        </div>
-    `;
-	};
+	// const getEmailMessage = ({ username, email, message } = {}) => {
+	// 	return `
+  //       <p>You have received a new message from your portfolio contact form:</p>
+  //       <div style="padding: 12px">
+  //           <p style="margin: 0">Name: ${username}</p>
+  //           <p style="margin: 12px 0">Email: ${email}</p>
+  //           <p style="margin: 0">Message: ${message}</p>
+  //       </div>
+  //   `;
+	// };
 
-	const contactHandler = async event => {
-		if (event) event.preventDefault();
+	// const contactHandler = async event => {
+	// 	if (event) event.preventDefault();
+	// 	setLoading(true);
+	// 	const { user_name, user_email, message } = formRef?.current;
+	// 	const emailMessage = getEmailMessage({
+	// 		username: user_name?.value,
+	// 		email: user_email?.value,
+	// 		message: message?.value,
+	// 	});
+	// 	const requestBody = {
+	// 		to: "bahaayoussof@gmail.com",
+	// 		subject: "Message From Portfolio",
+	// 		message: emailMessage,
+	// 	};
+	// 	try {
+	// 		const res = await fetch("https://sendmail-api-docs.vercel.app/api/send", {
+	// 			method: "POST",
+	// 			body: JSON.stringify(requestBody),
+	// 		});
+	// 		if (res.ok) {
+	// 			setIsFormSubmitted(true);
+	// 			const data = await res.json();
+	// 			console.log({ data });
+	// 		}
+	// 	} catch (error) {
+	// 		console.log({ error });
+	// 	} finally {
+	// 		setLoading(false);
+	// 		setTimeout(() => {
+	// 			setIsFormSubmitted(false);
+	// 		}, 3000);
+	// 	}
+  // };
+  
+
+  const contactHandler = e => {
+		e.preventDefault();
 		setLoading(true);
-		const { user_name, user_email, message } = formRef?.current;
-		const emailMessage = getEmailMessage({
-			username: user_name?.value,
-			email: user_email?.value,
-			message: message?.value,
-		});
-		const requestBody = {
-			to: "bahaayoussof@gmail.com",
-			subject: "Message From Portfolio",
-			message: emailMessage,
-		};
-		try {
-			const res = await fetch("https://sendmail-api-docs.vercel.app/api/send", {
-				method: "POST",
-				body: JSON.stringify(requestBody),
-			});
-			if (res.ok) {
-				setIsFormSubmitted(true);
-				const data = await res.json();
-				console.log({ data });
-			}
-		} catch (error) {
-			console.log({ error });
-		} finally {
-			setLoading(false);
-			setIsFormSubmitted(false);
-		}
+
+		emailjs
+			.sendForm("service_ethure6", "template_easeyqg", formRef.current, "5JmXH7MZatKry6YuU")
+			.then(
+				result => {
+					console.log(result.text);
+					setIsFormSubmitted(true);
+				},
+				error => {
+					console.log(error.text);
+				}
+			);
 	};
 
 	return (
