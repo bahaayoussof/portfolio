@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 import "./Footer.scss";
 const Footer = () => {
@@ -12,13 +13,13 @@ const Footer = () => {
 
 	// const getEmailMessage = ({ username, email, message } = {}) => {
 	// 	return `
-  //       <p>You have received a new message from your portfolio contact form:</p>
-  //       <div style="padding: 12px">
-  //           <p style="margin: 0">Name: ${username}</p>
-  //           <p style="margin: 12px 0">Email: ${email}</p>
-  //           <p style="margin: 0">Message: ${message}</p>
-  //       </div>
-  //   `;
+	//       <p>You have received a new message from your portfolio contact form:</p>
+	//       <div style="padding: 12px">
+	//           <p style="margin: 0">Name: ${username}</p>
+	//           <p style="margin: 12px 0">Email: ${email}</p>
+	//           <p style="margin: 0">Message: ${message}</p>
+	//       </div>
+	//   `;
 	// };
 
 	// const contactHandler = async event => {
@@ -53,10 +54,9 @@ const Footer = () => {
 	// 			setIsFormSubmitted(false);
 	// 		}, 3000);
 	// 	}
-  // };
-  
+	// };
 
-  const contactHandler = e => {
+	const contactHandler = e => {
 		e.preventDefault();
 		setLoading(true);
 
@@ -64,8 +64,13 @@ const Footer = () => {
 			.sendForm("service_ethure6", "template_easeyqg", formRef.current, "5JmXH7MZatKry6YuU")
 			.then(
 				result => {
-					console.log(result.text);
+					console.log(result);
 					setIsFormSubmitted(true);
+					if (result.text === "OK") {
+						toast.success("Your message has been sent successfully.");
+					} else {
+						toast.error("Something went wrong while sending your message!, please try again.");
+					}
 				},
 				error => {
 					console.log(error.text);
@@ -110,7 +115,7 @@ const Footer = () => {
 							type="email"
 							placeholder="Your Email"
 							name="user_email"
-							required
+							pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
 						/>
 					</div>
 
