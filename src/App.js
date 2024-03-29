@@ -1,4 +1,5 @@
 import React from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { Toaster } from "react-hot-toast";
 import { About, Footer, Header, Skills, Testimonial, Work } from "./container";
@@ -16,6 +17,8 @@ const App = () => {
 			<Testimonial />
 			<Footer />
 			<Toaster />
+
+			<SpeedInsights />
 		</div>
 	);
 };
