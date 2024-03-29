@@ -39,12 +39,12 @@ const Header = () => {
 					</div>
 
 					<div className="app__flex">
-            <a
-              rel='noreferrer'
+						<a
+							rel="noreferrer"
 							className="resume-button"
-							href="https://docs.google.com/document/d/11_m6XDJp3TUD4TJHLGQpm0ZjRIj-tAqRKY8CMSXJT1A/edit"
+							href="https://docs.google.com/document/d/1mLSGu8-FqpHUCwxHeWgl7eGKT7ku_FfH3oX2CpqRq0Q/edit?usp=sharing"
 							target="_blank"
-							download="bahaa"
+							download="Bahaa_Youssof.pdf"
 						>
 							Resume
 						</a>
@@ -57,7 +57,7 @@ const Header = () => {
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
 				className="app__header-img"
 			>
-				<img src={images.profile} alt="profile_image" />
+				<img src={images.profile} alt="profile_image" loading="" />
 			</motion.div>
 
 			<motion.div

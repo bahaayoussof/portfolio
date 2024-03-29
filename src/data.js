@@ -18,15 +18,16 @@ export const abouts = [
 ];
 
 export const skills = [
-	{ id: "1", name: "Git", icon: images.git },
-	{ id: "2", name: "Sass", icon: images.sass },
-	{ id: "3", name: "Material UI", icon: images.material },
-	{ id: "4", name: "HTML", icon: images.html },
-	{ id: "5", name: "React JS", icon: images.react },
-	{ id: "6", name: "CSS", icon: images.css },
+	{ id: "1", name: "HTML", icon: images.html },
+	{ id: "2", name: "CSS", icon: images.css },
+	{ id: "3", name: "BootStrap", icon: images.bootstrap },
+	{ id: "4", name: "Sass", icon: images.sass },
+	{ id: "5", name: "Material UI", icon: images.material },
+	{ id: "6", name: "Tailwind", icon: images.tailwind },
 	{ id: "7", name: "JavaScript", icon: images.javascript },
-	{ id: "8", name: "BootStrap", icon: images.bootstrap },
+	{ id: "8", name: "React JS", icon: images.react },
 	{ id: "9", name: "Redux Toolkit", icon: images.redux },
+	{ id: "10", name: "Git", icon: images.git },
 ];
 
 export const experiences = [
