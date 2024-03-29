@@ -6,7 +6,7 @@ export const abouts = [
 		title: "Web Development",
 		description:
 			"I'm a JavaScript developer with a good understanding of OOP principles, and I have a solid foundation in web development.",
-		imageUrl: images.about04,
+		imageUrl: images.about02,
 	},
 	{
 		id: "2",

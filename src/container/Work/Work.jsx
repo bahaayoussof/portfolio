@@ -9,7 +9,7 @@ import "./Work.scss";
 const Work = () => {
 	const [activeFilter, setActiveFilter] = useState("All");
 	const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-	const [works, setWorks] = useState(projects);
+	// const [works, setWorks] = useState(projects);
 	const [filterWork, setFilterWork] = useState(projects);
 
 	const workFilterHandler = project => {
@@ -19,8 +19,8 @@ const Work = () => {
 		setTimeout(() => {
 			setAnimateCard([{ y: 0, opacity: 1 }]);
 
-			if (project === "All") setFilterWork(works);
-			else setFilterWork(works.filter(work => work.tags.includes(project)));
+			if (project === "All") setFilterWork(projects);
+			else setFilterWork(projects.filter(work => work.tags.includes(project)));
 		}, 500);
 	};
 
