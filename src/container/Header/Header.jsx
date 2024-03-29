@@ -57,7 +57,10 @@ const Header = () => {
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
 				className="app__header-img"
 			>
-				<img src={images.profile} alt="profile_image" loading="" />
+				<img
+					src={images.profile}
+					alt="profile_image"
+				/>
 			</motion.div>
 
 			<motion.div
