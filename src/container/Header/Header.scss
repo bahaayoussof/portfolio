@@ -190,14 +190,14 @@
 .app__header-img {
 	flex: 1;
 	height: 100%;
-
+  
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: relative;
 
 	img {
-		width: 100%;
+		width: 150%;
 		object-fit: contain;
 		mix-blend-mode: multiply;
 		z-index: 1;
