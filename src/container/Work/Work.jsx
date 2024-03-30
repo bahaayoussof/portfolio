@@ -11,6 +11,7 @@ const Work = () => {
 	const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 	// const [works, setWorks] = useState(projects);
 	const [filterWork, setFilterWork] = useState(projects);
+	console.log("Work ~ filterWork:", filterWork)
 
 	const workFilterHandler = project => {
 		setActiveFilter(project);
@@ -52,7 +53,7 @@ const Work = () => {
 				{filterWork.map(work => (
 					<div className="app__work-item app__flex" key={work.id}>
 						<div className="app__work-img app__flex">
-							<img src={work.imageUrl} alt={work.name} />
+							<img src={work.imageUrl} alt={work.title} />
 
 							<motion.div
 								whileHover={{ opacity: [0, 1] }}
