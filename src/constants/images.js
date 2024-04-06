@@ -19,7 +19,7 @@ import typescript from "../assets/typescript.webp";
 import about01 from "../assets/about01.webp";
 import about02 from "../assets/about02.webp";
 
-import profile from "../assets/profile.webp";
+import profile from "../assets/profile.svg";
 import circle from "../assets/circle.svg";
 
 import expensesTracker from "../assets/expensesTracker.webp";
