@@ -20,7 +20,6 @@ import about01 from "../assets/about01.webp";
 import about02 from "../assets/about02.webp";
 
 import profile from "../assets/profile.svg";
-import circle from "../assets/circle.svg";
 
 import expensesTracker from "../assets/expensesTracker.webp";
 import confusion from "../assets/confusion.webp";
@@ -35,7 +34,7 @@ import test from "../assets/test.webp";
 import smart from "../assets/smart.webp";
 import damen from "../assets/damen.webp";
 
-import comingSoon from "../assets/coming-soon.jpg";
+import comingSoon from "../assets/coming-soon.webp";
 
 export default {
 	email,
@@ -57,7 +56,6 @@ export default {
 	about01,
 	about02,
 	profile,
-	circle,
 	expensesTracker,
 	confusion,
 	menu,

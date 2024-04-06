@@ -9,9 +9,7 @@ import "./Work.scss";
 const Work = () => {
 	const [activeFilter, setActiveFilter] = useState("All");
 	const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-	// const [works, setWorks] = useState(projects);
 	const [filterWork, setFilterWork] = useState(projects);
-	console.log("Work ~ filterWork:", filterWork)
 
 	const workFilterHandler = project => {
 		setActiveFilter(project);
@@ -32,9 +30,9 @@ const Work = () => {
 			</h2>
 
 			<div className="app__work-filter">
-				{["Web App", "Material UI", "React JS", "Bootstrap", "All"].map((item, index) => (
+				{["Web App", "Material UI", "React JS", "Bootstrap", "All"].map(item => (
 					<div
-						key={index}
+						key={item}
 						onClick={() => workFilterHandler(item)}
 						className={`app__work-filter-item app__flex p-text ${
 							activeFilter === item ? "item-active" : ""

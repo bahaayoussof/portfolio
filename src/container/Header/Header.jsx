@@ -34,16 +34,16 @@ const Header = () => {
 					</div>
 
 					<div className="tag-cmp app__flex">
-						<p className="p-text">Web Developer</p>
+						<p className="p-text">Frontend Developer</p>
 						<p className="p-text">Freelancer</p>
 					</div>
 
 					<div className="app__flex">
 						<a
-							rel="noreferrer"
+							// rel="noreferrer"
 							className="resume-button"
 							href="https://docs.google.com/document/d/1mLSGu8-FqpHUCwxHeWgl7eGKT7ku_FfH3oX2CpqRq0Q/edit?usp=sharing"
-							target="_blank"
+							// target="_blank"
 							download="Bahaa_Youssof.pdf"
 						>
 							Resume
@@ -54,13 +54,10 @@ const Header = () => {
 
 			<motion.div
 				whileInView={{ opacity: [0, 1] }}
-				transition={{ duration: 0.5, delayChildren: 0.5 }}
+				transition={{ duration: 0.5, delayChildren: 0.2 }}
 				className="app__header-img"
 			>
-				<img
-					src={images.profile}
-					alt="profile_image"
-				/>
+				<img src={images.profile} alt="profile_image" fetchpriority="high" />
 			</motion.div>
 
 			<motion.div
@@ -68,8 +65,8 @@ const Header = () => {
 				whileInView={scaleVariants.whileInView}
 				className="app__header-circles"
 			>
-				{[images.redux, images.react, images.sass].map((circle, index) => (
-					<div className="circle-cmp app__flex" key={`circle-${index}`}>
+				{[images.redux, images.react, images.sass].map(circle => (
+					<div className="circle-cmp app__flex" key={circle}>
 						<img src={circle} alt="circle" />
 					</div>
 				))}
