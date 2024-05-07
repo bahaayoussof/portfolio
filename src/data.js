@@ -129,7 +129,7 @@ export const projects = [
 		projectLink: "",
 		codeLink: "https://github.com/bahaayoussof/react-projects/tree/master/05-menu",
 		imageUrl: images.menu,
-		tags: ["Web App", "All"],
+		tags: ["React JS", "All"],
 	},
 	{
 		id: "4",
@@ -147,7 +147,7 @@ export const projects = [
 		projectLink: "",
 		codeLink: "https://github.com/bahaayoussof/kanban-board",
 		imageUrl: images.kanban,
-		tags: ["React JS", "Wep App", "All"],
+		tags: ["React JS", "Web App", "All"],
 	},
 	{
 		id: "6",
@@ -156,7 +156,7 @@ export const projects = [
 		projectLink: "https://material-template-sand.vercel.app/",
 		codeLink: "https://github.com/bahaayoussof/material-template",
 		imageUrl: images.materialTemp,
-		tags: ["Material UI", "All", "Wep App", "React JS"],
+		tags: ["Material UI", "All", "Web App", "React JS"],
 	},
 	{
 		id: "7",
@@ -165,6 +165,15 @@ export const projects = [
 		projectLink: "https://by-admin-dashboard.vercel.app/",
 		codeLink: "https://github.com/bahaayoussof/admin-dashboard",
 		imageUrl: images.dashboard,
-		tags: ["React JS", "Material UI", "All", "Wep App"],
+		tags: ["React JS", "Material UI", "All", "Web App"],
+	},
+	{
+		id: "8",
+		title: "Snapgram",
+		description: "ReactJs instagram clone",
+		projectLink: "https://snapgram-by.vercel.app/",
+		codeLink: "https://github.com/bahaayoussof/snapgram",
+		imageUrl: images.snapgram,
+		tags: ["React JS", "Tailwind", "All", "Web App"],
 	},
 ];

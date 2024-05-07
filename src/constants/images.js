@@ -28,6 +28,7 @@ import colorGenerator from "../assets/colorGenerator.webp";
 import kanban from "../assets/kanban.webp";
 import materialTemp from "../assets/materialTemp.webp";
 import dashboard from "../assets/dashboard.webp";
+import snapgram from "../assets/snapgram.webp";
 
 import test from "../assets/test.webp";
 
@@ -63,6 +64,7 @@ export default {
 	kanban,
 	materialTemp,
 	dashboard,
+	snapgram,
 	test,
 	smart,
 	damen,

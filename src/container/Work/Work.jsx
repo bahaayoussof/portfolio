@@ -30,7 +30,7 @@ const Work = () => {
 			</h2>
 
 			<div className="app__work-filter">
-				{["Web App", "Material UI", "React JS", "Bootstrap", "All"].map(item => (
+				{["Web App", "Material UI", "React JS", "Bootstrap", "Tailwind", "All"].map(item => (
 					<div
 						key={item}
 						onClick={() => workFilterHandler(item)}
