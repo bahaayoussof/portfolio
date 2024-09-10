@@ -20,8 +20,8 @@
 		-moz-border-radius: 0.5rem;
 		-ms-border-radius: 0.5rem;
 		-o-border-radius: 0.5rem;
-		background-color: #fff;
-		color: #000;
+		background-color: var(--white-color);
+		color: var(--black-color);
 		font-weight: 800;
 		cursor: pointer;
 		transition: all 0.3s ease;
@@ -33,7 +33,7 @@
 
 		&:hover {
 			background-color: var(--secondary-color);
-			color: #fff;
+			color: var(--white-color);
 		}
 
 		@media screen and (min-width: 2000px) {
@@ -48,7 +48,7 @@
 
 	.item-active {
 		background-color: var(--secondary-color);
-		color: #fff;
+		color: var(--white-color);
 	}
 }
 
@@ -69,8 +69,8 @@
 		-moz-border-radius: 0.5rem;
 		-ms-border-radius: 0.5rem;
 		-o-border-radius: 0.5rem;
-		background-color: #fff;
-		color: #000;
+		background-color: var(--white-color);
+		color: var(--black-color);
 
 		cursor: pointer;
 		transition: all 0.3s ease;
@@ -148,7 +148,7 @@
 		-ms-border-radius: 50%;
 		-o-border-radius: 50%;
 		background-color: rgba(0, 0, 0, 0.5);
-		color: #fff;
+		color: var(--white-color);
 		margin: 1rem;
 		font-family: var(--font-base);
 		font-weight: 800;
@@ -182,7 +182,7 @@
 		-moz-border-radius: 5px;
 		-ms-border-radius: 5px;
 		-o-border-radius: 5px;
-		background-color: #fff;
+		background-color: var(--white-color);
 		top: -25px;
 	}
 }
