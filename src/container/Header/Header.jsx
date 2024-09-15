@@ -54,7 +54,7 @@ const Header = () => {
 
 			<motion.div
 				whileInView={{ opacity: [0, 1] }}
-				transition={{ duration: 0.5, delayChildren: 0.2 }}
+				transition={{ duration: 0.5, delayChildren: 0.25 }}
 				className="app__header-img"
 			>
 				<img src={images.profile} alt="profile_image" fetchpriority="high" />
