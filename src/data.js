@@ -3,16 +3,16 @@ import { images } from "./constants";
 export const abouts = [
 	{
 		id: "1",
-		title: "Web Development",
+		title: "Software Engineer",
 		description:
-			"I'm a JavaScript developer with a good understanding of OOP principles, and I have a solid foundation in web development.",
+			"I'm a JavaScript developer with a strong understanding of OOP principles and a solid background in web development. I have experience in constructing and enhancing complex systems.",
 		imageUrl: images.about02,
 	},
 	{
 		id: "2",
 		title: "Frontend Developer",
 		description:
-			"I am a frontend developer with a passion for building beautiful and functional web applications.",
+			"I specialize in creating user-friendly interfaces that align with both user and business needs. I excel in writing efficient code to ensure scalability, maintainability, and performance.",
 		imageUrl: images.about01,
 	},
 ];
