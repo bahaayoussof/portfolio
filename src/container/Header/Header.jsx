@@ -34,16 +34,16 @@ const Header = () => {
 					</div>
 
 					<div className="tag-cmp app__flex">
-						<p className="p-text">Frontend Developer</p>
+						<p className="p-text">Software Developer</p>
 						<p className="p-text">Freelancer</p>
 					</div>
 
 					<div className="app__flex">
 						<a
-							// rel="noreferrer"
+							rel="noreferrer"
 							className="resume-button"
 							href="https://docs.google.com/document/d/1mLSGu8-FqpHUCwxHeWgl7eGKT7ku_FfH3oX2CpqRq0Q/edit?usp=sharing"
-							// target="_blank"
+							target="_blank"
 							download="Bahaa_Youssof.pdf"
 						>
 							Resume
