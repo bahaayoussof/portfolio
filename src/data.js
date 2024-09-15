@@ -74,10 +74,24 @@ export const experiences = [
 				name: "work 4",
 				title: "Frontend Developer",
 				company: "Damen E-payment",
-				description: "I contribute to Damen E-Payment, where I’ve led significant architectural redesigns, improving system scalability and reducing error rates. My work on optimizing fetch request speed and enhancing application efficiency has directly resulted in faster processing times and increased system reliability, benefiting both the end-users and the business.Currently, I contribute to Damen E-Payment, where I’ve led significant architectural redesigns, improving system scalability and reducing error rates. My work on optimizing fetch request speed and enhancing application efficiency has directly resulted in faster processing times and increased system reliability, benefiting both the end-users and the business.",
+				description: `I worked on Damen E-Payment and led significant architectural redesigns to improve system scalability and reduce error rates. My efforts focused on optimizing fetch request speed and enhancing application efficiency, which resulted in faster processing times and increased system reliability. These improvements benefited both end-users and the business.
+				`,
 			},
 		],
 	},
+	// {
+	// 	id: "4",
+	// 	year: "2024",
+	// 	works: [
+	// 		{
+	// 			id: "5",
+	// 			name: "work 5",
+	// 			title: "Mid-level Frontend Developer",
+	// 			company: "Algoriza",
+	// 			description: `Soon, I will join algoriza as Mid-level Frontend developer`,
+	// 		},
+	// 	],
+	// },
 ];
 
 export const testimonials = [
