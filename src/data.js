@@ -72,7 +72,7 @@ export const experiences = [
 			{
 				id: "4",
 				name: "work 4",
-				title: "Frontend Developer",
+				title: "Software Engineer",
 				company: "Damen E-payment",
 				description: `I worked on Damen E-Payment and led significant architectural redesigns to improve system scalability and reduce error rates. My efforts focused on optimizing fetch request speed and enhancing application efficiency, which resulted in faster processing times and increased system reliability. These improvements benefited both end-users and the business.
 				`,
@@ -108,6 +108,20 @@ export const testimonials = [
 		company: "Amazon",
 		imageUrl: images.test,
 		feedback: "Bahaa is a good developer!",
+	},
+	{
+		id: "3",
+		name: "Ebram",
+		company: "Damen E-payment",
+		imageUrl: images.test,
+		feedback: "Your attention to detail and commitment to creating intuitive, seamless interfaces is evident in the quality of your work. You tackle challenges head-on and always find efficient solutions, making a significant impact on our team’s success.",
+	},
+	{
+		id: "4",
+		name: "Saeed",
+		company: "Damen E-payment",
+		imageUrl: images.test,
+		feedback: " I just wanted to thank you for the incredible work you’ve done with our team. Your contributions have been invaluable, and your frontend expertise really elevated the project. Your attention to detail and creativity have made a significant difference, and I’m genuinely grateful for your hard work and dedication. Thanks again for being such a great collaborator!",
 	},
 ];
 
