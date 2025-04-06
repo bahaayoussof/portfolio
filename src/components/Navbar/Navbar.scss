@@ -73,9 +73,15 @@
 	}
 }
 
+.app__navbar-right {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .app__navbar-menu {
-	width: 35px;
-	height: 35px;
+	width: 40px;
+	height: 40px;
 	border-radius: 50%;
 	position: relative;
 
@@ -106,7 +112,6 @@
 		align-items: flex-end;
 		flex-direction: column;
 
-		background: url(../../assets/bgWhite.webp);
 		background-color: var(--white-color);
 		background-size: cover;
 		background-repeat: repeat;

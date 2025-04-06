@@ -1,24 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 
 :root {
-	--font-base: "DM Sans", sans-serif;
-	--font-head: "Ubuntu", sans-serif;
+  --font-base: "DM Sans", sans-serif;
+  --font-head: "Ubuntu", sans-serif;
 
-	--primary-color: #edf2f8;  /* aliceblue color */
-	--secondary-color: #ed6f63;  /* slateblue color */ 
-	--white-color: #ffffff;
-	--black-color: #030303;
-	--lightGray-color: #e4e4e4;
-	--silver-color: #cbcbcb;
-	--slategray-color: #6b7688;
-	--snow-color: #fef4f5;
-	--whitesmoke-color: #f2f7fb;
+  /* Light Theme Colors */
+  --primary-color: #edf2f8;
+  --secondary-color: #ed6f63;
+  --white-color: #ffffff;
+  --black-color: #030303;
+  --lightGray-color: #e4e4e4;
+  --silver-color: #cbcbcb;
+  --slategray-color: #6b7688;
+  --snow-color: #fef4f5;
+  --whitesmoke-color: #f2f7fb;
+}
+
+[data-theme="dark"] {
+  --primary-color: #242933;
+  --secondary-color: #ed6f63;
+  --white-color: #2f3541;
+  --black-color: #e4e6eb;
+  --lightGray-color: #4f5666;
+  --silver-color: #767d8a;
+  --slategray-color: #b0b8c4;
+  --snow-color: #2d323d;
+  --whitesmoke-color: #2a303a;
 }
 
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	scroll-behavior: smooth;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
 }
