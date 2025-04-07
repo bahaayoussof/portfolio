@@ -15,6 +15,8 @@
   --slategray-color: #6b7688;
   --snow-color: #fef4f5;
   --whitesmoke-color: #f2f7fb;
+  --nav-glass-color:#ffffff40;
+  --nav-glass-border: #ffffff2e;
 }
 
 [data-theme="dark"] {
@@ -27,6 +29,8 @@
   --slategray-color: #b0b8c4;
   --snow-color: #2d323d;
   --whitesmoke-color: #2a303a;
+  --nav-glass-color:#11111140;
+  --nav-glass-border: #1111112e;
 }
 
 * {
