@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
-import ToggleTheme from "../ToggleTheme";
 
 import "./Navbar.scss";
 const Navbar = () => {
@@ -22,8 +21,6 @@ const Navbar = () => {
       </ul>
 
       <div className="app__navbar-right">
-        <ToggleTheme />
-
         <div className="app__navbar-menu">
           <HiMenuAlt4 onClick={() => setToggle(!toggle)} />
           {toggle && (

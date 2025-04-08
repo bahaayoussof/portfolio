@@ -2,7 +2,7 @@ import React from "react";
 
 import { Toaster } from "react-hot-toast";
 import { About, Footer, Header, Skills, Testimonial, Work } from "./container";
-import { Navbar } from "./components";
+import { Navbar, ToggleTheme } from "./components";
 import "./App.scss";
 import { ThemeProvider } from "./context/theme";
 
@@ -19,6 +19,7 @@ const App = () => {
         <Footer />
         <Toaster />
       </div>
+      <ToggleTheme />
     </ThemeProvider>
   );
 };
