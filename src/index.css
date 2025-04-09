@@ -6,31 +6,31 @@
   --font-head: "Ubuntu", sans-serif;
 
   /* Light Theme Colors */
-  --primary-color: #edf2f8;
-  --secondary-color: #ed6f63;
-  --white-color: #ffffff;
-  --black-color: #2b2b2b;
-  --lightGray-color: #e4e4e4;
-  --silver-color: #cbcbcb;
-  --slategray-color: #6b7688;
-  --snow-color: #fef4f5;
-  --whitesmoke-color: #f2f7fb;
-  --nav-glass-color:#ffffff40;
-  --nav-glass-border: #ffffff2e;
+  --bg-primary: #edf2f8;
+  --accent: #ed6f63;
+  --surface: #ffffff;
+  --text-primary: #2b2b2b;
+  --border-light: #e4e4e4;
+  --inactive: #cbcbcb;
+  --text-secondary: #6b7688;
+  --bg-secondary: #f2f7fb;
+  --bg-accent-light: #fef4f5;
+  --glass-bg: #ffffff40;
+  --glass-border: #ffffff2e;
 }
 
 [data-theme="dark"] {
-  --primary-color: #242933;
-  --secondary-color: #ed6f63;
-  --white-color: #2f3541;
-  --black-color: #e4e6eb;
-  --lightGray-color: #4f5666;
-  --silver-color: #767d8a;
-  --slategray-color: #b0b8c4;
-  --snow-color: #2d323d;
-  --whitesmoke-color: #2a303a;
-  --nav-glass-color:#11111140;
-  --nav-glass-border: #1111112e;
+  --bg-primary: #242933;
+  --accent: #ed6f63;
+  --surface: #2f3541;
+  --text-primary: #e4e6eb;
+  --border-light: #4f5666;
+  --inactive: #767d8a;
+  --text-secondary: #b0b8c4;
+  --bg-secondary: #2a303a;
+  --bg-accent-light: #2d323d;
+  --glass-bg: #11111140;
+  --glass-border: #1111112e;
 }
 
 * {

@@ -1,14 +1,14 @@
 .app {
-  background-color: var(--primary-color);
+  background-color: var(--bg-primary);
   font-family: var(--font-base);
 }
 
 .app__whitebg {
-  background-color: var(--white-color);
+  background-color: var(--surface);
 }
 
 .app__primarybg {
-  background-color: var(--primary-color);
+  background-color: var(--bg-primary);
 }
 
 .app__container {
@@ -47,7 +47,7 @@
 
   p {
     text-transform: uppercase;
-    color: var(--black-color);
+    color: var(--text-primary);
   }
 }
 
@@ -55,11 +55,11 @@
   font-size: 2.75rem;
   font-weight: 800;
   text-align: center;
-  color: var(--black-color);
+  color: var(--text-primary);
   text-transform: capitalize;
 
   span {
-    color: var(--secondary-color);
+    color: var(--accent);
   }
 
   @media screen and (min-width: 2000px) {
@@ -74,7 +74,7 @@
 .p-text {
   font-size: 0.8rem;
   text-align: left;
-  color: var(--slategray-color);
+  color: var(--text-secondary);
   line-height: 1.5;
 
   @media screen and (min-width: 2000px) {
@@ -85,7 +85,7 @@
 .bold-text {
   font-size: 1rem;
   font-weight: 800;
-  color: var(--black-color);
+  color: var(--text-primary);
   text-align: left;
 
   @media screen and (min-width: 2000px) {
@@ -109,9 +109,9 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--white-color);
+    background-color: var(--surface);
     margin: 0.25rem 0;
-    border: 1px solid var(--lightGray-color);
+    border: 1px solid var(--border-light);
 
     display: flex;
     justify-content: center;
@@ -122,16 +122,16 @@
     svg {
       width: 16px;
       height: 16px;
-      color: var(--slategray-color);
+      color: var(--text-secondary);
       margin-top: 5px;
     }
 
     &:hover {
-      background-color: var(--secondary-color);
-      border-color: var(--secondary-color);
+      background-color: var(--accent);
+      border-color: var(--accent);
 
       svg {
-        color: var(--white-color);
+        color: var(--surface);
       }
     }
 
@@ -161,13 +161,13 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--silver-color);
+    background-color: var(--inactive);
     margin: 0.5rem;
 
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
-      background-color: var(--secondary-color);
+      background-color: var(--accent);
     }
 
     @media screen and (min-width: 2000px) {
@@ -183,7 +183,7 @@
   top: 10%;
   width: 50px;
   height: 45px;
-  background-color: var(--secondary-color);
+  background-color: var(--accent);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -197,11 +197,11 @@
   svg {
     width: 25px;
     height: 25px;
-    color: var(--white-color);
+    color: var(--surface);
   }
 
   &:hover {
-    background-color: var(--black-color);
+    background-color: var(--text-primary);
   }
 }
 
