@@ -131,6 +131,8 @@ export const brands = [
   { id: "1", name: "Smart Cards", imageUrl: images.smart },
   { id: "2", name: "Damen E-Payments", imageUrl: images.damen },
   { id: "3", name: "Algoriza", imageUrl: images.algoriza },
+  { id: "3", name: "Sumerge", imageUrl: images.sumerge },
+  { id: "3", name: "Alinma", imageUrl: images.alinma },
 ];
 
 export const projects = [

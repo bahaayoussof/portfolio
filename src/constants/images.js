@@ -35,6 +35,8 @@ import test from "../assets/test.webp";
 import smart from "../assets/smart.webp";
 import damen from "../assets/damen.webp";
 import algoriza from "../assets/algoriza.png";
+import sumerge from "../assets/sumerge.webp";
+import alinma from "../assets/alinma.webp";
 
 import comingSoon from "../assets/coming-soon.webp";
 
@@ -71,4 +73,6 @@ export default {
 	damen,
 	algoriza,
 	comingSoon,
+	sumerge,
+	alinma,
 };
