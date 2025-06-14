@@ -88,7 +88,7 @@ export const experiences = [
         name: "work 5",
         title: "Mid-level Software Engineer",
         company: "Algoriza",
-        description: `I started working at Algoriza as a mid-level frontend developer.`,
+        description: `I contributed to the development of the Alinma Corporate Internet Banking (CIB) application for six months, where I worked on various responsibilities and collaborated with team members. Currently, I'm focused on the front-end development of the Tassel platform using Vue.js 3, aiming to enhance user experience and scalability.`,
       },
     ],
   },
