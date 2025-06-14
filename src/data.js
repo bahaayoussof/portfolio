@@ -4,15 +4,13 @@ export const abouts = [
   {
     id: "1",
     title: "Software Engineer",
-    description:
-      "I'm a JavaScript developer with a strong understanding of OOP principles and a solid background in web development. I have experience in constructing and enhancing complex systems.",
+    description: `I am a JavaScript developer with a strong understanding of OOP principles and a solid background in web development. I have experience in building and improving complex systems. With a strong foundation in software development and a keen eye for innovation, I am always eager to take on new challenges and contribute to projects that make a real difference.`,
     imageUrl: images.about02,
   },
   {
     id: "2",
     title: "Frontend Developer",
-    description:
-      "I specialize in creating user-friendly interfaces that align with both user and business needs. I excel in writing efficient code to ensure scalability, maintainability, and performance.",
+    description: `I specialize in crafting user-friendly and efficient interfaces that align with both user and business needs. With a solid background in developing and optimizing complex systems, I have a proven track record of delivering high-quality code and solutions that improve scalability, maintainability, and overall performance.`,
     imageUrl: images.about01,
   },
 ];
