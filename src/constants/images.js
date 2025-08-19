@@ -13,7 +13,7 @@ import mu5 from "../assets/mu5.webp";
 import react from "../assets/react.webp";
 import redux from "../assets/redux.webp";
 import sass from "../assets/sass.webp";
-import tailwind from "../assets/tailwind.webp";
+import tailwind from "../assets/tailwind.svg";
 import typescript from "../assets/typescript.webp";
 
 import about01 from "../assets/about01.webp";
