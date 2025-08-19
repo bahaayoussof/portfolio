@@ -59,7 +59,7 @@ const Testimonials = () => {
 						whileInView={{ opacity: [0, 1] }}
 						transition={{ duration: 0.5, type: "tween" }}
 					>
-						<img src={brand.imageUrl} alt={brand.name} />
+						<img src={brand.imageUrl} alt={brand.name} loading="lazy" />
 					</motion.div>
 				))}
 			</div>
