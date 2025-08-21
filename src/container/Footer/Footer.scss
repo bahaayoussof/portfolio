@@ -71,7 +71,12 @@
 .app__footer-form {
   width: 60%;
   flex-direction: column;
+
   margin: 1rem 2rem;
+  padding: 1.5rem 3rem;
+  border-radius: 1.3rem;
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 8px var(--bg-primary);
 
   div {
     width: 100%;
@@ -79,7 +84,6 @@
     margin: 0.75rem 0;
     border-radius: 10px;
     cursor: pointer;
-    background-color: var(--bg-primary);
 
     transition: all 0.3s ease-in-out;
 
