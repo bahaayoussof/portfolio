@@ -1,11 +1,9 @@
+@import '../../styles/mixins';
+
 .app__footer {
   flex: 1;
   width: 100%;
   flex-direction: column;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
 }
 
 .app__footer-cards {
@@ -22,14 +20,12 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 10px;
     cursor: pointer;
-    background-color: var(--bg-accent-light);
-
     transition: all 0.3s ease-in-out;
+    @include glass-effect;
 
     img {
       width: 40px;
@@ -44,14 +40,11 @@
     a {
       text-decoration: none;
       font-weight: 500;
+      color: var(--text-primary);
     }
 
     &:hover {
-      box-shadow: 0 0 25px var(--bg-accent-light);
-    }
-
-    @media screen and (max-width: 450px) {
-      width: 100%;
+      box-shadow: 0 0 25px var(--accent);
     }
   }
 
@@ -60,37 +53,28 @@
   }
 }
 
-.app__footer-cards .app__footer-card:last-child {
-  background-color: var(--bg-secondary);
-}
-
-.app__footer-cards .app__footer-card:last-child:hover {
-  box-shadow: 0 0 25px var(--bg-secondary);
-}
-
 .app__footer-form {
   width: 60%;
   flex-direction: column;
   margin: 1rem 2rem;
+  @include glass-effect;
+  padding: 2rem;
 
   div {
     width: 100%;
-
     margin: 0.75rem 0;
     border-radius: 10px;
     cursor: pointer;
-    background-color: var(--bg-primary);
-
+    background-color: transparent;
     transition: all 0.3s ease-in-out;
 
     input,
     textarea {
       width: 100%;
       padding: 0.95rem;
-      border: none;
+      border: 1px solid var(--glass-border);
       border-radius: 7px;
-      background-color: var(--bg-primary);
-
+      background-color: transparent;
       font-family: var(--font-base);
       color: var(--text-primary);
       outline: none;
@@ -99,10 +83,6 @@
     textarea {
       height: 170px;
     }
-
-    &:hover {
-      box-shadow: 0 0 25px var(--bg-primary);
-    }
   }
 
   button {
@@ -110,13 +90,11 @@
     border-radius: 10px;
     border: none;
     background-color: var(--accent);
-
     font-weight: 500;
     color: var(--surface);
     outline: none;
     margin: 2rem 0 0 0;
     font-family: var(--font-base);
-
     transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
     cursor: pointer;
 

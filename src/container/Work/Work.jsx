@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 
@@ -8,20 +8,15 @@ import { projects } from "../../data";
 import "./Work.scss";
 const Work = () => {
 	const [activeFilter, setActiveFilter] = useState("All");
-	const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-	const [filterWork, setFilterWork] = useState(projects);
+	const [filterWork, setFilterWork] = useState([]);
 
-	const workFilterHandler = project => {
-		setActiveFilter(project);
-		setAnimateCard([{ y: 100, opacity: 0 }]);
-
-		setTimeout(() => {
-			setAnimateCard([{ y: 0, opacity: 1 }]);
-
-			if (project === "All") setFilterWork(projects);
-			else setFilterWork(projects.filter(work => work.tags.includes(project)));
-		}, 500);
-	};
+    useEffect(() => {
+        if (activeFilter === "All") {
+            setFilterWork(projects);
+        } else {
+            setFilterWork(projects.filter(work => work.tags.includes(activeFilter)));
+        }
+    }, [activeFilter]);
 
 	return (
 		<>
@@ -33,7 +28,7 @@ const Work = () => {
 				{["Web App", "Material UI", "React JS", "Bootstrap", "Tailwind", "All"].map(item => (
 					<div
 						key={item}
-						onClick={() => workFilterHandler(item)}
+						onClick={() => setActiveFilter(item)}
 						className={`app__work-filter-item app__flex p-text ${
 							activeFilter === item ? "item-active" : ""
 						}`}
@@ -44,7 +39,8 @@ const Work = () => {
 			</div>
 
 			<motion.div
-				animate={animateCard}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
 				className="app__work-portfolio"
 			>
@@ -98,4 +94,4 @@ const Work = () => {
 	);
 };
 
-export default AppWrap(MotionWrap(Work, "app__works"), "work", "app__primarybg");
+export default AppWrap(MotionWrap(Work, "app__works"), "work");
