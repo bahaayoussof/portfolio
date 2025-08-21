@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { motion } from "framer-motion";
-import ReactTooltip from "react-tooltip";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { skills, experiences } from "../../data";
@@ -21,7 +20,7 @@ const Skills = () => {
 								className="app__skills-item app__flex"
 								key={skill.id}
 							>
-								<div className="app__flex" style={{ backgroundColor: skill.bgColor }}>
+								<div className="app__flex">
 									<img src={skill.icon} alt={skill.name} />
 								</div>
 								<p className="p-text">{skill.name}</p>
@@ -42,20 +41,10 @@ const Skills = () => {
 											whileInView={{ opacity: [0, 1] }}
 											transition={{ duration: 0.5 }}
 											className="app__skills-exp-work"
-											data-tip
-											data-for={work.name}
 										>
 											<h4 className="bold-text">{work.title}</h4>
 											<p className="p-text">{work.company}</p>
 										</motion.div>
-										<ReactTooltip
-											id={work.name}
-											effect="solid"
-											arrowColor="#fff"
-											className="skills-tooltip"
-										>
-											{work.description}
-										</ReactTooltip>
 									</Fragment>
 								))}
 							</motion.div>
@@ -67,4 +56,4 @@ const Skills = () => {
 	);
 };
 
-export default AppWrap(MotionWrap(Skills, "app__skills"), "skills", "app__whitebg");
+export default AppWrap(MotionWrap(Skills, "app__skills"), "skills");
