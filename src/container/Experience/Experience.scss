@@ -74,7 +74,7 @@
 
 .timeline-card {
   position: relative;
-  width: calc(45% - 2rem);
+  width: calc(65% - 2rem);
   background: var(--surface);
   border: 1px solid var(--bg-accent-light);
   border-radius: 20px;
@@ -91,12 +91,16 @@
 
 .timeline-card.left {
   margin-right: auto;
-  margin-left: -2rem;
+  margin-left: 0rem;
+
+
 }
 
 .timeline-card.right {
   margin-left: auto;
-  margin-right: -2rem;
+  margin-right: 0rem;
+
+
 }
 
 .timeline-card:hover {
