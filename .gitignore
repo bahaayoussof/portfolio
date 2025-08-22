@@ -13,6 +13,7 @@ node_modules
 
 # Secret file
 .env
+.cursorignore
 
 # misc
 .DS_Store
