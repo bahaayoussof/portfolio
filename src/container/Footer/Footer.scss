@@ -170,22 +170,30 @@
         textarea {
           width: 100%;
           padding: 1rem 1rem 1rem 3rem;
-          background: var(--bg-primary);
-          border: 2px solid transparent;
+          background: var(--surface);
+          border: 2px solid var(--bg-accent-light);
           border-radius: 12px;
           color: var(--text-primary);
           font-size: 1rem;
           font-family: var(--font-base);
           transition: all 0.3s ease;
           outline: none;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
           &::placeholder {
             color: var(--text-secondary);
+            opacity: 0.8;
+          }
+
+          &:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           }
 
           &:focus {
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(237, 111, 99, 0.1);
+            background: var(--surface);
           }
         }
 
