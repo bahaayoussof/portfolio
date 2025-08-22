@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react";
 import { LuSun, LuMoon } from "react-icons/lu";
 import { motion } from "framer-motion";
 import { ThemeContext } from "../../context/theme";
+import { HiMenuAlt4, HiX } from "react-icons/hi";
 
 import "./Navbar.scss";
-import { HiMenuAlt4, HiX } from "react-icons/hi";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isRotating, setIsRotating] = useState(false);
