@@ -2,135 +2,273 @@
   flex: 1;
   width: 100%;
   flex-direction: column;
+  padding: 2rem 0;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
 }
 
-.app__footer-cards {
-  width: 60%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap-reverse;
-  margin: 4em 2rem 2rem;
+.app__footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 
-  .app__footer-card {
-    min-width: 290px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+// Header Section
+.app__footer-header {
+  text-align: center;
+  margin-bottom: 4rem;
 
-    margin: 1rem 0;
-    padding: 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: var(--bg-accent-light);
+  .app__footer-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-family: var(--font-head);
 
-    transition: all 0.3s ease-in-out;
-
-    img {
-      width: 40px;
-      height: 40px;
-      margin: 0 0.7rem;
+    span {
+      color: var(--accent);
     }
 
-    p {
-      font-weight: 500;
-    }
-
-    a {
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    &:hover {
-      box-shadow: 0 0 25px var(--bg-accent-light);
-    }
-
-    @media screen and (max-width: 450px) {
-      width: 100%;
+    @media screen and (max-width: 768px) {
+      font-size: 2.5rem;
     }
   }
+
+  .app__footer-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+// Main Content
+.app__footer-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
 
   @media screen and (max-width: 768px) {
-    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
-.app__footer-cards .app__footer-card:last-child {
-  background-color: var(--bg-secondary);
+// Left Column - Contact Card
+.app__footer-contact-card {
+  background: transparent;
+  padding: 3rem  2rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--bg-secondary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-head);
+  }
+
+  > p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .app__footer-contact-details {
+    margin-bottom: 2rem;
+
+    .app__footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateX(8px);
+      }
+
+             .contact-icon {
+         font-size: 1.5rem;
+         flex-shrink: 0;
+         color: var(--text-secondary);
+       }
+
+      .contact-label {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.25rem;
+        font-weight: 500;
+      }
+
+      .contact-value {
+        display: block;
+        color: var(--text-primary);
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
+  }
 }
 
-.app__footer-cards .app__footer-card:last-child:hover {
-  box-shadow: 0 0 25px var(--bg-secondary);
-}
+// Right Column - Form Container
+.app__footer-form-container {
+  background: transparent;
+  padding: 2rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
 
-.app__footer-form {
-  width: 60%;
-  flex-direction: column;
+  &:hover {
+    background: var(--bg-secondary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
 
-  margin: 1rem 2rem;
-  padding: 1.5rem 3rem;
-  border-radius: 1.3rem;
-  background-color: var(--bg-secondary);
-  box-shadow: 0 0 8px var(--bg-primary);
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
 
-  div {
-    width: 100%;
+  .app__footer-form {
+    .form-group {
+      margin-bottom: 1.5rem;
 
-    margin: 0.75rem 0;
-    border-radius: 10px;
-    cursor: pointer;
+      label {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
 
-    transition: all 0.3s ease-in-out;
+      .input-wrapper {
+        position: relative;
 
-    input,
-    textarea {
+        input,
+        textarea {
+          width: 100%;
+          padding: 1rem 1rem 1rem 3rem;
+          background: var(--bg-primary);
+          border: 2px solid transparent;
+          border-radius: 12px;
+          color: var(--text-primary);
+          font-size: 1rem;
+          font-family: var(--font-base);
+          transition: all 0.3s ease;
+          outline: none;
+
+          &::placeholder {
+            color: var(--text-secondary);
+          }
+
+          &:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(237, 111, 99, 0.1);
+          }
+        }
+
+        textarea {
+          min-height: 120px;
+          resize: vertical;
+          padding-top: 1rem;
+          padding-left: 1rem;
+        }
+
+        .input-icon {
+          position: absolute;
+          left: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--text-secondary);
+          font-size: 1.1rem;
+          pointer-events: none;
+        }
+      }
+    }
+
+    .send-button {
       width: 100%;
-      padding: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #667eea 0%, var(--accent) 100%);
       border: none;
-      border-radius: 7px;
-      background-color: var(--bg-primary);
-
+      border-radius: 12px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
       font-family: var(--font-base);
-      color: var(--text-primary);
-      outline: none;
-    }
 
-    textarea {
-      height: 170px;
-    }
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(237, 111, 99, 0.3);
+      }
 
-    &:hover {
-      box-shadow: 0 0 25px var(--bg-primary);
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      svg {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media screen and (max-width: 1024px) {
+  .app__footer-container {
+    padding: 0 1rem;
+  }
+
+  .app__footer-content {
+    gap: 2rem;
+  }
+
+  .app__footer-contact-card,
+  .app__footer-form-container {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app__footer-header {
+    margin-bottom: 3rem;
+
+    .app__footer-title {
+      font-size: 2.2rem;
     }
   }
 
-  button {
-    padding: 0.7rem 2rem;
-    border-radius: 10px;
-    border: none;
-    background-color: var(--accent);
-
-    font-weight: 500;
-    color: var(--surface);
-    outline: none;
-    margin: 2rem 0 0 0;
-    font-family: var(--font-base);
-
-    transition: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--accent);
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    margin: 1rem 0;
+  .app__footer-contact-card,
+  .app__footer-form-container {
+    padding: 1.5rem;
   }
 }

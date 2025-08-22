@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
+import { LuMail, LuMapPin, LuUser, LuSend } from "react-icons/lu";
 
-import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import emailjs from "@emailjs/browser";
 import Toastify from "../../components/Toastify";
 
 import "./Footer.scss";
+
 const Footer = () => {
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
@@ -45,62 +46,107 @@ const Footer = () => {
   };
 
   return (
-    <>
-      <h2 className="head-text">Take a coffee & chat with me</h2>
-
-      <div className="app__footer-cards">
-        <div className="app__footer-card">
-          <img src={images.email} alt="email" />
-          <a href="mailto:bahaayoussof@gmail.com" className="p-text">
-            bahaayoussof@gmail.com
-          </a>
-        </div>
-
-        <div className="app__footer-card">
-          <img src={images.mobile} alt="phone" />
-          <a href="tel: +20 1003254585" className="p-text">
-            +20 1003254585
-          </a>
-        </div>
+    <div className="app__footer-container">
+      {/* Header Section */}
+      <div className="app__footer-header">
+        <h1 className="app__footer-title">
+          Let's <span>Connect</span>
+        </h1>
+        <p className="app__footer-subtitle">
+          Have a project in mind or want to discuss opportunities? I'd love to
+          hear from you!
+        </p>
       </div>
 
-      <form
-        ref={formRef}
-        className="app__footer-form app__flex"
-        onSubmit={contactHandler}
-      >
-        <div className="app__flex">
-          <input
-            className="p-text"
-            type="text"
-            placeholder="Your Name"
-            name="user_name"
-            required
-          />
-        </div>
-        <div className="app__flex">
-          <input
-            className="p-text"
-            type="email"
-            placeholder="Your Email"
-            name="user_email"
-            pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-          />
+      {/* Main Content */}
+      <div className="app__footer-content">
+        {/* Left Column - Contact Information */}
+        <div className="app__footer-contact-card">
+          <h2>Let's Start a Conversation</h2>
+          <p>
+            I'm always open to discussing new opportunities, interesting
+            projects, or just having a chat about technology and development.
+            Feel free to reach out!
+          </p>
+
+          <div className="app__footer-contact-details">
+            <div className="app__footer-contact-item">
+              <LuMail className="contact-icon" />
+              <div>
+                <span className="contact-label">Email</span>
+                <a
+                  href="mailto:bahaayoussof@gmail.com"
+                  className="contact-value"
+                >
+                  bahaayoussof@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="app__footer-contact-item">
+              <LuMapPin className="contact-icon" />
+              <div>
+                <span className="contact-label">Location</span>
+                <span className="contact-value">Available for Remote Work</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <textarea
-            className="p-text"
-            placeholder="Your Message"
-            name="message"
-            required
-          />
+        {/* Right Column - Contact Form */}
+        <div className="app__footer-form-container">
+          <h2>Send Me a Message</h2>
+          <form
+            ref={formRef}
+            className="app__footer-form"
+            onSubmit={contactHandler}
+          >
+            <div className="form-group">
+              {/* <label>Your Name</label> */}
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  name="user_name"
+                  required
+                />
+                <LuUser className="input-icon user-icon" />
+              </div>
+            </div>
+
+            <div className="form-group">
+              {/* <label>Your Email</label> */}
+              <div className="input-wrapper">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  name="user_email"
+                  pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                  required
+                />
+                <LuMail className="input-icon email-input-icon" />
+              </div>
+            </div>
+
+            <div className="form-group">
+              {/* <label>Your Message</label> */}
+              <div className="input-wrapper">
+                <textarea
+                  placeholder="Tell me about your project or just say hello!"
+                  name="message"
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="send-button" disabled={loading}>
+              <LuSend />
+              {!loading ? "Send Message" : "Sending..."}
+            </button>
+          </form>
         </div>
-        <button type="submit" className="p-text">
-          {!loading ? "Send Message" : "Sending..."}
-        </button>
-      </form>
-    </>
+      </div>
+    </div>
   );
 };
 
