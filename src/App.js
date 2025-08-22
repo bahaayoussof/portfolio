@@ -18,7 +18,6 @@ const App = () => {
         <Footer />
         <Toaster />
       </div>
-      <ToggleTheme />
     </ThemeProvider>
   );
 };
