@@ -15,78 +15,99 @@ export const abouts = [
   },
 ];
 
-export const skills = [
-  { id: "1", name: "HTML", icon: images.html },
-  { id: "2", name: "CSS", icon: images.css },
-  { id: "3", name: "BootStrap", icon: images.bootstrap },
-  { id: "4", name: "Sass", icon: images.sass },
-  { id: "5", name: "Material UI", icon: images.material },
-  { id: "6", name: "Tailwind", icon: images.tailwind },
-  { id: "7", name: "JavaScript", icon: images.javascript },
-  { id: "8", name: "React JS", icon: images.react },
-  { id: "9", name: "Redux Toolkit", icon: images.redux },
-  { id: "10", name: "Git", icon: images.git },
-];
-
 export const experiences = [
   {
-    id: "1",
     year: "2021",
     works: [
       {
         id: "1",
-        name: "work 1",
         title: "Frontend Developer",
         company: "Freelancing",
-        description: "I worked as a frontend developer",
+        date: "Jan 2021 - May 2022",
+        location: "Remote",
+        description:
+          "I worked as a frontend developer on various client projects, delivering responsive web applications and improving user experiences.",
+        achievements: [
+          "Developed 10+ responsive websites for diverse clients",
+          "Improved client satisfaction scores by 25%",
+          "Reduced page load times by 40% through optimization",
+        ],
+        tags: ["HTML", "CSS", "JavaScript", "React", "Bootstrap"],
       },
     ],
   },
   {
-    id: "2",
     year: "2022",
     works: [
       {
         id: "2",
-        name: "work 2",
-        title: "React Developer",
-        company: "Side Project",
-        description:
-          "I worked on LostChild: A platform to help recover missing and abducted children",
-      },
-      {
-        id: "3",
-        name: "work 3",
         title: "Frontend Developer",
         company: "Smart Cards Applications",
-        description: "I worked as a Frontend developer - React Js",
+        date: "May 2023 - Dec 2023",
+        location: "Cairo, Egypt",
+        description:
+          "I worked as a Frontend developer specializing in React.js, building scalable web applications and collaborating with cross-functional teams.",
+        achievements: [
+          "Refactor the codebase to improve performance and maintainability",
+          "Implement new features to enhance user experience",
+          "Collaborate with the design team to implement new designs",
+        ],
+        tags: ["React", "JavaScript", "Redux", "Material UI", "Scss"],
       },
     ],
   },
   {
-    id: "3",
     year: "2023",
     works: [
       {
-        id: "4",
-        name: "work 4",
+        id: "3",
         title: "Software Engineer",
         company: "Damen E-payment",
-        description: `I worked on Damen E-Payment and led significant architectural redesigns to improve system scalability and reduce error rates. My efforts focused on optimizing fetch request speed and enhancing application efficiency, which resulted in faster processing times and increased system reliability. These improvements benefited both end-users and the business.
-				`,
+        date: "Jan 2023 - Oct 2024",
+        location: "Cairo, Egypt",
+        description:
+          "As a Frontend Developer, I've led changes in different projects, making them better and helping teams achieve their goals.",
+        achievements: [
+          "Improved UX and Integrations: Better UI, optimized data flow, and added external integrations, such as Mwasalat Misr, for smoother user experiences.",
+          "Increased Performance: Reworked Petrotrade to manage over 300,000 daily transactions with improved speed and scalability.",
+          "Led System Upgrades: Overhauled OMS with important features like multi-account support and aggregator improvements.",
+        ],
+        tags: ["React", "JavaScript", "React Native", "Redux", "Material UI"],
       },
     ],
   },
   {
-    id: "4",
     year: "2024",
     works: [
       {
-        id: "5",
-        name: "work 5",
+        id: "4",
         title: "Mid-level Software Engineer",
-        company: "Algoriza",
-        description: `I contributed to the development of the Alinma Corporate Internet Banking (CIB) application for six months, where I worked on various responsibilities and collaborated with team members. Currently, I'm focused on the front-end development of the Tassel platform using Vue.js 3, aiming to enhance user experience and scalability.`,
+        company: "Algoriza, Sumerge",
+        date: "Oct 2024 - Mar 2025",
+        location: "Cairo, Egypt",
+        description:
+          "I contributed to the development of the Alinma Corporate Internet Banking (CIB) application for six months, where I worked on various responsibilities and collaborated with team members.",
+        achievements: [
+          "Developed key features in the Corporate Credit Card module, enabling companies to issue and manage credit cards as employee benefits.",
+          "I implemented features including card settlement, limit management, and statement generation.",
+          "Improved corporate financial operations by enhancing user experience and system efficiency for credit card processing",
+        ],
+        tags: ["React Native", "TypeScript", "Redux", "Azure"],
+      },
+      {
+        id: "5",
+        title: "Mid-level Software Engineer",
+        company: "Algoriza, Tassel",
+        date: "Mar 2025 - Present",
+        location: "Cairo, Egypt",
+        description:
+          "A platform designed to help people list their properties in the real estate market.",
+        achievements: [
+          "Improved the codebase by adding feature updates, making it more responsive, and refining user interface elements to make the platform easier to use.",
+          "Repaired and fixed bugs throughout the site to ensure smoother performance and a more reliable user experience.",
+          "Introduced new features that enhanced client usability and navigation while streamlining workflows for real estate listing agents.",
+        ],
+        tags: ["JavaScript", "Vue.js 3", "Pinia", "Vite", "Sass", "Azure"],
       },
     ],
   },

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Toaster } from "react-hot-toast";
-import { About, Footer, Header, Skills, Testimonials, Work } from "./container";
+import { About, Footer, Header, Experience, Work } from "./container";
 import { Navbar, ToggleTheme } from "./components";
 import "./App.scss";
 import { ThemeProvider } from "./context/theme";
@@ -14,8 +14,7 @@ const App = () => {
         <Header />
         <About />
         <Work />
-        <Skills />
-        {/* <Testimonials /> */}
+        <Experience />
         <Footer />
         <Toaster />
       </div>
