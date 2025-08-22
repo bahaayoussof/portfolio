@@ -3,10 +3,6 @@
   width: 100%;
   flex-direction: column;
   padding: 2rem 0;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
 }
 
 .app__footer-container {
@@ -65,7 +61,7 @@
 
 .app__footer-contact-card {
   background: transparent;
-  padding: 3rem  2rem;
+  padding: 3rem 2rem;
   border-radius: 20px;
   transition: all 0.3s ease;
   width: 100%;
@@ -82,7 +78,7 @@
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 1.5rem, 3rem);
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
@@ -97,7 +93,6 @@
   }
 
   .app__footer-contact-details {
-
     .app__footer-contact-item {
       display: flex;
       align-items: center;
@@ -108,12 +103,11 @@
       transition: all 0.3s ease;
       cursor: pointer;
 
-      &:hover {
-        transform: translateX(8px);
+             &:hover {
+         transform: translateX(8px);
+       }
 
-      }
-
-      .contact-icon {
+             .contact-icon {
          font-size: 1.5rem;
          flex-shrink: 0;
          color: var(--text-secondary);
@@ -160,23 +154,17 @@
   }
 
   h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 1.5rem, 3rem);
+    margin-bottom: 1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
   }
 
   .app__footer-form {
     .form-group {
       margin-bottom: 1.5rem;
 
-      label {
-        display: block;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-      }
+
 
       .input-wrapper {
         position: relative;
@@ -265,7 +253,6 @@
   }
 }
 
-// Responsive Design
 @media screen and (max-width: 1024px) {
   .app__footer-container {
     padding: 0 1rem;
@@ -296,18 +283,18 @@
 
   .app__footer-contact-card,
   .app__footer-form-container {
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .app__footer-container {
-    padding: 0.5rem;
+    padding: 0rem;
   }
 
   .app__footer-contact-card,
   .app__footer-form-container {
-    padding: 0.75rem;
+    padding: 1rem;
   }
 
   .app__footer-header {
