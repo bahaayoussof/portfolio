@@ -1,38 +1,110 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { abouts } from "../../data";
+import { LuCode, LuHeart, LuCheckCircle, LuUser } from "react-icons/lu";
 
 import "./About.scss";
 
 const About = () => {
-	return (
-		<>
-			<h2 className="head-text">
-				I Know that <span>Good Development</span> <br /> means <span>Good Business</span>
-			</h2>
+  const highlights = [
+    "3+ years of experience in web development",
+    "Expertise in React ecosystem and modern JavaScript",
+    "Passionate about UI/UX design and user experience",
+    "Start Using Vue.js 3 framework for building web applications",
+  ];
 
-			<div className="app__profiles">
-				{abouts.map(about => (
-					<motion.div
-						whileInView={{ opacity: 1 }}
-						whileHover={{ scale: 1.1 }}
-						transition={{ duration: 0.5, type: "tween" }}
-						className="app__profile-item"
-						key={about.id}
-					>
-						<img src={about.imageUrl} alt={about.title} />
-						<h2 className="bold-text" style={{ marginTop: 20 }}>
-							{about.title}
-						</h2>
-						<p className="p-text" style={{ marginTop: 10 }}>
-							{about.description}
-						</p>
-					</motion.div>
-				))}
-			</div>
-		</>
-	);
+  return (
+    <>
+      {/* Navigation Tab */}
+      <div className="about-nav-tab">
+        <LuUser />
+        <span>About Me</span>
+      </div>
+
+      {/* Header Section */}
+      <div className="about-header">
+        <h1 className="about-title">
+          Get to Know <span>Me</span> <span className="better">Better</span>
+        </h1>
+        <p className="about-subtitle">
+          Passionate about creating digital experiences that make a difference
+        </p>
+      </div>
+
+      {/* Main Content */}
+      <div className="about-content">
+        {/* Left Column */}
+        <div className="about-left-column">
+          {/* My Journey Section */}
+          <motion.div
+            whileInView={{ opacity: [0, 1], y: [20, 0] }}
+            transition={{ duration: 0.5 }}
+            className="about-section"
+          >
+            <div className="section-header">
+              <div className="section-icon icon-linear">
+                <LuCode />
+              </div>
+              <h3>My Journey</h3>
+            </div>
+            <p>
+              I'm a passionate Software Engineer with expertise in modern web
+              technologies. I specialize in building scalable applications using
+              React, React Native, and cutting-edge development tools. My focus
+              is on creating user-centric solutions that combine elegant design
+              with robust functionality.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Right Column */}
+        <div className="about-right-column">
+          {/* Key Highlights Section */}
+          <motion.div
+            whileInView={{ opacity: [0, 1], y: [20, 0] }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="about-section"
+          >
+            <h3>Key Highlights</h3>
+            <ul className="highlights-list">
+              {highlights.map((highlight, index) => (
+                <motion.li
+                  key={index}
+                  whileInView={{ opacity: [0, 1], x: [20, 0] }}
+                  transition={{ duration: 0.3, delay: 0.1 * index }}
+                >
+                  <LuCheckCircle />
+                  <span>{highlight}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* What Drives Me Section */}
+      <motion.div
+        whileInView={{ opacity: [0, 1], y: [20, 0] }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="about-section"
+      >
+        <div className="section-header">
+          <div className="section-icon icon-linear">
+            <LuHeart />
+          </div>
+          <h3>What Drives Me</h3>
+        </div>
+        <p>
+          I believe in the power of technology to solve real-world problems and
+          create meaningful connections between people and digital experiences.
+        </p>
+      </motion.div>
+    </>
+  );
 };
 
-export default AppWrap(MotionWrap(About, "app__about"), "about", "app__whitebg");
+export default AppWrap(
+  MotionWrap(About, "app__about"),
+  "about",
+  "app__whitebg"
+);
