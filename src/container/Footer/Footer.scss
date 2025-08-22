@@ -53,22 +53,32 @@
   gap: 3rem;
   align-items: stretch;
 
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    gap: 4rem;
+  }
+
   @media screen and (max-width: 768px) {
     gap: 2rem;
   }
 }
 
-// Contact Card - Full Width
 .app__footer-contact-card {
   background: transparent;
   padding: 3rem  2rem;
   border-radius: 20px;
   transition: all 0.3s ease;
   width: 100%;
+  height: 100%;
+
+  @media screen and (min-width: 1024px) {
+    flex: 1;
+  }
 
   &:hover {
     background: var(--bg-secondary);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
   }
 
   h2 {
@@ -87,7 +97,6 @@
   }
 
   .app__footer-contact-details {
-    margin-bottom: 2rem;
 
     .app__footer-contact-item {
       display: flex;
@@ -101,9 +110,10 @@
 
       &:hover {
         transform: translateX(8px);
+
       }
 
-             .contact-icon {
+      .contact-icon {
          font-size: 1.5rem;
          flex-shrink: 0;
          color: var(--text-secondary);
@@ -132,7 +142,6 @@
   }
 }
 
-// Form Container - Full Width
 .app__footer-form-container {
   background: transparent;
   padding: 2rem;
@@ -140,9 +149,14 @@
   transition: all 0.3s ease;
   width: 100%;
 
+  @media screen and (min-width: 1024px) {
+    flex: 1;
+  }
+
   &:hover {
     background: var(--bg-secondary);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
   }
 
   h2 {
