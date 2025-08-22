@@ -1,11 +1,40 @@
 import React, { useState, useRef } from "react";
-import { LuMail, LuMapPin, LuUser, LuSend } from "react-icons/lu";
+import {
+  LuMail,
+  LuMapPin,
+  LuUser,
+  LuSend,
+  LuGithub,
+  LuLinkedin,
+} from "react-icons/lu";
+import { TbBrandLeetcode } from "react-icons/tb";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import emailjs from "@emailjs/browser";
 import Toastify from "../../components/Toastify";
 
 import "./Footer.scss";
+
+const socialLinks = [
+  {
+    id: 1,
+    name: "Github",
+    icon: <LuGithub />,
+    link: "https://github.com/bahaayoussof",
+  },
+  {
+    id: 2,
+    name: "Linkedin",
+    icon: <LuLinkedin />,
+    link: "https://www.linkedin.com/in/bahaayoussof/",
+  },
+  {
+    id: 3,
+    name: "Leetcode",
+    icon: <TbBrandLeetcode />,
+    link: "https://leetcode.com/bahaayoussof/",
+  },
+];
 
 const Footer = () => {
   const formRef = useRef();
@@ -60,35 +89,56 @@ const Footer = () => {
 
       {/* Main Content */}
       <div className="app__footer-content">
-        {/* Left Column - Contact Information */}
-        <div className="app__footer-contact-card">
-          <h2>Let's Start a Conversation</h2>
-          <p>
-            I'm always open to discussing new opportunities, interesting
-            projects, or just having a chat about technology and development.
-            Feel free to reach out!
-          </p>
+        {/* Left Column - Contact Information and Social */}
+        <div className="app__footer-left-column">
+          <div className="app__footer-contact-card">
+            <h2>Let's Start a Conversation</h2>
+            <p>
+              I'm always open to discussing new opportunities, interesting
+              projects, or just having a chat about technology and development.
+              Feel free to reach out!
+            </p>
 
-          <div className="app__footer-contact-details">
-            <div className="app__footer-contact-item">
-              <LuMail className="contact-icon" />
-              <div>
-                <span className="contact-label">Email</span>
-                <a
-                  href="mailto:bahaayoussof@gmail.com"
-                  className="contact-value"
-                >
-                  bahaayoussof@gmail.com
-                </a>
+            <div className="app__footer-contact-details">
+              <div className="app__footer-contact-item">
+                <LuMail className="contact-icon" />
+                <div>
+                  <span className="contact-label">Email</span>
+                  <a
+                    href="mailto:bahaayoussof@gmail.com"
+                    className="contact-value"
+                  >
+                    bahaayoussof@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="app__footer-contact-item">
+                <LuMapPin className="contact-icon" />
+                <div>
+                  <span className="contact-label">Location</span>
+                  <span className="contact-value">
+                    Available for Remote Work
+                  </span>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="app__footer-contact-item">
-              <LuMapPin className="contact-icon" />
-              <div>
-                <span className="contact-label">Location</span>
-                <span className="contact-value">Available for Remote Work</span>
-              </div>
+          {/* Social Media Card */}
+          <div className="app__footer-social-card">
+            <h3>Connect with me</h3>
+            <div className="social-icons">
+              {socialLinks.map((social) => (
+                <a
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
