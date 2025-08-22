@@ -48,23 +48,23 @@
 
 // Main Content
 .app__footer-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch;
 
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
-// Left Column - Contact Card
+// Contact Card - Full Width
 .app__footer-contact-card {
   background: transparent;
   padding: 3rem  2rem;
   border-radius: 20px;
   transition: all 0.3s ease;
+  width: 100%;
 
   &:hover {
     background: var(--bg-secondary);
@@ -132,12 +132,13 @@
   }
 }
 
-// Right Column - Form Container
+// Form Container - Full Width
 .app__footer-form-container {
   background: transparent;
   padding: 2rem;
   border-radius: 20px;
   transition: all 0.3s ease;
+  width: 100%;
 
   &:hover {
     background: var(--bg-secondary);
@@ -267,6 +268,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .app__footer-container {
+    padding: 0.25rem 1rem;
+  }
+
   .app__footer-header {
     margin-bottom: 3rem;
 
@@ -277,6 +282,23 @@
 
   .app__footer-contact-card,
   .app__footer-form-container {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app__footer-container {
+    padding: 0.5rem;
+  }
+
+  .app__footer-contact-card,
+  .app__footer-form-container {
+    padding: 0.75rem;
+  }
+
+  .app__footer-header {
+    .app__footer-title {
+      font-size: 2rem;
+    }
   }
 }
