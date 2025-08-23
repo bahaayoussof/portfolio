@@ -29,21 +29,6 @@ export const socialLinks = [
   },
 ];
 
-export const abouts = [
-  {
-    id: "1",
-    title: "Software Engineer",
-    description: `I am a JavaScript developer with a strong understanding of OOP principles and a solid background in web development. I have experience in building and improving complex systems. With a strong foundation in software development and a keen eye for innovation, I am always eager to take on new challenges and contribute to projects that make a real difference.`,
-    imageUrl: images.about02,
-  },
-  {
-    id: "2",
-    title: "Frontend Developer",
-    description: `I specialize in crafting user-friendly and efficient interfaces that align with both user and business needs. With a solid background in developing and optimizing complex systems, I have a proven track record of delivering high-quality code and solutions that improve scalability, maintainability, and overall performance.`,
-    imageUrl: images.about01,
-  },
-];
-
 export const experiences = [
   {
     year: "2021",
@@ -140,47 +125,6 @@ export const experiences = [
       },
     ],
   },
-];
-
-export const testimonials = [
-  {
-    id: "1",
-    name: "Ahmed",
-    company: "DXC",
-    imageUrl: images.test,
-    feedback: "Great job, would recommend!",
-  },
-  {
-    id: "2",
-    name: "Mohamed",
-    company: "Amazon",
-    imageUrl: images.test,
-    feedback: "Bahaa is a good developer!",
-  },
-  {
-    id: "3",
-    name: "Ebram",
-    company: "Damen E-payment",
-    imageUrl: images.test,
-    feedback:
-      "Your attention to detail and commitment to creating intuitive, seamless interfaces is evident in the quality of your work. You tackle challenges head-on and always find efficient solutions, making a significant impact on our team’s success.",
-  },
-  {
-    id: "4",
-    name: "Saeed",
-    company: "Damen E-payment",
-    imageUrl: images.test,
-    feedback:
-      " I just wanted to thank you for the incredible work you’ve done with our team. Your contributions have been invaluable, and your frontend expertise really elevated the project. Your attention to detail and creativity have made a significant difference, and I’m genuinely grateful for your hard work and dedication. Thanks again for being such a great collaborator!",
-  },
-];
-
-export const brands = [
-  { id: "1", name: "Smart Cards", imageUrl: images.smart },
-  { id: "2", name: "Damen E-Payments", imageUrl: images.damen },
-  { id: "3", name: "Algoriza", imageUrl: images.algoriza },
-  { id: "3", name: "Sumerge", imageUrl: images.sumerge },
-  { id: "3", name: "Alinma", imageUrl: images.alinma },
 ];
 
 export const projects = [
