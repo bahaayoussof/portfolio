@@ -1,78 +1,108 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { AppWrap, MotionWrap } from "../../wrapper";
+import { LuMapPin } from "react-icons/lu";
+import { socialLinks } from "../../data";
 
-import { AppWrap } from "../../wrapper";
-import { images } from "../../constants";
 import "./Header.scss";
 
-const scaleVariants = {
-  whileInView: {
-    scale: [0, 1],
-    opacity: [0, 1],
-    transition: {
-      duration: 1,
-      ease: "easeInOut",
-    },
-  },
-};
-
 const Header = () => {
+  const handleGetInTouch = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="app__header app__flex">
-      <motion.div
-        whileInView={{ x: [-100, 0], opacity: [0, 1] }}
-        transition={{ duration: 0.5 }}
-        className="app__header-info"
-      >
-        <div className="app__header-badge">
-          <div className="badge-cmp app__flex">
-            <span>👋</span>
-            <div style={{ marginLeft: 20 }}>
-              <p className="p-text">Hello, I am</p>
-              <h1 className="head-text">Bahaa</h1>
-            </div>
-          </div>
+    <section className="app__hero" aria-labelledby="hero-title">
+      <div className="hero-content">
+        {/* Text Content */}
+        <div className="hero-text">
+          <p className="hero-greeting animate-fade-in">👋 Hello, I'm</p>
 
-          <div className="tag-cmp app__flex">
-            <p className="p-text">Software Engineer</p>
-            <p className="p-text">Frontend Developer</p>
-          </div>
-
-          <div className="app__flex">
-            <a
-              rel="noreferrer"
-              className="resume-button"
-              href="https://docs.google.com/document/d/1sFB48YhA56EVV90pBLlWGts-1O71cSAvuKz-9I2RZsw/edit?usp=sharing"
-              target="_blank"
-              download="Bahaa_Youssof.pdf"
+          <h1 className="hero-name" id="hero-title">
+            <span
+              className="floating-text"
+              aria-label="Bahaa - animated floating text"
             >
-              Resume
-            </a>
-          </div>
+              Bahaa
+            </span>
+          </h1>
+
+          <h2 className="hero-title animate-fade-in">Software Engineer</h2>
+
+          <p className="hero-description animate-fade-in">
+            Passionate Software Engineer with expertise in modern web
+            technologies. I specialize in building scalable applications
+          </p>
         </div>
-      </motion.div>
 
-      <motion.div
-        whileInView={{ opacity: [0, 1] }}
-        transition={{ duration: 0.5, delayChildren: 0.25 }}
-        className="app__header-img"
-      >
-        <img src={images.profile} alt="profile_image" fetchpriority="high" />
-      </motion.div>
+        {/* Available for Remote Work Badge */}
+        <div
+          className="remote-badge animate-fade-in"
+          role="status"
+          aria-label="Available for remote work"
+        >
+          <LuMapPin className="location-icon" aria-hidden="true" />
+          <span>Available for Remote Work</span>
+        </div>
 
-      <motion.div
-        variant={scaleVariants}
-        whileInView={scaleVariants.whileInView}
-        className="app__header-circles"
-      >
-        {[images.redux, images.react, images.sass].map((circle) => (
-          <div className="circle-cmp app__flex" key={circle}>
-            <img src={circle} alt="circle" />
-          </div>
-        ))}
-      </motion.div>
-    </div>
+        {/* Social Icons */}
+        <div
+          className="hero-social-icons animate-fade-in"
+          role="navigation"
+          aria-label="Social media links"
+        >
+          {socialLinks.map((social, index) => (
+            <a
+              key={social.id}
+              href={social.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+              style={{ animationDelay: `${0.6 + index * 0.1}s` }}
+              aria-label={`Visit ${social.name} profile`}
+              title={`Visit ${social.name} profile`}
+            >
+              {React.cloneElement(social.icon, { "aria-hidden": true })}
+            </a>
+          ))}
+        </div>
+
+        {/* Call-to-Action Buttons */}
+        <div
+          className="hero-buttons animate-fade-in"
+          role="group"
+          aria-label="Call to action buttons"
+        >
+          <a
+            className="btn-primary"
+            rel="noreferrer"
+            href="https://docs.google.com/document/d/1sFB48YhA56EVV90pBLlWGts-1O71cSAvuKz-9I2RZsw/edit?usp=sharing"
+            target="_blank"
+            download="bahaa-youssof-resume.pdf"
+            aria-label="Download resume (opens in new tab)"
+            title="Download resume"
+          >
+            Resume
+          </a>
+
+          <button
+            className="btn-secondary"
+            onClick={handleGetInTouch}
+            aria-label="Get in touch - navigate to contact form"
+            title="Get in touch"
+          >
+            Get In Touch
+          </button>
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default AppWrap(Header, "home");
+export default AppWrap(
+  MotionWrap(Header, "app__hero"),
+  "home",
+  "app__primarybg"
+);

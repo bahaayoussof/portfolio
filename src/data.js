@@ -1,4 +1,33 @@
 import { images } from "./constants";
+import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
+import { TbBrandLeetcode } from "react-icons/tb";
+
+export const socialLinks = [
+  {
+    id: 1,
+    name: "Github",
+    icon: <LuGithub />,
+    link: "https://github.com/bahaayoussof",
+  },
+  {
+    id: 2,
+    name: "Linkedin",
+    icon: <LuLinkedin />,
+    link: "https://www.linkedin.com/in/bahaayoussof/",
+  },
+  {
+    id: 3,
+    name: "Email",
+    icon: <LuMail />,
+    link: "mailto:bahaayoussof@gmail.com",
+  },
+  {
+    id: 4,
+    name: "Leetcode",
+    icon: <TbBrandLeetcode />,
+    link: "https://leetcode.com/bahaayoussof/",
+  },
+];
 
 export const abouts = [
   {

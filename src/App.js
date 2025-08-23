@@ -1,21 +1,35 @@
-import React from "react";
-
+import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
-import { About, Footer, Header, Experience, Work } from "./container";
-import { Navbar, ToggleTheme } from "./components";
+import { Navbar } from "./components";
 import "./App.scss";
 import { ThemeProvider } from "./context/theme";
+
+// Lazy load components for better performance
+const Header = React.lazy(() => import("./container/Header/Header"));
+const About = React.lazy(() => import("./container/About/About"));
+const Work = React.lazy(() => import("./container/Work/Work"));
+const Experience = React.lazy(() =>
+  import("./container/Experience/Experience")
+);
+const Footer = React.lazy(() => import("./container/Footer/Footer"));
+
+// Loading component
+const LoadingFallback = () => (
+  <div className="loading">Loading...</div>
+);
 
 const App = () => {
   return (
     <ThemeProvider>
       <div className="app">
         <Navbar />
-        <Header />
-        <About />
-        <Work />
-        <Experience />
-        <Footer />
+        <Suspense fallback={<LoadingFallback />}>
+          <Header />
+          <About />
+          <Work />
+          <Experience />
+          <Footer />
+        </Suspense>
         <Toaster />
       </div>
     </ThemeProvider>

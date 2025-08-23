@@ -1,40 +1,11 @@
 import React, { useState, useRef } from "react";
-import {
-  LuMail,
-  LuMapPin,
-  LuUser,
-  LuSend,
-  LuGithub,
-  LuLinkedin,
-} from "react-icons/lu";
-import { TbBrandLeetcode } from "react-icons/tb";
-
+import { LuMail, LuMapPin, LuUser, LuSend } from "react-icons/lu";
+import { socialLinks } from "../../data";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import emailjs from "@emailjs/browser";
 import Toastify from "../../components/Toastify";
 
 import "./Footer.scss";
-
-const socialLinks = [
-  {
-    id: 1,
-    name: "Github",
-    icon: <LuGithub />,
-    link: "https://github.com/bahaayoussof",
-  },
-  {
-    id: 2,
-    name: "Linkedin",
-    icon: <LuLinkedin />,
-    link: "https://www.linkedin.com/in/bahaayoussof/",
-  },
-  {
-    id: 3,
-    name: "Leetcode",
-    icon: <TbBrandLeetcode />,
-    link: "https://leetcode.com/bahaayoussof/",
-  },
-];
 
 const Footer = () => {
   const formRef = useRef();
@@ -135,6 +106,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon"
+                  key={social.id}
                 >
                   {social.icon}
                 </a>

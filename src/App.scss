@@ -14,7 +14,6 @@
 .app__container {
   width: 100%;
   min-height: 100vh;
-
   display: flex;
   flex-direction: row;
 }
@@ -39,7 +38,6 @@
 .copyright {
   width: 100%;
   padding: 2rem 0 0;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -62,10 +60,6 @@
     color: var(--accent);
   }
 
-  // @media screen and (min-width: 2000px) {
-  //   font-size: 4rem;
-  // }
-
   @media screen and (max-width: 450px) {
     font-size: 2rem;
   }
@@ -76,10 +70,6 @@
   text-align: left;
   color: var(--text-secondary);
   line-height: 1.5;
-
-  // @media screen and (min-width: 2000px) {
-  //   font-size: 1.75rem;
-  // }
 }
 
 .bold-text {
@@ -88,13 +78,18 @@
   color: var(--text-primary);
   text-align: left;
 
-  // @media screen and (min-width: 2000px) {
-  //   font-size: 2rem;
-  // }
-
   @media screen and (max-width: 450px) {
     font-size: 0.9rem;
   }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
 }
 
 .app__social {
@@ -102,7 +97,6 @@
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-
   padding: 1rem;
 
   div {
@@ -112,11 +106,9 @@
     background-color: var(--surface);
     margin: 0.25rem 0;
     border: 1px solid var(--border-light);
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     transition: all 0.3s ease-in-out;
 
     svg {
@@ -134,18 +126,6 @@
         color: var(--surface);
       }
     }
-
-    // @media screen and (min-width: 2000px) {
-    //   width: 70px;
-    //   height: 70px;
-
-    //   margin: 0.5rem 0;
-
-    //   svg {
-    //     width: 30px;
-    //     height: 30px;
-    //   }
-    // }
   }
 }
 
@@ -154,7 +134,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   padding: 1rem;
 
   .app__navigation-dot {
@@ -163,17 +142,11 @@
     border-radius: 50%;
     background-color: var(--inactive);
     margin: 0.5rem;
-
     transition: background-color 0.2s ease-in-out;
 
     &:hover {
       background-color: var(--accent);
     }
-
-    // @media screen and (min-width: 2000px) {
-    //   width: 20px;
-    //   height: 20px;
-    // }
   }
 }
 
@@ -202,17 +175,6 @@
 
   &:hover {
     background-color: var(--inactive);
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .app__navigation,
-  .app__social {
-    display: none;
-  }
-
-  .copyright {
-    padding: 2rem;
   }
 }
 
