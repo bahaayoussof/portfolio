@@ -7,6 +7,7 @@ import {
   IconCalendarWeek,
   IconMapPin,
   IconBrandDatabricks,
+  IconMedal,
 } from "@tabler/icons-react";
 
 import "./Experience.scss";
@@ -81,7 +82,7 @@ const Experience = () => {
                             work.achievements.length > 0 && (
                               <div className="card-achievements">
                                 <div className="achievements-header">
-                                  <i className="fas fa-trophy"></i>
+                                  <IconMedal stroke={1.5} />
                                   <h5>Key Achievements</h5>
                                 </div>
                                 <ul className="achievements-list">

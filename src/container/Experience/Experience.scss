@@ -272,6 +272,10 @@
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
+
+  svg {
+    color: var(--accent);
+  }
 }
 
 .achievements-header i {
