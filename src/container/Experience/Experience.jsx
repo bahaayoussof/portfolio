@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { experiences } from "../../data";
-import { LuCalendar, LuMapPin, LuWorkflow } from "react-icons/lu";
+import {
+  IconCalendarMonth,
+  IconMapPin,
+  IconBrandDatabricks,
+} from "@tabler/icons-react";
 
 import "./Experience.scss";
 const Experience = () => {
@@ -44,7 +48,7 @@ const Experience = () => {
                           <div className="card-header">
                             <div className="header-left">
                               <div className="role-icon">
-                                <LuWorkflow />
+                                <IconBrandDatabricks />
                               </div>
                               <div className="title-section">
                                 <h4 className="job-title">{work.title}</h4>
@@ -58,11 +62,11 @@ const Experience = () => {
 
                           <div className="card-metadata">
                             <div className="metadata-item">
-                              <LuCalendar />
+                              <IconCalendarMonth />
                               <span>{work.date}</span>
                             </div>
                             <div className="metadata-item">
-                              <LuMapPin />
+                              <IconMapPin />
                               <span>{work.location}</span>
                             </div>
                           </div>

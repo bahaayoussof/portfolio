@@ -122,21 +122,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     color: var(--text-primary);
     font-size: 1.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bg-secondary);
     backdrop-filter: blur(10px);
     will-change: transform;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.2);
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 25px var(--bg-secondary);
       color: var(--accent);
     }
 
