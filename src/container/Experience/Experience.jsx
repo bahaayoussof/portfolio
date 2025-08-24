@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { experiences } from "../../data";
 import {
-  IconCalendarMonth,
+  IconCalendarWeek,
   IconMapPin,
   IconBrandDatabricks,
 } from "@tabler/icons-react";
@@ -62,11 +62,11 @@ const Experience = () => {
 
                           <div className="card-metadata">
                             <div className="metadata-item">
-                              <IconCalendarMonth />
+                              <IconCalendarWeek stroke={1.5} />
                               <span>{work.date}</span>
                             </div>
                             <div className="metadata-item">
-                              <IconMapPin />
+                              <IconMapPin stroke={1.5} />
                               <span>{work.location}</span>
                             </div>
                           </div>
