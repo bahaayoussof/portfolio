@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { LuCode, LuHeart, LuCheckCircle, LuUser } from "react-icons/lu";
+import { LuCode, LuHeart, LuBadgeCheck , LuUser } from "react-icons/lu";
 
 import "./About.scss";
 
@@ -73,7 +73,7 @@ const About = () => {
                   whileInView={{ opacity: [0, 1], x: [20, 0] }}
                   transition={{ duration: 0.3, delay: 0.1 * index }}
                 >
-                  <LuCheckCircle />
+                  <LuBadgeCheck  />
                   <span>{highlight}</span>
                 </motion.li>
               ))}

@@ -1,5 +1,6 @@
 .app__hero {
   width: 100%;
+  min-height: 85vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -11,8 +12,6 @@
 .hero-content {
   text-align: center;
   max-width: 800px;
-  padding: 2rem;
-  z-index: 1;
 }
 
 .hero-text {
