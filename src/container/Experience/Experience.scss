@@ -192,16 +192,15 @@
 // Current position badge
 .current-badge {
   position: absolute;
-  top: 0;
-  right: 0;
-  background: var(--text-success);
+  top: -1px;
+  right: 40px;
+  background: #10b981;
   color: var(--text-white);
   padding: 4px 8px;
-  border-radius: 0 12px 12px 0;
+  border-radius: 0px 0px 7px 7px;
   font-size: 0.7rem;
   font-weight: 500;
   box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
-  z-index: 10;
 
   // Animation for the badge
   animation: pulse 2s infinite;
