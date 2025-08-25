@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { LuMail, LuMapPin, LuUser, LuSend } from "react-icons/lu";
+import { IconMail, IconMapPin, IconUser, IconSend } from "@tabler/icons-react";
 import { socialLinks } from "../../data";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import emailjs from "@emailjs/browser";
@@ -72,7 +72,7 @@ const Footer = () => {
 
             <div className="app__footer-contact-details">
               <div className="app__footer-contact-item">
-                <LuMail className="contact-icon" />
+                <IconMail className="contact-icon" />
                 <div>
                   <span className="contact-label">Email</span>
                   <a
@@ -85,7 +85,7 @@ const Footer = () => {
               </div>
 
               <div className="app__footer-contact-item">
-                <LuMapPin className="contact-icon" />
+                <IconMapPin className="contact-icon" />
                 <div>
                   <span className="contact-label">Location</span>
                   <span className="contact-value">
@@ -132,7 +132,7 @@ const Footer = () => {
                   name="user_name"
                   required
                 />
-                <LuUser className="input-icon user-icon" />
+                <IconUser className="input-icon user-icon" />
               </div>
             </div>
 
@@ -146,7 +146,7 @@ const Footer = () => {
                   pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                   required
                 />
-                <LuMail className="input-icon email-input-icon" />
+                <IconMail className="input-icon email-input-icon" />
               </div>
             </div>
 
@@ -162,7 +162,7 @@ const Footer = () => {
             </div>
 
             <button type="submit" className="send-button" disabled={loading}>
-              <LuSend />
+              <IconSend />
               {!loading ? "Send Message" : "Sending..."}
             </button>
           </form>

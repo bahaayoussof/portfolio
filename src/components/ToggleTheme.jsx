@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../context/theme";
-import { FiMoon, FiSun } from "react-icons/fi";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div className="app__theme-toggle" onClick={toggleTheme}>
-      {theme === "light" ? <FiMoon /> : <FiSun />}
+      {theme === "light" ? <IconMoon /> : <IconSun />}
     </div>
   );
 };

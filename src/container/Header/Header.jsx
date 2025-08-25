@@ -1,6 +1,6 @@
 import React from "react";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { LuMapPin } from "react-icons/lu";
+import { IconMapPin } from "@tabler/icons-react";
 import { socialLinks } from "../../data";
 
 import "./Header.scss";
@@ -43,7 +43,7 @@ const Header = () => {
           role="status"
           aria-label="Available for remote work"
         >
-          <LuMapPin className="location-icon" aria-hidden="true" />
+          <IconMapPin className="location-icon" aria-hidden="true" />
           <span>Available for Remote Work</span>
         </div>
 

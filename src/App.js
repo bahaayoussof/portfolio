@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { Navbar } from "./components";
-import "./App.scss";
 import { ThemeProvider } from "./context/theme";
 
+import "./App.scss";
 // Lazy load components for better performance
 const Header = React.lazy(() => import("./container/Header/Header"));
 const About = React.lazy(() => import("./container/About/About"));

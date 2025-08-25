@@ -1,7 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { LuCode, LuHeart, LuCheckCircle, LuUser } from "react-icons/lu";
+import {
+  IconCode,
+  IconHeart,
+  IconCircleDashedCheck,
+  IconUser,
+} from "@tabler/icons-react";
 import { aboutHighlights } from "../../data";
 
 import "./About.scss";
@@ -11,7 +16,7 @@ const About = () => {
     <>
       {/* Navigation Tab */}
       <div className="about-nav-tab">
-        <LuUser />
+        <IconUser />
         <span>About Me</span>
       </div>
 
@@ -37,7 +42,7 @@ const About = () => {
           >
             <div className="section-header">
               <div className="section-icon icon-linear">
-                <LuCode />
+                <IconCode />
               </div>
               <h3>My Journey</h3>
             </div>
@@ -67,7 +72,7 @@ const About = () => {
                   whileInView={{ opacity: [0, 1], x: [20, 0] }}
                   transition={{ duration: 0.3, delay: 0.1 * index }}
                 >
-                  <LuCheckCircle />
+                  <IconCircleDashedCheck />
                   <span>{highlight}</span>
                 </motion.li>
               ))}
@@ -84,7 +89,7 @@ const About = () => {
       >
         <div className="section-header">
           <div className="section-icon icon-linear">
-            <LuHeart />
+            <IconHeart />
           </div>
           <h3>What Drives Me</h3>
         </div>

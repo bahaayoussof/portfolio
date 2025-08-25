@@ -1,30 +1,34 @@
 import { images } from "./constants";
-import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
-import { TbBrandLeetcode } from "react-icons/tb";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconMail,
+  IconBrandLeetcode,
+} from "@tabler/icons-react";
 
 export const socialLinks = [
   {
     id: 1,
     name: "Github",
-    icon: <LuGithub />,
+    icon: <IconBrandGithub />,
     link: "https://github.com/bahaayoussof",
   },
   {
     id: 2,
     name: "Linkedin",
-    icon: <LuLinkedin />,
+    icon: <IconBrandLinkedin />,
     link: "https://www.linkedin.com/in/bahaayoussof/",
   },
   {
     id: 3,
     name: "Email",
-    icon: <LuMail />,
+    icon: <IconMail />,
     link: "mailto:bahaayoussof@gmail.com",
   },
   {
     id: 4,
     name: "Leetcode",
-    icon: <TbBrandLeetcode />,
+    icon: <IconBrandLeetcode />,
     link: "https://leetcode.com/bahaayoussof/",
   },
 ];

@@ -1,8 +1,12 @@
 import React, { useState, useContext } from "react";
-import { LuSun, LuMoon } from "react-icons/lu";
+import {
+  IconSunFilled,
+  IconMoonFilled,
+  IconMenu,
+  IconXboxX,
+} from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { ThemeContext } from "../../context/theme";
-import { HiMenuAlt4, HiX } from "react-icons/hi";
 
 import "./Navbar.scss";
 
@@ -56,21 +60,21 @@ const Navbar = () => {
           title={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
         >
           {theme === "light" ? (
-            <LuMoon aria-hidden="true" />
+            <IconMoonFilled aria-hidden="true" />
           ) : (
-            <LuSun aria-hidden="true" />
+            <IconSunFilled aria-hidden="true" />
           )}
         </motion.button>
 
         <div className="app__navbar-menu">
-          <HiMenuAlt4 onClick={() => setToggle(!toggle)} />
+          <IconMenu onClick={() => setToggle(!toggle)} />
           {toggle && (
             <motion.div
               id="mobile-menu"
               whileInView={{ x: [300, 0] }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <HiX onClick={() => setToggle(!toggle)} />
+              <IconXboxX onClick={() => setToggle(!toggle)} />
               <ul>
                 {navigationItems.map((item) => (
                   <li key={item.id}>
