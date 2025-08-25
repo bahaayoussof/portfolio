@@ -29,6 +29,13 @@ export const socialLinks = [
   },
 ];
 
+export const aboutHighlights = [
+  "3+ years of experience in web development",
+  "Expertise in React ecosystem and modern JavaScript",
+  "Passionate about UI/UX design and user experience",
+  "Begin developing web applications with the Vue.js 3 framework.",
+];
+
 export const experiences = [
   {
     year: "2021",

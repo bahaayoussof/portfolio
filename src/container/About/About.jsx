@@ -2,17 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { LuCode, LuHeart, LuCheckCircle, LuUser } from "react-icons/lu";
+import { aboutHighlights } from "../../data";
 
 import "./About.scss";
 
 const About = () => {
-  const highlights = [
-    "3+ years of experience in web development",
-    "Expertise in React ecosystem and modern JavaScript",
-    "Passionate about UI/UX design and user experience",
-    "Start Using Vue.js 3 framework for building web applications",
-  ];
-
   return (
     <>
       {/* Navigation Tab */}
@@ -67,7 +61,7 @@ const About = () => {
           >
             <h3>Key Highlights</h3>
             <ul className="highlights-list">
-              {highlights.map((highlight, index) => (
+              {aboutHighlights.map((highlight, index) => (
                 <motion.li
                   key={index}
                   whileInView={{ opacity: [0, 1], x: [20, 0] }}
