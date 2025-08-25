@@ -85,6 +85,9 @@ const Experience = () => {
                           onClick={() => toggleCard(work.id)}
                           style={{ cursor: "pointer" }}
                         >
+                          {work.date.includes("Present") && (
+                            <div className="current-badge">Current</div>
+                          )}
                           <div className="card-header">
                             <div className="header-left">
                               <div className="role-icon">
