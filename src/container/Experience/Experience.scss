@@ -1,3 +1,4 @@
+// Main container styles
 .app__experience {
   width: 100%;
   flex-direction: column;
@@ -17,7 +18,7 @@
   }
 }
 
-/* Timeline styles */
+// TIMELINE LAYOUT
 .app__timeline {
   position: relative;
   flex: 1;
@@ -32,6 +33,7 @@
   }
 }
 
+// Timeline line (vertical center line)
 .timeline-line {
   position: absolute;
   left: 50%;
@@ -42,6 +44,7 @@
   background: var(--bg-accent-light);
 }
 
+// Year grouping and labels
 .timeline-year-group {
   position: relative;
   padding-left: 0;
@@ -59,13 +62,14 @@
   background: var(--bg-primary);
   color: var(--text-secondary);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+
+  .year-text {
+    font-weight: 700;
+    font-size: 13px;
+  }
 }
 
-.timeline-year-node .year-text {
-  font-weight: 700;
-  font-size: 13px;
-}
-
+// TIMELINE CARDS
 .timeline-cards {
   position: relative;
 }
@@ -79,42 +83,44 @@
   padding: 1.5rem;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
   margin: 0.75rem 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 
+  // Large screens - narrower cards
   @media screen and (min-width: 1024px) {
     width: calc(55% - 2rem);
   }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  // Card positioning
+  &.left {
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  &.right {
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
 
-.timeline-card.left {
-  margin-right: auto;
-  margin-left: 0rem;
-}
-
-.timeline-card.right {
-  margin-left: auto;
-  margin-right: 0rem;
-}
-
-.timeline-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-/* Entry wrapper to position node and label */
+// TIMELINE ENTRY WRAPPERS
 .timeline-entry {
   position: relative;
+
+  &.left {
+    padding-right: 8rem;
+  }
+
+  &.right {
+    padding-left: 8rem;
+  }
 }
 
-.timeline-entry.left {
-  padding-right: 5rem;
-}
-
-.timeline-entry.right {
-  padding-left: 5rem;
-}
-
+// Timeline connection nodes
 .timeline-node {
   position: absolute;
   left: 50%;
@@ -127,19 +133,20 @@
   box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
 }
 
+// Time ago labels
 .time-ago {
   position: absolute;
   top: 0.5rem;
   font-size: 12px;
   color: var(--text-secondary);
-}
 
-.time-ago.left {
-  left: calc(50% + 14px);
-}
+  &.left {
+    left: calc(50% + 14px);
+  }
 
-.time-ago.right {
-  right: calc(50% + 14px);
+  &.right {
+    right: calc(50% + 14px);
+  }
 }
 
 @media screen and (max-width: 1023px) {
@@ -172,7 +179,8 @@
   }
 }
 
-/* Card Header */
+
+// Card header section
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -215,6 +223,7 @@
   margin: 0;
 }
 
+// Card actions (bookmark, toggle)
 .card-actions {
   display: flex;
   align-items: center;
@@ -240,12 +249,12 @@
   }
 }
 
-/* Card Details */
+// CARD CONTENT SECTIONS
 .card-details {
   margin-top: 0.5rem;
 }
 
-/* Card Metadata */
+// Metadata section (date, location)
 .card-metadata {
   display: flex;
   gap: 1.5rem;
@@ -258,27 +267,27 @@
   gap: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.9rem;
+
+  i {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
 }
 
-.metadata-item i {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  opacity: 0.7;
-}
-
-/* Card Description */
+// Description section
 .card-description {
   margin-bottom: 1rem;
+
+  p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
 }
 
-.card-description p {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-/* Card Achievements */
+// Achievements section
 .card-achievements {
   margin-bottom: 1rem;
 }
@@ -292,45 +301,45 @@
   svg {
     color: var(--accent);
   }
-}
 
-.achievements-header i {
-  color: var(--accent);
-  font-size: 0.9rem;
-}
+  i {
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
 
-.achievements-header h5 {
-  color: var(--text-secondary);
-  font-weight: 600;
-  margin: 0;
-  font-size: 0.95rem;
+  h5 {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin: 0;
+    font-size: 0.95rem;
+  }
 }
 
 .achievements-list {
   list-style: none;
   padding: 0;
   margin: 0;
+
+  li {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+
+    &::before {
+      content: "⚬";
+      position: absolute;
+      left: 0;
+      color: var(--text-secondary);
+      opacity: 0.7;
+      font-weight: bold;
+    }
+  }
 }
 
-.achievements-list li {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.achievements-list li::before {
-  content: "⚬";
-  position: absolute;
-  left: 0;
-  color: var(--text-secondary);
-  opacity: 0.7;
-  font-weight: bold;
-}
-
-/* Card Tools */
+// Tools/technologies section
 .card-tools {
   display: flex;
   flex-wrap: wrap;
