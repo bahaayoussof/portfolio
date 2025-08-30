@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
-import { Navbar } from "./components";
+import { Navbar, Loader } from "./components";
 import { ThemeProvider } from "./context/theme";
 
 import "./App.scss";
@@ -13,17 +13,12 @@ const Experience = React.lazy(() =>
 );
 const Footer = React.lazy(() => import("./container/Footer/Footer"));
 
-// Loading component
-const LoadingFallback = () => (
-  <div className="loading">Loading...</div>
-);
-
 const App = () => {
   return (
     <ThemeProvider>
       <div className="app">
         <Navbar />
-        <Suspense fallback={<LoadingFallback />}>
+        <Suspense fallback={<Loader />}>
           <Header />
           <About />
           <Work />
