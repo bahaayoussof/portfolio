@@ -14,12 +14,6 @@ import "./About.scss";
 const About = () => {
   return (
     <>
-      {/* Navigation Tab */}
-      <div className="about-nav-tab">
-        <IconUser />
-        <span>About Me</span>
-      </div>
-
       {/* Header Section */}
       <div className="about-header">
         <h1 className="about-title">
