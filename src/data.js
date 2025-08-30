@@ -138,6 +138,14 @@ export const experiences = [
   },
 ];
 
+export const TECHNOLOGIES = [
+  "Web App",
+  "Material UI",
+  "React JS",
+  "Tailwind",
+  "All",
+];
+
 export const projects = [
   {
     id: "1",
@@ -148,15 +156,6 @@ export const projects = [
       "https://github.com/bahaayoussof/react-the-complete-guide/tree/master/expenses-tracker",
     imageUrl: images.expensesTracker,
     tags: ["React JS", "All"],
-  },
-  {
-    id: "2",
-    title: "ConFusion",
-    description: "A reservation web portal",
-    projectLink: "",
-    codeLink: "https://github.com/bahaayoussof/conFusion",
-    imageUrl: images.confusion,
-    tags: ["Bootstrap", "All"],
   },
   {
     id: "3",

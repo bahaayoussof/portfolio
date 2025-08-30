@@ -3,7 +3,7 @@ import { IconEye, IconBrandGithub } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { projects } from "../../data";
+import { projects, TECHNOLOGIES } from "../../data";
 
 import "./Work.scss";
 const Work = () => {
@@ -31,14 +31,7 @@ const Work = () => {
       </h2>
 
       <div className="app__work-filter">
-        {[
-          "Web App",
-          "Material UI",
-          "React JS",
-          "Bootstrap",
-          "Tailwind",
-          "All",
-        ].map((item) => (
+        {TECHNOLOGIES.map((item) => (
           <div
             key={item}
             onClick={() => workFilterHandler(item)}
