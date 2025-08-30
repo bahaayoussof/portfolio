@@ -5,7 +5,6 @@ import {
   IconCode,
   IconHeart,
   IconCircleDashedCheck,
-  IconUser,
 } from "@tabler/icons-react";
 import { aboutHighlights } from "../../data";
 
