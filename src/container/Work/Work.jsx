@@ -152,13 +152,13 @@ const Work = () => {
 
               <p className="app__work-description">{work.description}</p>
 
-              <div className="app__work-tags">
-                {/* {work.tags.map((tag, index) => (
+              {/* <div className="app__work-tags">
+                {work.tags.map((tag, index) => (
                   <span key={index} className="app__work-tag">
                     {tag}
                   </span>
-                ))} */}
-              </div>
+                ))}
+              </div> */}
             </div>
           </motion.div>
         ))}
