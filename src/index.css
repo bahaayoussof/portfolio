@@ -13,7 +13,7 @@
   --text-white: #ffffff;
   --bg-secondary: #f2f7fb;
   --bg-accent-light: #fef4f5;
-  --glass-bg: #ffffff40;
+  --bg-glass: #ffffff40;
   --glass-border: #ffffff2e;
 }
 
@@ -28,7 +28,7 @@
   --text-white: #ffffff;
   --bg-secondary: #2a303a;
   --bg-accent-light: #2d323d;
-  --glass-bg: #11111140;
+  --bg-glass: #11111140;
   --glass-border: #1111112e;
 }
 
