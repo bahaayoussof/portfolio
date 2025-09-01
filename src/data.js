@@ -42,30 +42,10 @@ export const aboutHighlights = [
 
 export const experiences = [
   {
-    year: "2021",
-    works: [
-      {
-        id: "1",
-        title: "Frontend Developer",
-        company: "Freelancing",
-        date: "Jan 2021 - May 2022",
-        location: "Remote",
-        description:
-          "I worked as a frontend developer on various client projects, delivering responsive web applications and improving user experiences.",
-        achievements: [
-          "Developed 10+ responsive websites for diverse clients",
-          "Improved client satisfaction scores by 25%",
-          "Reduced page load times by 40% through optimization",
-        ],
-        tags: ["HTML", "CSS", "JavaScript", "React", "Bootstrap"],
-      },
-    ],
-  },
-  {
     year: "2022",
     works: [
       {
-        id: "2",
+        id: "1",
         title: "Frontend Developer",
         company: "Smart Cards Applications",
         date: "May 2023 - Dec 2023",
@@ -73,7 +53,7 @@ export const experiences = [
         description:
           "I worked as a Frontend developer specializing in React.js, building scalable web applications and collaborating with cross-functional teams.",
         achievements: [
-          "Refactor the codebase to improve performance and maintainability",
+          "Refactor the codebase to improve performance and maintainability.",
           "Implement new features to enhance user experience",
           "Collaborate with the design team to implement new designs",
         ],
@@ -85,7 +65,7 @@ export const experiences = [
     year: "2023",
     works: [
       {
-        id: "3",
+        id: "2",
         title: "Software Engineer",
         company: "Damen E-payment",
         date: "Jan 2023 - Oct 2024",
@@ -105,7 +85,7 @@ export const experiences = [
     year: "2024",
     works: [
       {
-        id: "4",
+        id: "3",
         title: "Mid-level Software Engineer",
         company: "Algoriza, Sumerge",
         date: "Oct 2024 - Mar 2025",
@@ -115,12 +95,12 @@ export const experiences = [
         achievements: [
           "Developed key features in the Corporate Credit Card module, enabling companies to issue and manage credit cards as employee benefits.",
           "I implemented features including card settlement, limit management, and statement generation.",
-          "Improved corporate financial operations by enhancing user experience and system efficiency for credit card processing",
+          "Improved corporate financial operations by enhancing user experience and system efficiency for credit card processing.",
         ],
         tags: ["React Native", "TypeScript", "Redux", "Azure"],
       },
       {
-        id: "5",
+        id: "4",
         title: "Mid-level Software Engineer",
         company: "Algoriza, Tassel",
         date: "Mar 2025 - Present",
@@ -223,3 +203,4 @@ export const projects = [
     tags: ["React JS", "Tailwind", "All", "Web App"],
   },
 ];
+
