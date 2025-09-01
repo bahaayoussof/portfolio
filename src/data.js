@@ -99,7 +99,12 @@ export const experiences = [
         ],
         tags: ["React Native", "TypeScript", "Redux", "Azure"],
       },
-      {
+    ],
+  },
+  {
+    year: "2025",
+    works: [
+     {
         id: "4",
         title: "Mid-level Software Engineer",
         company: "Algoriza, Tassel",
@@ -114,8 +119,7 @@ export const experiences = [
         ],
         tags: ["JavaScript", "Vue.js 3", "Pinia", "Vite", "Sass", "Azure"],
       },
-    ],
-  },
+  }
 ];
 
 export const TECHNOLOGIES = [
@@ -203,5 +207,6 @@ export const projects = [
     tags: ["React JS", "Tailwind", "All", "Web App"],
   },
 ];
+
 
 
