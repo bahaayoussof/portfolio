@@ -89,7 +89,7 @@ export const experiences = [
         title: "Mid-level Software Engineer",
         company: "Algoriza, Sumerge",
         date: "Oct 2024 - Mar 2025",
-        location: "Cairo, Egypt",
+        location: "Remote",
         description:
           "I contributed to the development of the Alinma Corporate Internet Banking (CIB) application for six months, where I worked on various responsibilities and collaborated with team members.",
         achievements: [
@@ -104,7 +104,7 @@ export const experiences = [
         title: "Mid-level Software Engineer",
         company: "Algoriza, Tassel",
         date: "Mar 2025 - Present",
-        location: "Cairo, Egypt",
+        location: "Remote",
         description:
           "A platform designed to help people list their properties in the real estate market.",
         achievements: [
@@ -203,4 +203,5 @@ export const projects = [
     tags: ["React JS", "Tailwind", "All", "Web App"],
   },
 ];
+
 
