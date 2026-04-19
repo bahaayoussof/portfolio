@@ -7,7 +7,7 @@ import kanban from "../assets/kanban.webp";
 import materialTemp from "../assets/materialTemp.webp";
 import dashboard from "../assets/dashboard.webp";
 import snapgram from "../assets/snapgram.webp";
-import resumind form "../assets/resumind.webp";
+import resumind from "../assets/resumind.webp";
 
 import comingSoon from "../assets/coming-soon.webp";
 
