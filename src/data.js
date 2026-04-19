@@ -211,8 +211,17 @@ export const projects = [
     imageUrl: images.snapgram,
     tags: ["React JS", "Tailwind", "All", "Web App"],
   },
-  {
+   {
     id: "9",
+    title: "Resumind",
+    description: "Ai resume analyzer",
+    projectLink: "https://resumind-by.vercel.app/auth?next=/",
+    codeLink: "https://github.com/bahaayoussof/resumind",
+    imageUrl: images.comingSoon,
+    tags: ["AI","React JS", "Tailwind", "All", "Web App"],
+  },
+  {
+    id: "10",
     title: "Live-docs",
     description: "Google document clone",
     projectLink: "https://live-doc-by.vercel.app/",
