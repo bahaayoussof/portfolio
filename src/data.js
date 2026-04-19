@@ -217,7 +217,7 @@ export const projects = [
     description: "Ai resume analyzer",
     projectLink: "https://resumind-by.vercel.app/auth?next=/",
     codeLink: "https://github.com/bahaayoussof/resumind",
-    imageUrl: images.comingSoon,
+    imageUrl: images.resumind,
     tags: ["AI","React JS", "Tailwind", "All", "Web App"],
   },
   {
