@@ -136,47 +136,20 @@ export const experiences = [
   },
 ];
 
-export const TECHNOLOGIES = [
-  "Web App",
-  "Material UI",
-  "React JS",
-  "Tailwind",
-  "All",
-];
+export const TECHNOLOGIES = ["All", "Next JS", "React JS", "Tailwind", "Material UI"]
 
 export const projects = [
   {
     id: "1",
-    title: "Expense Tracker",
-    description: "React Js web app to track expenses",
-    projectLink: "https://by-expense-tracker.netlify.app/",
-    codeLink:
-      "https://github.com/bahaayoussof/react-the-complete-guide/tree/master/expenses-tracker",
-    imageUrl: images.expensesTracker,
-    tags: ["React JS", "All"],
-  },
-  {
-    id: "3",
-    title: "Menu",
-    description: "Menu web app (restaurant menu)",
-    projectLink: "",
-    codeLink:
-      "https://github.com/bahaayoussof/react-projects/tree/master/05-menu",
-    imageUrl: images.menu,
-    tags: ["React JS", "All"],
-  },
-  {
-    id: "4",
     title: "Color Generator",
     description: "Web app helps you to generate color",
     projectLink: "https://bahaa-color-generator.netlify.app/",
-    codeLink:
-      "https://github.com/bahaayoussof/react-projects/tree/master/09-color-generator",
+    codeLink: "https://github.com/bahaayoussof/react-projects/tree/master/09-color-generator",
     imageUrl: images.colorGenerator,
-    tags: ["React Js", "All"],
+    tags: ["React JS", "All"],
   },
   {
-    id: "5",
+    id: "2",
     title: "Kanban",
     description: "Todo List",
     projectLink: "",
@@ -185,48 +158,39 @@ export const projects = [
     tags: ["React JS", "Web App", "All"],
   },
   {
-    id: "6",
-    title: "Material Blog",
-    description: "ReactJs Web blog Using Material UI",
-    projectLink: "https://material-template-sand.vercel.app/",
-    codeLink: "https://github.com/bahaayoussof/material-template",
-    imageUrl: images.materialTemp,
-    tags: ["Material UI", "All", "Web App", "React JS"],
-  },
-  {
-    id: "7",
+    id: "3",
     title: "Admin Dashboard",
     description: "ReactJs admin dashboard",
     projectLink: "https://by-admin-dashboard.vercel.app/",
     codeLink: "https://github.com/bahaayoussof/admin-dashboard",
     imageUrl: images.dashboard,
-    tags: ["React JS", "Material UI", "All", "Web App"],
+    tags: ["React JS", "Material UI", "All"],
   },
   {
-    id: "8",
+    id: "4",
     title: "Snapgram",
     description: "ReactJs instagram clone",
     projectLink: "https://snapgram-by.vercel.app/",
     codeLink: "https://github.com/bahaayoussof/snapgram",
     imageUrl: images.snapgram,
-    tags: ["React JS", "Tailwind", "All", "Web App"],
+    tags: ["React JS", "Tailwind", "All"],
   },
-   {
-    id: "9",
+  {
+    id: "5",
+    title: "Live-docs",
+    description: "Google document clone",
+    projectLink: "https://live-docs-by.vercel.app",
+    codeLink: "https://github.com/bahaayoussof/live-doc",
+    imageUrl: images.liveDocs,
+    tags: ["Next JS", "Tailwind", "All"],
+  },
+  {
+    id: "6",
     title: "Resumind",
     description: "Ai resume analyzer",
     projectLink: "https://resumind-by.vercel.app/auth?next=/",
     codeLink: "https://github.com/bahaayoussof/resumind",
     imageUrl: images.resumind,
-    tags: ["AI","React JS", "Tailwind", "All", "Web App"],
-  },
-  {
-    id: "10",
-    title: "Live-docs",
-    description: "Google document clone",
-    projectLink: "https://live-doc-by.vercel.app/",
-    codeLink: "https://github.com/bahaayoussof/live-doc",
-    imageUrl: images.comingSoon,
-    tags: ["React JS", "Tailwind", "All", "Web App"],
+    tags: ["AI", "React JS", "Tailwind", "All"],
   },
 ];

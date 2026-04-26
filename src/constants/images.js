@@ -8,6 +8,7 @@ import materialTemp from "../assets/materialTemp.webp";
 import dashboard from "../assets/dashboard.webp";
 import snapgram from "../assets/snapgram.webp";
 import resumind from "../assets/resumind.webp";
+import liveDocs from "../assets/liveDocs.webp";
 
 import comingSoon from "../assets/coming-soon.webp";
 
@@ -21,5 +22,6 @@ export default {
 	dashboard,
 	snapgram,
 	resumind,
+	liveDocs,
 	comingSoon,
 };
