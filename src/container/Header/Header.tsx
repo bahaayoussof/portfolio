@@ -159,20 +159,14 @@ const Header = () => {
                     <span className="ln">03</span>
                     <span className="code-line indent">
                       <span className="prop">role</span>:{" "}
-                      <span className="str">
-                        "Frontend / Software Engineer"
-                      </span>
-                      ,
+                      <span className="str">"Frontend Engineer"</span>,
                     </span>
                   </div>
                   <div className="code-row">
                     <span className="ln">04</span>
                     <span className="code-line indent">
                       <span className="prop">currentRole</span>:{" "}
-                      <span className="str">
-                        "Software Developer @ AZM Squad"
-                      </span>
-                      ,
+                      <span className="str">"Frontend Engineer @ AZM Squad"</span>,
                     </span>
                   </div>
                   <div className="code-row">

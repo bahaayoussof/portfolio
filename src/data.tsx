@@ -94,7 +94,7 @@ export const companyExperiences: CompanyExperience[] = [
   {
     id: "company-azm",
     company: "AZM Squad",
-    role: "Software Developer",
+    role: "Frontend Engineer",
     overallPeriod: "Oct 2024 – Present",
     location: "Remote",
     isCurrent: true,

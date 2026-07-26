@@ -1,169 +1,126 @@
-# Bahaa Youssof - Portfolio Website
+# Bahaa Youssof — Portfolio Website
 
-A modern, responsive portfolio website built with React.js showcasing my skills, experience, and projects as a Software Engineer.
+A modern, high-performance portfolio website built with **React 19**, **TypeScript**, **Vite 8**, and **SCSS**. Designed with a premium SaaS aesthetic, featuring an interactive Developer Telemetry HUD, default dark-mode system, high-contrast light mode, flagship project showcases, and a responsive experience timeline.
 
 ## 🌟 Live Demo
 
 **[View Live Portfolio](https://bahaayoussof.vercel.app/)**
 
-## ✨ Features
+---
 
-- **Modern Design**: Clean and professional design with smooth animations
-- **Responsive Layout**: Fully responsive design that works on all devices
-- **Dark/Light Theme**: Toggle between dark and light themes
-- **Smooth Animations**: Built with Framer Motion for engaging user experience
-- **Performance Optimized**: Lazy loading and optimized assets for fast loading
-- **Accessibility**: WCAG compliant with proper ARIA labels and semantic HTML
-- **Contact Form**: Integrated contact form with EmailJS
-- **SEO Optimized**: Meta tags and structured data for better search visibility
+## ✨ Key Features
 
-## 🛠️ Technologies Used
+- **Interactive Developer Telemetry HUD**: Tabbed code editor preview (`engineer.ts`) with syntax highlighting, live metrics (`telemetry.stats`), terminal prompt, and technology matrix chips.
+- **Default Dark Mode & Theme Switcher**: Automatic dark theme initialization (`data-theme="dark"`) with smooth theme context switching and local storage persistence.
+- **Enhanced Light Mode Clarity**: High-contrast syntax colors, crisp slate containers, and polished card UI for light mode visitors.
+- **Flagship & Studio Project Showcase**: Highlighting *Resumind AI*, *Live-Docs*, and *Snapgram* with interactive tabbed details, tech tags, and equal-width hover action buttons (`Live` & `Repo`).
+- **Detailed Experience & Projects Timeline**: Breakdown of corporate and FinTech engineering roles (*AZM Squad*, *Damen E-Payment*) showcasing 7+ production systems including Petrotrade Android POS, CIB Corporate Banking, and Damen Portal.
+- **Web3Forms Contact Integration**: Fully functional contact form powered by Web3Forms API with instant Toast notification feedback.
+- **Type-Safe Architecture & Lazy Loading**: 100% TypeScript implementation with code-splitting via React `Suspense` and `lazy` loading for optimal performance.
 
-- **Frontend**: React.js 18.3.1
-- **Styling**: SCSS/Sass
-- **Animations**: Framer Motion
-- **Icons**: Tabler Icons React
-- **Notifications**: React Hot Toast
-- **Email Service**: EmailJS
-- **Build Tool**: Create React App
-- **Deployment**: Vercel
+---
+
+## 🛠️ Tech Stack & Dependencies
+
+| Layer | Technology |
+|---|---|
+| **Core Framework** | React 19, TypeScript 6 |
+| **Build Tool** | Vite 8 |
+| **Styling** | SCSS / Sass, CSS Custom Properties |
+| **Animations** | Framer Motion |
+| **Icons** | Tabler Icons React (`@tabler/icons-react`) |
+| **Notifications** | React Hot Toast |
+| **Form Engine** | Web3Forms API |
+| **Deployment** | Vercel |
+
+---
 
 ## 📁 Project Structure
 
 ```
 portfolio/
 ├── public/
-│   ├── index.html
 │   ├── favicon.ico
-│   └── manifest.json
+│   └── index.html
 ├── src/
-│   ├── components/
-│   │   ├── Navbar/
-│   │   ├── NavigationDots.jsx
-│   │   ├── SocialMedia.jsx
-│   │   └── ToggleTheme.jsx
-│   ├── container/
-│   │   ├── Header/
-│   │   ├── About/
-│   │   ├── Work/
-│   │   ├── Experience/
-│   │   └── Footer/
 │   ├── assets/
+│   ├── components/
+│   │   ├── Loader/
+│   │   ├── Navbar/
+│   │   ├── NavigationDots.tsx
+│   │   ├── SocialMedia.tsx
+│   │   └── ToggleTheme.tsx
 │   ├── constants/
+│   ├── container/
+│   │   ├── Experience/
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   └── Work/
 │   ├── context/
+│   │   └── theme.tsx
+│   ├── types/
 │   ├── wrapper/
-│   ├── App.js
-│   └── index.js
+│   ├── App.scss
+│   ├── App.tsx
+│   ├── data.tsx
+│   ├── index.css
+│   └── main.tsx
+├── index.html
+├── vite.config.ts
+├── tsconfig.json
 └── package.json
 ```
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (version 14 or higher)
-- npm or yarn package manager
+- **Node.js**: v18.0.0 or higher
+- **npm** or **yarn**
 
 ### Installation
 
 1. **Clone the repository**
-
    ```bash
    git clone https://github.com/bahaayoussof/portfolio.git
    cd portfolio
    ```
 
 2. **Install dependencies**
-
    ```bash
    npm install
    ```
 
-3. **Start the development server**
-
+3. **Run local development server**
    ```bash
-   npm start
+   npm run dev
    ```
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
-
-### Available Scripts
-
-- `npm start` - Runs the app in development mode
-- `npm run build` - Builds the app for production
-- `npm test` - Launches the test runner
-- `npm run eject` - Ejects from Create React App (not recommended)
-
-## 📱 Sections
-
-### Header
-
-- Hero section with animated text
-- Social media links
-- Call-to-action buttons (Resume download, Contact)
-
-### About
-
-- Personal introduction
-- Key highlights and skills
-- Professional summary
-
-### Experience
-
-- Work history with detailed descriptions
-- Achievements and responsibilities
-- Technologies used in each role
-
-### Work
-
-- Portfolio projects showcase
-- Project descriptions and technologies
-- Live demo and GitHub links
-
-### Contact
-
-- Contact form with EmailJS integration
-- Social media links
-- Professional information
-
-## 🎨 Customization
-
-### Theme Configuration
-
-The app uses a theme context for dark/light mode. You can customize colors in:
-
-- `src/context/theme.js`
-- `src/App.scss`
-
-### Content Updates
-
-- Update personal information in `src/data.js`
-- Modify project images in `src/assets/`
-- Update constants in `src/constants/`
-
-### Styling
-
-- Main styles: `src/App.scss`
-- Component-specific styles in respective `.scss` files
-- Global styles: `src/index.css`
-
-## 🔧 Configuration
-
-### EmailJS Setup
-
-1. Create an account at [EmailJS](https://www.emailjs.com/)
-2. Set up your email service
-3. Update the EmailJS configuration in your contact form component
-
-### Deployment
-
-The project is configured for deployment on Vercel:
-
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically detect the React app
-3. Deploy with default settings
+4. **Open in browser**
+   Navigate to `http://localhost:5173`
 
 ---
 
-⭐ If you found this portfolio helpful, please give it a star!
+## 📜 Available Scripts
+
+- `npm run dev` — Launch Vite dev server with instant HMR
+- `npm run build` — Run TypeScript type checks (`tsc -b`) and bundle for production
+- `npm run preview` — Locally preview production build
+- `npm run lint` — Lint codebase using ESLint
+- `npm run type-check` — Perform strict TypeScript validation without emitting files
+
+---
+
+## 📱 Sections Overview
+
+1. **Navigation (`Navbar`)**: Glassmorphic top navigation bar with active section tracking, theme toggle button, and mobile menu.
+2. **Hero (`Header`)**: Headline, career subtitle, resume link, contact button, and interactive Developer Telemetry HUD.
+3. **Projects (`Work`)**: Flagship AI resume analyzer breakdown + grid of web applications with live links and repository shortcuts.
+4. **Experience (`Experience`)**: Detailed career path across AZM Squad & Damen E-Payment detailing project impacts, challenges, and tech stack tags.
+5. **Contact (`Footer`)**: Reactive Web3Forms contact form with toast notifications and social platform links.
+
+---
+
+⭐ Star this repository if you find it helpful!
