@@ -64,8 +64,9 @@ const Experience = () => {
                       <IconBuildingSkyscraper size={24} />
                     </div>
                     <div>
-                      <div className="company-title-row">
-                        <h3 className="company-name">{item.company}</h3>
+                      <h3 className="company-name">{item.company}</h3>
+                      <div className="role-title-row">
+                        <h4 className="role-title">{item.role}</h4>
                         {item.isCurrent && (
                           <span className="current-badge">
                             <span className="pulse-dot" />
@@ -73,7 +74,6 @@ const Experience = () => {
                           </span>
                         )}
                       </div>
-                      <h4 className="role-title">{item.role}</h4>
                     </div>
                   </div>
 
@@ -120,15 +120,17 @@ const Experience = () => {
                               <span className="project-index-badge">
                                 {displayNumber}
                               </span>
-                              <h4 className="project-name">
-                                {project.projectName}
-                              </h4>
-                              {isCurrent && (
-                                <span className="current-project-badge">
-                                  <IconFlame size={13} />
-                                  <span>CURRENT PROJECT</span>
-                                </span>
-                              )}
+                              <div className="project-title-block">
+                                <h4 className="project-name">
+                                  {project.projectName}
+                                </h4>
+                                {isCurrent && (
+                                  <span className="current-project-badge">
+                                    <IconFlame size={13} />
+                                    <span>CURRENT PROJECT</span>
+                                  </span>
+                                )}
+                              </div>
                             </div>
                             {project.period && (
                               <span className="project-period">

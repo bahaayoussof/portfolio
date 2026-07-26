@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <header className="studio-nav-header">
       <nav className="studio-nav" aria-label="Main navigation">
-        <a href="#home" className="studio-logo">
+        <a href="#home" className="studio-logo" aria-label="Bahaa Youssof Portfolio">
           <span className="logo-name">
             bahaa<span className="logo-dot">.</span>
           </span>
@@ -97,15 +97,6 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-              {/* <div className="mobile-menu-footer">
-                <a
-                  href="#contact"
-                  className="mobile-contact-btn"
-                  onClick={() => setToggle(false)}
-                >
-                  Get in Touch
-                </a>
-              </div> */}
             </motion.div>
           )}
         </AnimatePresence>

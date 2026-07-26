@@ -108,13 +108,6 @@
       justify-content: center;
     }
 
-    .company-title-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
     .company-name {
       font-size: 1.45rem;
       font-weight: 800;
@@ -126,17 +119,31 @@
       }
     }
 
+    .role-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+
+    .role-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+
     .current-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.2rem 0.65rem;
+      padding: 0.15rem 0.55rem;
       border-radius: var(--radius-sm);
       background: rgba(16, 185, 129, 0.1);
       border: 1px solid rgba(16, 185, 129, 0.25);
       color: #10b981;
       font-family: var(--font-mono);
-      font-size: 0.675rem;
+      font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.05em;
 
@@ -148,13 +155,6 @@
         box-shadow: 0 0 8px #10b981;
         animation: companyPulseGlow 2s infinite ease-in-out;
       }
-    }
-
-    .role-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--accent-light);
-      margin-top: 0.2rem;
     }
   }
 
@@ -218,7 +218,7 @@
 
     .project-title-group {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.75rem;
 
       .project-index-badge {
@@ -230,12 +230,21 @@
         padding: 0.2rem 0.5rem;
         border-radius: var(--radius-sm);
         border: 1px solid rgba(237, 111, 99, 0.2);
+        margin-top: 0.15rem;
+      }
+
+      .project-title-block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
       }
 
       .project-name {
         font-size: 1.2rem;
         font-weight: 700;
         color: var(--text-primary);
+        line-height: 1.3;
       }
 
       .current-project-badge {
@@ -362,6 +371,10 @@
     background: rgba(237, 111, 99, 0.12);
     border-color: rgba(237, 111, 99, 0.35);
     transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0.6rem;
   }
 }
 

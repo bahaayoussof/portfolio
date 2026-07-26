@@ -180,7 +180,7 @@ const Work = () => {
                 </div>
                 <p className="project-desc">{project.description}</p>
                 <div className="project-highlight">
-                  <IconCpu size={14} />
+                  <IconCpu size={16} />
                   <span>{project.highlight}</span>
                 </div>
                 <div className="project-tags">
