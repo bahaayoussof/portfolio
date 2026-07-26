@@ -24,34 +24,20 @@
   .studio-logo {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.6rem;
     text-decoration: none;
     color: var(--text-primary);
-    transition: opacity 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 
     &:hover {
-      opacity: 0.9;
-    }
-
-    .logo-badge-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-      color: #ffffff;
-      font-family: var(--font-mono);
-      font-weight: 800;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px var(--accent-glow);
+      opacity: 0.95;
+      transform: translateY(-1px);
     }
 
     .logo-name {
       font-family: var(--font-mono);
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       letter-spacing: -0.04em;
       color: var(--text-primary);
 
@@ -69,31 +55,6 @@
 
     @media screen and (max-width: 868px) {
       display: none;
-    }
-
-    .status-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: var(--radius-full);
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-
-      .status-pulse {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background-color: var(--emerald-accent);
-        box-shadow: 0 0 10px var(--emerald-accent);
-        animation: pulseGlow 2s infinite ease-in-out;
-      }
-
-      .status-text {
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: var(--emerald-accent);
-      }
     }
 
     .studio-nav-links {

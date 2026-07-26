@@ -109,13 +109,13 @@ const Footer = () => {
       <div className="footer-container">
         {/* Contact Hero Banner */}
         <div className="footer-hero-banner">
-          <div className="banner-badge">
+          <div className="connect-badge">
             <span>LET'S CONNECT</span>
           </div>
-          <h2 className="banner-title">
+          <h2 className="connect-title">
             Building a new digital product or scaling an interface?
           </h2>
-          <p className="banner-subtitle">
+          <p className="connect-subtitle">
             I'm always open to discussing new opportunities, interesting
             projects, or just having a chat about technology and development.
             Feel free to reach out!
@@ -131,7 +131,13 @@ const Footer = () => {
           <div className="form-box">
             <form onSubmit={contactHandler} className="studio-form" noValidate>
               {/* Spam protection honeypot — must stay hidden and empty */}
-              <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" />
+              <input
+                type="checkbox"
+                name="botcheck"
+                style={{ display: "none" }}
+                tabIndex={-1}
+                aria-hidden="true"
+              />
               <div className="connect-group">
                 <div className="socials-icon-row">
                   {socialLinks.map((social) => {

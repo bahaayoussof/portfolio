@@ -29,7 +29,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.3rem 0.85rem;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-sm);
     background: var(--surface);
     border: 1px solid var(--surface-border);
     color: var(--accent-light);
@@ -348,7 +348,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.25rem;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   background: var(--surface);
   border: 1px solid var(--surface-border);
   color: var(--accent-light);

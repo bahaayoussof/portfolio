@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import {
   IconArrowRight,
   IconTerminal2,
-  IconCode,
+  IconFileText,
 } from "@tabler/icons-react";
 import { heroMetrics, featuredTechnologies, socialLinks } from "../../data";
 
@@ -34,7 +34,9 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Building <span className="text-gradient">high-quality interfaces</span> & scalable web applications.
+          Building{" "}
+          <span className="text-gradient">high-quality interfaces</span> &
+          scalable web applications.
         </motion.h1>
 
         {/* Engineering Sub-text */}
@@ -44,7 +46,9 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Passionate about creating user-friendly, efficient web and mobile applications with React, React Native, Vue 3, and Redux. Proven track record delivering scalable enterprise products.
+          Passionate about creating user-friendly, efficient web and mobile
+          applications with React, React Native, Vue 3, and Redux. Proven track
+          record delivering scalable enterprise products.
         </motion.p>
 
         {/* Call-to-action buttons */}
@@ -54,14 +58,19 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <a href="#work" className="btn-hero-primary">
-            <span>Explore Featured Projects</span>
+          <a href="#contact" className="btn-hero-primary">
+            <span>Get in Touch</span>
             <IconArrowRight size={18} />
           </a>
 
-          <a href="#experience" className="btn-hero-secondary">
-            <IconCode size={18} />
-            <span>Career Journey</span>
+          <a
+            href="https://short.do/JqgNbW"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-hero-secondary"
+          >
+            <IconFileText size={18} />
+            <span>Resume</span>
           </a>
 
           <div className="hero-social-list">

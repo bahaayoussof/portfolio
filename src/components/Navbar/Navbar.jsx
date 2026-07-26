@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import {
   IconSunFilled,
   IconMoonFilled,
@@ -26,24 +26,19 @@ const Navbar = () => {
     { id: "home", label: "Overview" },
     { id: "work", label: "Projects" },
     { id: "experience", label: "Career Journey" },
-    // { id: "lab", label: "Engineering Lab" },
     { id: "contact", label: "Contact" },
   ];
 
   return (
     <header className="studio-nav-header">
       <nav className="studio-nav" aria-label="Main navigation">
-        <a href="#home" className="studio-logo">
-          <span className="logo-name">Bahaa Youssof</span>
-          <span className="logo-badge">FRONTEND STUDIO</span>
+        <a href="#home" className="studio-logo" aria-label="Bahaa Youssof Portfolio">
+          <span className="logo-name">
+            bahaa<span className="logo-dot">.</span>
+          </span>
         </a>
 
         <div className="studio-nav-center">
-          <div className="status-badge" title="Open for Product Engineering Roles & Projects">
-            <span className="status-pulse" />
-            <span className="status-text">Available for Work</span>
-          </div>
-
           <ul className="studio-nav-links">
             {navigationItems.map((item) => (
               <li key={`nav-${item.id}`}>
