@@ -108,11 +108,10 @@ const Header = () => {
               <span className="dot dot-green" />
             </div>
             <div className="hud-title">
-              <span className="status-indicator" />
               <span className="title-text">bahaa-youssof ~ telemetry.sys</span>
             </div>
             <div className="hud-tag">
-              <IconTerminal2 size={14} />
+              <IconTerminal2 size={16} />
               <span>LIVE SYSTEM</span>
             </div>
           </div>
@@ -134,8 +133,10 @@ const Header = () => {
 
             {/* Terminal Command Line */}
             <div className="hud-cmd-line">
-              <span className="cmd-prompt">$</span>
-              <span className="cmd-text">sys.getTechStack()</span>
+              <div className="cmd-left">
+                <span className="cmd-prompt">$</span>
+                <span className="cmd-text">sys.getTechStack()</span>
+              </div>
               <span className="cmd-flag">--verified</span>
             </div>
 

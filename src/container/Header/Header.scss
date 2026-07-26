@@ -217,6 +217,7 @@
       display: flex;
       align-items: center;
       gap: 0.45rem;
+      flex-shrink: 0;
 
       .dot {
         width: 11px;
@@ -232,6 +233,7 @@
         }
         &.dot-green {
           background: #27c93f;
+          box-shadow: 0 0 6px rgba(39, 201, 63, 0.6);
         }
       }
     }
@@ -244,14 +246,6 @@
       font-size: 0.8rem;
       color: var(--text-secondary);
 
-      .status-indicator {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: #27c93f;
-        box-shadow: 0 0 8px #27c93f;
-      }
-
       .title-text {
         font-weight: 600;
         letter-spacing: 0.02em;
@@ -261,15 +255,42 @@
     .hud-tag {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.725rem;
       font-weight: 700;
       color: var(--accent-light);
       background: rgba(237, 111, 99, 0.1);
       border: 1px solid rgba(237, 111, 99, 0.2);
-      padding: 0.2rem 0.6rem;
+      padding: 0.3rem 0.65rem;
       border-radius: var(--radius-sm);
+      white-space: nowrap;
+      flex-shrink: 0;
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
+
+    @media screen and (max-width: 550px) {
+      padding: 0.65rem 0.85rem;
+      gap: 0.5rem;
+
+      .hud-title {
+        font-size: 0.725rem;
+        min-width: 0;
+
+        .title-text {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .hud-tag {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.5rem;
+      }
     }
   }
 
@@ -359,6 +380,12 @@
     font-family: var(--font-mono);
     font-size: 0.825rem;
     padding-top: 0.25rem;
+
+    .cmd-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
 
     .cmd-prompt {
       color: var(--accent-light);
