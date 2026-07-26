@@ -158,6 +158,7 @@ const Work = () => {
                         rel="noreferrer"
                         className="overlay-btn"
                       >
+                        Live
                         <IconArrowUpRight size={18} />
                       </a>
                     )}
@@ -168,6 +169,7 @@ const Work = () => {
                       className="overlay-btn"
                     >
                       <IconBrandGithub size={18} />
+                      Repo
                     </a>
                   </div>
                 </div>

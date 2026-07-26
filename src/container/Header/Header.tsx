@@ -1,14 +1,19 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   IconArrowRight,
   IconTerminal2,
   IconFileText,
+  IconCode,
+  IconChartBar,
 } from "@tabler/icons-react";
 import { heroMetrics, featuredTechnologies, socialLinks } from "../../data";
 
 import "./Header.scss";
 
 const Header = () => {
+  const [hudTab, setHudTab] = useState<"code" | "metrics">("code");
+
   return (
     <section className="studio-hero-section" id="home">
       {/* Background Animated Subtle Glow & Mesh Grid */}
@@ -39,38 +44,38 @@ const Header = () => {
           scalable web applications.
         </motion.h1>
 
-        {/* Engineering Sub-text */}
+        {/* Supporting Subheading */}
         <motion.p
           className="hero-subtitle"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Passionate about creating user-friendly, efficient web and mobile
-          applications with React, React Native, Vue 3, and Redux. Proven track
-          record delivering scalable enterprise products.
+          Specializing in React, Next.js, TypeScript, and React Native.
+          Engineering high-concurrency SaaS applications, legal tech platforms,
+          and interactive POS telemetry systems.
         </motion.p>
 
-        {/* Call-to-action buttons */}
+        {/* Action Buttons & Social Links */}
         <motion.div
           className="hero-actions"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <a href="#contact" className="btn-hero-primary">
-            <span>Get in Touch</span>
-            <IconArrowRight size={18} />
-          </a>
-
           <a
-            href="https://short.do/JqgNbW"
+            href="https://docs.google.com/document/d/1sFB48YhA56EVV90pBLlWGts-1O71cSAvuKz-9I2RZsw/edit?usp=sharing"
             target="_blank"
             rel="noreferrer"
-            className="btn-hero-secondary"
+            className="btn-hero-primary"
           >
-            <IconFileText size={18} />
             <span>Resume</span>
+            <IconFileText size={18} />
+          </a>
+
+          <a href="#contact" className="btn-hero-secondary">
+            <span>Get in Touch</span>
+            <IconArrowRight size={18} />
           </a>
 
           <div className="hero-social-list">
@@ -83,7 +88,6 @@ const Header = () => {
                   target={isMail ? undefined : "_blank"}
                   rel={isMail ? undefined : "noreferrer"}
                   className="hero-social-link"
-                  title={social.name}
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -107,9 +111,24 @@ const Header = () => {
               <span className="dot dot-yellow" />
               <span className="dot dot-green" />
             </div>
-            <div className="hud-title">
-              <span className="title-text">bahaa-youssof ~ telemetry.sys</span>
+
+            <div className="hud-tab-switcher">
+              <button
+                className={`hud-tab-btn ${hudTab === "code" ? "active" : ""}`}
+                onClick={() => setHudTab("code")}
+              >
+                <IconCode size={13} />
+                <span>engineer.ts</span>
+              </button>
+              <button
+                className={`hud-tab-btn ${hudTab === "metrics" ? "active" : ""}`}
+                onClick={() => setHudTab("metrics")}
+              >
+                <IconChartBar size={13} />
+                <span>telemetry.stats</span>
+              </button>
             </div>
+
             <div className="hud-tag">
               <IconTerminal2 size={16} />
               <span>LIVE SYSTEM</span>
@@ -118,26 +137,89 @@ const Header = () => {
 
           {/* Terminal Body */}
           <div className="hud-body">
-            {/* Telemetry Stat Tiles */}
-            <div className="hud-stats-grid">
-              {heroMetrics.map((metric, index) => (
-                <div key={`metric-${index}`} className="hud-stat-tile">
-                  <div className="stat-top">
-                    <span className="stat-value">{metric.value}</span>
-                    <span className="stat-live-badge">ONLINE</span>
+            {hudTab === "code" ? (
+              <div className="hud-code-snippet">
+                <div className="code-table">
+                  <div className="code-row">
+                    <span className="ln">01</span>
+                    <span className="code-line">
+                      <span className="kw">const</span>{" "}
+                      <span className="var">engineer</span>:{" "}
+                      <span className="type">Developer</span> = &#123;
+                    </span>
                   </div>
-                  <span className="stat-label">{metric.label}</span>
+                  <div className="code-row">
+                    <span className="ln">02</span>
+                    <span className="code-line indent">
+                      <span className="prop">name</span>:{" "}
+                      <span className="str">"Bahaa Youssof"</span>,
+                    </span>
+                  </div>
+                  <div className="code-row">
+                    <span className="ln">03</span>
+                    <span className="code-line indent">
+                      <span className="prop">role</span>:{" "}
+                      <span className="str">
+                        "Frontend / Software Engineer"
+                      </span>
+                      ,
+                    </span>
+                  </div>
+                  <div className="code-row">
+                    <span className="ln">04</span>
+                    <span className="code-line indent">
+                      <span className="prop">currentRole</span>:{" "}
+                      <span className="str">
+                        "Software Developer @ AZM Squad"
+                      </span>
+                      ,
+                    </span>
+                  </div>
+                  <div className="code-row">
+                    <span className="ln">05</span>
+                    <span className="code-line indent">
+                      <span className="prop">specialties</span>: [
+                      <span className="str">"Legal Tech"</span>,{" "}
+                      <span className="str">"Enterprise POS"</span>,{" "}
+                      <span className="str">"Real-Time Sync"</span>],
+                    </span>
+                  </div>
+                  <div className="code-row">
+                    <span className="ln">06</span>
+                    <span className="code-line indent">
+                      <span className="prop">status</span>:{" "}
+                      <span className="str">
+                        "Building high-scale SaaS web applications"
+                      </span>
+                    </span>
+                  </div>
+                  <div className="code-row">
+                    <span className="ln">07</span>
+                    <span className="code-line">&#125;;</span>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div className="hud-stats-grid">
+                {heroMetrics.map((metric, index) => (
+                  <div key={`metric-${index}`} className="hud-stat-tile">
+                    <div className="stat-top">
+                      <span className="stat-value">{metric.value}</span>
+                      <span className="stat-live-badge">ONLINE</span>
+                    </div>
+                    <span className="stat-label">{metric.label}</span>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Terminal Command Line */}
             <div className="hud-cmd-line">
               <div className="cmd-left">
                 <span className="cmd-prompt">$</span>
                 <span className="cmd-text">sys.getTechStack()</span>
+                <span className="cmd-flag">--verified</span>
               </div>
-              <span className="cmd-flag">--verified</span>
             </div>
 
             {/* Tech Matrix Chips */}

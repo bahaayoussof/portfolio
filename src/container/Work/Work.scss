@@ -417,15 +417,19 @@
         gap: 0.75rem;
 
         .overlay-btn {
-          width: 42px;
-          height: 42px;
+          padding: 0.55rem 1rem;
+          height: auto;
+          min-height: 38px;
           border-radius: var(--radius-md);
           background: var(--surface);
           border: 1px solid var(--surface-border);
           color: var(--text-primary);
-          display: flex;
+          font-family: var(--font-mono);
+          font-size: 0.8rem;
+          font-weight: 600;
+          display: inline-flex;
           align-items: center;
-          justify-content: center;
+          gap: 0.4rem;
           text-decoration: none;
           transition: all 0.2s ease;
 
@@ -433,6 +437,8 @@
             background: var(--accent);
             color: white;
             border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--accent-glow);
           }
         }
       }
