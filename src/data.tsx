@@ -79,9 +79,9 @@ export const featuredTechnologies = [
     description: "Composition API & reactive state management",
   },
   {
-    name: "Redux & TanStack",
+    name: "Redux & Zustand & TanStack",
     badge: "State",
-    description: "Redux Toolkit, TanStack Query & data caching",
+    description: "Redux Toolkit, Zustand, TanStack Query & data caching",
   },
   {
     name: "UI Systems",

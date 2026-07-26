@@ -153,6 +153,8 @@
   .btn-hero-primary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    min-width: 175px;
     gap: 0.6rem;
     padding: 0.85rem 1.75rem;
     border-radius: var(--radius-md);
@@ -174,6 +176,8 @@
   .btn-hero-secondary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    min-width: 175px;
     gap: 0.6rem;
     padding: 0.85rem 1.75rem;
     border-radius: var(--radius-md);
