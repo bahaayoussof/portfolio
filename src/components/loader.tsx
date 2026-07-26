@@ -1,9 +1,8 @@
-import React from "react";
 import "./loader.scss";
 
-export function Loader(props) {
+export function Loader() {
   return (
-    <div className="portfolio-loader" {...props}>
+    <div className="portfolio-loader">
       <div className="loader-container">
         {/* Main spinning circle */}
         <div className="spinner-ring">

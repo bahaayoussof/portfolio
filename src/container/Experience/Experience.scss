@@ -1,388 +1,377 @@
-// Main container styles
-.app__experience {
-  width: 100%;
-  flex-direction: column;
-}
+.studio-journey-section {
+  position: relative;
+  padding: 6rem 2rem;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--surface-border);
 
-.app__experience-container {
-  width: 100%;
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
-
-  @media screen and (max-width: 900px) {
-    width: 100%;
-    flex-direction: column;
+  @media screen and (max-width: 768px) {
+    padding: 4rem 1.25rem;
   }
 }
 
-// TIMELINE LAYOUT
-.app__timeline {
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 1600px;
+.journey-container {
+  max-width: 1100px;
   margin: 0 auto;
-
-  @media screen and (max-width: 900px) {
-    margin-top: 2rem;
-  }
-}
-
-// Timeline line (vertical center line)
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--bg-accent-light);
-}
-
-// Year grouping and labels
-.timeline-year-group {
-  position: relative;
-  padding-left: 0;
-}
-
-.timeline-year-node {
-  position: relative;
-  width: fit-content;
-  margin: 0 auto 1.25rem;
   display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.journey-header {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: var(--bg-primary);
-  color: var(--text-secondary);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  gap: 0.75rem;
 
-  .year-text {
-    font-weight: 700;
-    font-size: 13px;
+  .journey-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: var(--radius-full);
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    color: var(--accent-light);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .journey-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.85rem;
+    }
+  }
+
+  .journey-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 650px;
+    line-height: 1.6;
   }
 }
 
-// TIMELINE CARDS
-.timeline-cards {
-  position: relative;
+.chapters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.timeline-card {
-  position: relative;
-  width: calc(65% - 2rem);
-  background: var(--surface);
-  border: 1px solid var(--bg-accent-light);
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
-  margin: 0.75rem 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-
-  // Large screens - narrower cards
-  @media screen and (min-width: 1024px) {
-    width: calc(55% - 2rem);
-  }
+.company-card {
+  background: var(--card-bg);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.10);
+  transition: border-color 0.25s ease;
 
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  }
-
-  // Card positioning
-  &.left {
-    margin-right: auto;
-    margin-left: 0;
-  }
-
-  &.right {
-    margin-left: auto;
-    margin-right: 0;
+    border-color: var(--border-glow);
   }
 }
 
-// TIMELINE ENTRY WRAPPERS
-.timeline-entry {
-  position: relative;
-
-  &.left {
-    padding-right: 8rem;
-  }
-
-  &.right {
-    padding-left: 8rem;
-  }
-}
-
-// Timeline connection nodes
-.timeline-node {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
-}
-
-// Time ago labels
-.time-ago {
-  position: absolute;
-  top: 0.5rem;
-  font-size: 12px;
-  color: var(--text-secondary);
-
-  &.left {
-    left: calc(50% + 14px);
-  }
-
-  &.right {
-    right: calc(50% + 14px);
-  }
-}
-
-@media screen and (max-width: 1023px) {
-  .timeline-line {
-    display: none;
-  }
-
-  .timeline-card,
-  .timeline-card.left,
-  .timeline-card.right {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .timeline-entry.left,
-  .timeline-entry.right {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .timeline-node {
-    display: none;
-  }
-
-  .time-ago,
-  .time-ago.left,
-  .time-ago.right {
-    display: none;
-  }
-}
-
-
-// Card header section
-.card-header {
+.company-top-bar {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-// Current position badge
-.current-badge {
-  position: absolute;
-  top: -1px;
-  right: 40px;
-  background: #10b981;
-  color: var(--text-white);
-  padding: 4px 8px;
-  border-radius: 0px 0px 7px 7px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
-
-  // Animation for the badge
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
-  }
-  50% {
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
-  }
-  100% {
-    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
-  }
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
+  padding: 1.25rem 2rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--surface-border);
+  flex-wrap: wrap;
   gap: 1rem;
-}
 
-.role-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--accent);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--on-primary, white);
-  font-size: 1.2rem;
-}
-
-.title-section {
-  flex: 1;
-}
-
-.job-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 0.25rem 0;
-}
-
-.company-name {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-// Card actions (bookmark, toggle)
-.card-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.bookmark-icon {
-  color: var(--accent);
-  font-size: 1.1rem;
-  margin-top: 0.25rem;
-}
-
-.toggle-button {
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0.25rem;
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-// CARD CONTENT SECTIONS
-.card-details {
-  margin-top: 0.5rem;
-}
-
-// Metadata section (date, location)
-.card-metadata {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.metadata-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-
-  i {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    opacity: 0.7;
-  }
-}
-
-// Description section
-.card-description {
-  margin-bottom: 1rem;
-
-  p {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
-    font-size: 0.95rem;
-  }
-}
-
-// Achievements section
-.card-achievements {
-  margin-bottom: 1rem;
-}
-
-.achievements-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-
-  svg {
-    color: var(--accent);
+  @media screen and (max-width: 768px) {
+    padding: 1rem 1.25rem;
   }
 
-  i {
-    color: var(--accent);
-    font-size: 0.9rem;
+  .company-info-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .company-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .company-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .company-name {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1.2rem;
+      }
+    }
+
+    .current-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-sm);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #10b981;
+      font-family: var(--font-mono);
+      font-size: 0.675rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+
+      .pulse-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #10b981;
+        box-shadow: 0 0 8px #10b981;
+        animation: companyPulseGlow 2s infinite ease-in-out;
+      }
+    }
+
+    .role-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      margin-top: 0.2rem;
+    }
   }
 
-  h5 {
-    color: var(--text-secondary);
-    font-weight: 600;
-    margin: 0;
-    font-size: 0.95rem;
-  }
-}
+  .company-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 
-.achievements-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
 
-  li {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
-    padding-left: 1rem;
-    position: relative;
-
-    &::before {
-      content: "⚬";
-      position: absolute;
-      left: 0;
-      color: var(--text-secondary);
-      opacity: 0.7;
-      font-weight: bold;
+    .projects-count-badge {
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      background: rgba(237, 111, 99, 0.12);
+      border: 1px solid rgba(237, 111, 99, 0.25);
+      color: var(--accent-light);
+      font-weight: 700;
     }
   }
 }
 
-// Tools/technologies section
-.card-tools {
+.projects-container {
+  padding: 2rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  flex-direction: column;
+  gap: 2.25rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 1.25rem;
+    gap: 1.75rem;
+  }
 }
 
-.tool-chip {
-  background: var(--bg-primary);
-  border: 1px solid var(--bg-accent-light);
-  color: var(--text-secondary);
-  border-radius: 999px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+.project-nested-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  padding-bottom: 2rem;
+  border-bottom: 1px dashed var(--surface-border);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .project-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .project-index-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--accent-light);
+        background: rgba(237, 111, 99, 0.1);
+        padding: 0.2rem 0.5rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(237, 111, 99, 0.2);
+      }
+
+      .project-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .current-project-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: var(--radius-sm);
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        color: #10b981;
+        font-family: var(--font-mono);
+        font-size: 0.675rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    .project-period {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  }
+
+  .project-tagline {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-box {
+    background: var(--surface);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    .box-title {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+
+      .icon-built { color: var(--emerald-accent); }
+      .icon-challenge { color: #f59e0b; }
+      .icon-impact { color: var(--accent-light); }
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+  }
+}
+
+.chapter-tech-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  .tech-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    .tech-chip {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--text-secondary);
+    }
+  }
+}
+
+.show-more-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-show-more-projects {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  color: var(--accent-light);
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(237, 111, 99, 0.12);
+    border-color: rgba(237, 111, 99, 0.35);
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes companyPulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.35);
+  }
 }

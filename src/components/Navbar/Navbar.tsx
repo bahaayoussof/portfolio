@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import {
   IconSunFilled,
   IconMoonFilled,
@@ -7,14 +7,14 @@ import {
   IconArrowUpRight,
 } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeContext } from "../../context/theme";
+import { useTheme } from "../../context/theme";
 
 import "./Navbar.scss";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isRotating, setIsRotating] = useState(false);
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useTheme();
 
   const handleThemeToggle = () => {
     setIsRotating(true);
@@ -34,16 +34,12 @@ const Navbar = () => {
     <header className="studio-nav-header">
       <nav className="studio-nav" aria-label="Main navigation">
         <a href="#home" className="studio-logo">
-          <span className="logo-name">Bahaa Youssof</span>
-          <span className="logo-badge">FRONTEND STUDIO</span>
+          <span className="logo-name">
+            bahaa<span className="logo-dot">.</span>
+          </span>
         </a>
 
         <div className="studio-nav-center">
-          <div className="status-badge" title="Open for Product Engineering Roles & Projects">
-            <span className="status-pulse" />
-            <span className="status-text">Available for Work</span>
-          </div>
-
           <ul className="studio-nav-links">
             {navigationItems.map((item) => (
               <li key={`nav-${item.id}`}>
@@ -101,15 +97,15 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-              <div className="mobile-menu-footer">
+              {/* <div className="mobile-menu-footer">
                 <a
-                  href="mailto:bahaayoussof@gmail.com"
+                  href="#contact"
                   className="mobile-contact-btn"
                   onClick={() => setToggle(false)}
                 >
                   Get in Touch
                 </a>
-              </div>
+              </div> */}
             </motion.div>
           )}
         </AnimatePresence>
