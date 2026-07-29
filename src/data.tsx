@@ -98,6 +98,30 @@ export const companyExperiences: CompanyExperience[] = [
     overallPeriod: "Oct 2024 – Present",
     location: "Remote",
     isCurrent: true,
+    featuredProject: {
+      id: "proj-component-doc",
+      projectName: "Momah Component Documentation",
+      badge: "FEATURED SYSTEM SHOWCASE",
+      statusBadge: "Production / Internal Tool",
+      tagline: "Enterprise ASP.NET MVC UI Components Library",
+      description:
+        "Clean, fast, and accessible ASP.NET MVC Razor components. Engineered with native Razor helpers, zero-friction ViewModel bindings, and seamless Bootstrap 5 integration across enterprise applications.",
+      techStack: [
+        "ASP.NET Core MVC",
+        "JavaScript",
+        "CSS",
+        "Bootstrap 5",
+        "Razor Partial Views",
+      ],
+      liveLink: "https://momah-doc.bahaa.qzz.io",
+      metrics: [
+        "19+ UI Components",
+        "4 Categories",
+        "100% Razor Native",
+        "Code Examples",
+        "ViewModel Guidelines",
+      ],
+    },
     projects: [
       {
         id: "proj-cib",

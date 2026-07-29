@@ -103,7 +103,7 @@ const Work = () => {
                     rel="noreferrer"
                     className="btn-live-demo"
                   >
-                    <span>Launch Live Application</span>
+                    <span>Launch Application</span>
                     <IconArrowUpRight size={16} />
                   </a>
                 )}
