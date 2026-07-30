@@ -3,7 +3,7 @@ import { Resend } from "resend";
 import {
   collectContactErrors,
   type ContactFormValues,
-} from "../src/shared/contactValidation";
+} from "../src/shared/contactValidation.js";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
