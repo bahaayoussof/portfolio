@@ -1,14 +1,13 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { Resend } from "resend";
+import {
+  collectContactErrors,
+  type ContactFormValues,
+} from "../src/shared/contactValidation";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-interface ContactPayload {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+type ContactPayload = ContactFormValues;
 
 interface ApiError {
   error: string;
@@ -25,8 +24,6 @@ class ValidationError extends Error {
 
 // ─── Validation ───────────────────────────────────────────────────────────────
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 function validatePayload(body: unknown): ContactPayload {
   if (!body || typeof body !== "object") {
     throw new ValidationError("Request body must be a JSON object.");
@@ -34,32 +31,17 @@ function validatePayload(body: unknown): ContactPayload {
 
   const b = body as Record<string, unknown>;
 
-  const name = typeof b.name === "string" ? b.name.trim() : "";
-  const email = typeof b.email === "string" ? b.email.trim().toLowerCase() : "";
-  const subject = typeof b.subject === "string" ? b.subject.trim() : "";
-  const message = typeof b.message === "string" ? b.message.trim() : "";
+  const payload: ContactPayload = {
+    name: typeof b.name === "string" ? b.name.trim() : "",
+    email: typeof b.email === "string" ? b.email.trim().toLowerCase() : "",
+    subject: typeof b.subject === "string" ? b.subject.trim() : "",
+    message: typeof b.message === "string" ? b.message.trim() : "",
+  };
 
-  const errors: string[] = [];
-
-  if (!name) errors.push("Name is required.");
-  else if (name.length < 2) errors.push("Name must be at least 2 characters.");
-  else if (name.length > 100) errors.push("Name must be at most 100 characters.");
-
-  if (!email) errors.push("Email is required.");
-  else if (!EMAIL_RE.test(email)) errors.push("Email is invalid.");
-  else if (email.length > 254) errors.push("Email is too long.");
-
-  if (!subject) errors.push("Subject is required.");
-  else if (subject.length < 2) errors.push("Subject must be at least 2 characters.");
-  else if (subject.length > 150) errors.push("Subject must be at most 150 characters.");
-
-  if (!message) errors.push("Message is required.");
-  else if (message.length < 10) errors.push("Message must be at least 10 characters.");
-  else if (message.length > 5000) errors.push("Message must be at most 5000 characters.");
-
+  const errors = collectContactErrors(payload);
   if (errors.length > 0) throw new ValidationError(errors.join(" "));
 
-  return { name, email, subject, message };
+  return payload;
 }
 
 // ─── In-memory rate limiter ───────────────────────────────────────────────────
@@ -67,9 +49,12 @@ function validatePayload(body: unknown): ContactPayload {
 // For production scale: replace with Upstash Redis + @upstash/ratelimit.
 
 const WINDOW_MS = 60_000; // 1 minute
-const MAX_HITS = 3;      // requests per window per IP
+const MAX_HITS = 3; // requests per window per IP
 
-interface RateEntry { count: number; resetAt: number }
+interface RateEntry {
+  count: number;
+  resetAt: number;
+}
 const rateLimitMap = new Map<string, RateEntry>();
 
 function isRateLimited(ip: string): boolean {
@@ -87,7 +72,10 @@ function isRateLimited(ip: string): boolean {
 
 // ─── Email builders ───────────────────────────────────────────────────────────
 
-interface EmailMeta { ip: string; timestamp: string }
+interface EmailMeta {
+  ip: string;
+  timestamp: string;
+}
 
 function buildHtml(p: ContactPayload, m: EmailMeta): string {
   const safeMessage = p.message
@@ -255,15 +243,17 @@ export default async function handler(
 
   // Resolve sender IP
   const ip =
-    (req.headers["x-forwarded-for"] as string | undefined)
-      ?.split(",")[0]
-      ?.trim() ??
+    (req.headers["x-forwarded-for"] as string | undefined)?.split(",")[0]?.trim() ??
     req.socket?.remoteAddress ??
     "unknown";
 
   // Rate limit
   if (isRateLimited(ip)) {
-    res.status(429).json({ error: "Too many requests. Please wait a minute and try again." } satisfies ApiError);
+    res
+      .status(429)
+      .json({
+        error: "Too many requests. Please wait a minute and try again.",
+      } satisfies ApiError);
     return;
   }
 
@@ -288,11 +278,12 @@ export default async function handler(
   }
 
   // Build metadata
-  const timestamp = new Date().toLocaleString("en-US", {
-    dateStyle: "full",
-    timeStyle: "short",
-    timeZone: "UTC",
-  }) + " (UTC)";
+  const timestamp =
+    new Date().toLocaleString("en-US", {
+      dateStyle: "full",
+      timeStyle: "short",
+      timeZone: "UTC",
+    }) + " (UTC)";
   const meta: EmailMeta = { ip, timestamp };
 
   // Send via Resend
@@ -313,13 +304,21 @@ export default async function handler(
 
     if (error) {
       console.error("[contact] Resend error:", error);
-      res.status(502).json({ error: "Failed to deliver email. Please try again later." } satisfies ApiError);
+      res
+        .status(502)
+        .json({
+          error: "Failed to deliver email. Please try again later.",
+        } satisfies ApiError);
       return;
     }
 
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error("[contact] Unexpected error:", err);
-    res.status(500).json({ error: "An unexpected error occurred. Please try again." } satisfies ApiError);
+    res
+      .status(500)
+      .json({
+        error: "An unexpected error occurred. Please try again.",
+      } satisfies ApiError);
   }
 }

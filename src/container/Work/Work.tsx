@@ -77,8 +77,8 @@ const Work = () => {
 
               {/* Impact Metrics Row */}
               <div className="flagship-metrics">
-                {flagshipProject.metrics.map((m, idx) => (
-                  <div key={idx} className="metric-box">
+                {flagshipProject.metrics.map((m) => (
+                  <div key={m.label} className="metric-box">
                     <span className="box-value">{m.value}</span>
                     <span className="box-label">{m.label}</span>
                   </div>
@@ -87,8 +87,8 @@ const Work = () => {
 
               {/* Tech Stack Badges */}
               <div className="flagship-tech-list">
-                {flagshipProject.techStack.map((tech, idx) => (
-                  <span key={idx} className="tech-tag">
+                {flagshipProject.techStack.map((tech) => (
+                  <span key={tech} className="tech-tag">
                     {tech}
                   </span>
                 ))}
@@ -100,7 +100,7 @@ const Work = () => {
                   <a
                     href={flagshipProject.projectLink}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="btn-live-demo"
                   >
                     <span>Launch Application</span>
@@ -110,7 +110,7 @@ const Work = () => {
                 <a
                   href={flagshipProject.codeLink}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="btn-code-link"
                 >
                   <IconBrandGithub size={18} />
@@ -130,7 +130,14 @@ const Work = () => {
                 <span className="mockup-url">https://resumind-by.vercel.app</span>
               </div>
               <div className="mockup-image-wrap">
-                <img src={flagshipProject.imageUrl} alt={flagshipProject.title} />
+                <img
+                  src={flagshipProject.imageUrl}
+                  alt={flagshipProject.title}
+                  loading="lazy"
+                  decoding="async"
+                  width={1225}
+                  height={1268}
+                />
               </div>
             </div>
           </div>
@@ -148,14 +155,21 @@ const Work = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="project-image-container">
-                <img src={project.imageUrl} alt={project.title} />
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                  width={project.imageWidth}
+                  height={project.imageHeight}
+                />
                 <div className="project-overlay">
                   <div className="overlay-actions">
                     {project.projectLink && (
                       <a
                         href={project.projectLink}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="overlay-btn"
                       >
                         Live
@@ -165,7 +179,7 @@ const Work = () => {
                     <a
                       href={project.codeLink}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="overlay-btn"
                     >
                       <IconBrandGithub size={18} />
@@ -186,8 +200,8 @@ const Work = () => {
                   <span>{project.highlight}</span>
                 </div>
                 <div className="project-tags">
-                  {project.tags.map((tag, idx) => (
-                    <span key={idx} className="project-tag">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="project-tag">
                       {tag}
                     </span>
                   ))}

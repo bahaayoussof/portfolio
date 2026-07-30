@@ -11,7 +11,9 @@ const BOOT_STEPS = [
 
 export function Loader() {
   const [progress, setProgress] = useState(15);
-  const [stepIndex, setStepIndex] = useState(0);
+
+  // Derive step index purely from progress — no secondary effect needed
+  const stepIndex = progress >= 100 ? 3 : progress > 70 ? 2 : progress > 35 ? 1 : 0;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,12 +29,6 @@ export function Loader() {
 
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    if (progress > 35 && stepIndex === 0) setStepIndex(1);
-    if (progress > 70 && stepIndex === 1) setStepIndex(2);
-    if (progress >= 100 && stepIndex === 2) setStepIndex(3);
-  }, [progress, stepIndex]);
 
   return (
     <div className="portfolio-loader">
@@ -67,10 +63,7 @@ export function Loader() {
           {/* Progress Section */}
           <div className="progress-section">
             <div className="progress-bar-track">
-              <div
-                className="progress-bar-fill"
-                style={{ width: `${progress}%` }}
-              />
+              <div className="progress-bar-fill" style={{ width: `${progress}%` }} />
             </div>
             <div className="progress-meta">
               <span className="progress-percent">{progress}%</span>
@@ -83,8 +76,8 @@ export function Loader() {
 
           {/* Log Console Output */}
           <div className="hud-log-console">
-            {BOOT_STEPS.slice(0, stepIndex + 1).map((step, idx) => (
-              <div key={idx} className="log-line">
+            {BOOT_STEPS.slice(0, stepIndex + 1).map((step) => (
+              <div key={step} className="log-line">
                 <IconCheck size={13} className="log-icon-check" />
                 <span>{step}</span>
               </div>
@@ -95,4 +88,3 @@ export function Loader() {
     </div>
   );
 }
-

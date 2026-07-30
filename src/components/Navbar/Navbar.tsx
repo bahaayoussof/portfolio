@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   IconSunFilled,
   IconMoonFilled,
@@ -6,29 +6,35 @@ import {
   IconX,
   IconArrowUpRight,
 } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../context/theme";
 
 import "./Navbar.scss";
+
+const NAV_ITEMS = [
+  { id: "home", label: "Overview" },
+  { id: "work", label: "Projects" },
+  { id: "experience", label: "Career Journey" },
+  { id: "contact", label: "Contact" },
+] as const;
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [isRotating, setIsRotating] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const rotateTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (rotateTimerRef.current) clearTimeout(rotateTimerRef.current);
+    };
+  }, []);
 
   const handleThemeToggle = () => {
     setIsRotating(true);
     toggleTheme();
-    setTimeout(() => setIsRotating(false), 600);
+    if (rotateTimerRef.current) clearTimeout(rotateTimerRef.current);
+    rotateTimerRef.current = setTimeout(() => setIsRotating(false), 600);
   };
-
-  const navigationItems = [
-    { id: "home", label: "Overview" },
-    { id: "work", label: "Projects" },
-    { id: "experience", label: "Career Journey" },
-    // { id: "lab", label: "Engineering Lab" },
-    { id: "contact", label: "Contact" },
-  ];
 
   return (
     <header className="studio-nav-header">
@@ -41,7 +47,7 @@ const Navbar = () => {
 
         <div className="studio-nav-center">
           <ul className="studio-nav-links">
-            {navigationItems.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <li key={`nav-${item.id}`}>
                 <a href={`#${item.id}`}>{item.label}</a>
               </li>
@@ -50,20 +56,22 @@ const Navbar = () => {
         </div>
 
         <div className="studio-nav-right">
-          <motion.button
+          <button
             className={`theme-toggle-btn ${isRotating ? "rotating" : ""}`}
             onClick={handleThemeToggle}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             aria-label="Toggle theme"
           >
-            {theme === "light" ? <IconMoonFilled size={18} /> : <IconSunFilled size={18} />}
-          </motion.button>
+            {theme === "light" ? (
+              <IconMoonFilled size={18} />
+            ) : (
+              <IconSunFilled size={18} />
+            )}
+          </button>
 
           <a
             href="https://github.com/bahaayoussof"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="btn-github-link"
           >
             <span>GitHub</span>
@@ -79,27 +87,19 @@ const Navbar = () => {
           </button>
         </div>
 
-        <AnimatePresence>
-          {toggle && (
-            <motion.div
-              className="mobile-menu-overlay"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.25 }}
-            >
-              <ul>
-                {navigationItems.map((item) => (
-                  <li key={`mobile-${item.id}`}>
-                    <a href={`#${item.id}`} onClick={() => setToggle(false)}>
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {toggle && (
+          <div className="mobile-menu-overlay">
+            <ul>
+              {NAV_ITEMS.map((item) => (
+                <li key={`mobile-${item.id}`}>
+                  <a href={`#${item.id}`} onClick={() => setToggle(false)}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </nav>
     </header>
   );

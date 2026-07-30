@@ -13,8 +13,8 @@ A modern, high-performance portfolio website built with **React 19**, **TypeScri
 - **Interactive Developer Telemetry HUD**: Tabbed code editor preview (`engineer.ts`) with syntax highlighting, live metrics (`telemetry.stats`), terminal prompt, and technology matrix chips.
 - **Default Dark Mode & Theme Switcher**: Automatic dark theme initialization (`data-theme="dark"`) with smooth theme context switching and local storage persistence.
 - **Enhanced Light Mode Clarity**: High-contrast syntax colors, crisp slate containers, and polished card UI for light mode visitors.
-- **Flagship & Studio Project Showcase**: Highlighting *Resumind AI*, *Live-Docs*, and *Snapgram* with interactive tabbed details, tech tags, and equal-width hover action buttons (`Live` & `Repo`).
-- **Detailed Experience & Projects Timeline**: Breakdown of corporate and FinTech engineering roles (*AZM Squad*, *Damen E-Payment*) showcasing 7+ production systems including Petrotrade Android POS, CIB Corporate Banking, and Damen Portal.
+- **Flagship & Studio Project Showcase**: Highlighting _Resumind AI_, _Live-Docs_, and _Snapgram_ with interactive tabbed details, tech tags, and equal-width hover action buttons (`Live` & `Repo`).
+- **Detailed Experience & Projects Timeline**: Breakdown of corporate and FinTech engineering roles (_AZM Squad_, _Damen E-Payment_) showcasing 7+ production systems including Petrotrade Android POS, CIB Corporate Banking, and Damen Portal.
 - **Web3Forms Contact Integration**: Fully functional contact form powered by Web3Forms API with instant Toast notification feedback.
 - **Type-Safe Architecture & Lazy Loading**: 100% TypeScript implementation with code-splitting via React `Suspense` and `lazy` loading for optimal performance.
 
@@ -22,16 +22,16 @@ A modern, high-performance portfolio website built with **React 19**, **TypeScri
 
 ## 🛠️ Tech Stack & Dependencies
 
-| Layer | Technology |
-|---|---|
-| **Core Framework** | React 19, TypeScript 6 |
-| **Build Tool** | Vite 8 |
-| **Styling** | SCSS / Sass, CSS Custom Properties |
-| **Animations** | Framer Motion |
-| **Icons** | Tabler Icons React (`@tabler/icons-react`) |
-| **Notifications** | React Hot Toast |
-| **Form Engine** | Web3Forms API |
-| **Deployment** | Vercel |
+| Layer              | Technology                                 |
+| ------------------ | ------------------------------------------ |
+| **Core Framework** | React 19, TypeScript 6                     |
+| **Build Tool**     | Vite 8                                     |
+| **Styling**        | SCSS / Sass, CSS Custom Properties         |
+| **Animations**     | Framer Motion                              |
+| **Icons**          | Tabler Icons React (`@tabler/icons-react`) |
+| **Notifications**  | React Hot Toast                            |
+| **Form Engine**    | Web3Forms API                              |
+| **Deployment**     | Vercel                                     |
 
 ---
 
@@ -83,17 +83,20 @@ portfolio/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/bahaayoussof/portfolio.git
    cd portfolio
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Run local development server**
+
    ```bash
    npm run dev
    ```

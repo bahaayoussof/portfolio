@@ -8,7 +8,12 @@ import react from "eslint-plugin-react";
 export default tseslint.config(
   { ignores: ["dist", "node_modules"] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      react.configs.flat.recommended,
+      react.configs.flat["jsx-runtime"], // React 17+ JSX transform — no import needed
+    ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2022,
@@ -17,16 +22,16 @@ export default tseslint.config(
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      react,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": "off",
-      "react/react-in-jsx-scope": "off", // React 17+ JSX transform — no import needed
+      "react/no-array-index-key": "warn",
+      "react/prop-types": "off", // TypeScript covers prop typing
       "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     },
     settings: {
       react: { version: "detect" },
     },
-  }
+  },
 );

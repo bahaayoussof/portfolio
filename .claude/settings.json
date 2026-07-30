@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx depcheck *)",
+      "Bash(npm run *)",
+      "Bash(git submodule *)",
+      "Bash(git check-ignore *)",
+      "Bash(git ls-tree *)",
+      "Bash(npm ls *)",
+      "Bash(node -e \"const r=require\\('eslint-plugin-react'\\); console.log\\(Object.keys\\(r.configs\\)\\); console.log\\(Object.keys\\(r.configs.flat || {}\\)\\);\")",
+      "Bash(node -e ' *)",
+      "Bash(npm test *)"
+    ]
+  }
+}

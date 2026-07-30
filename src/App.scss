@@ -12,31 +12,3 @@ main {
   display: flex;
   flex-direction: column;
 }
-
-.head-text {
-  font-size: 2.75rem;
-  font-weight: 800;
-  text-align: center;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-
-  span {
-    color: var(--accent-light);
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 2rem;
-  }
-}
-
-.p-text {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.bold-text {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}

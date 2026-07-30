@@ -61,9 +61,15 @@
         height: 10px;
         border-radius: 50%;
 
-        &.dot-red { background-color: #ff5f56; }
-        &.dot-yellow { background-color: #ffbd2e; }
-        &.dot-green { background-color: #27c93f; }
+        &.dot-red {
+          background-color: #ff5f56;
+        }
+        &.dot-yellow {
+          background-color: #ffbd2e;
+        }
+        &.dot-green {
+          background-color: #27c93f;
+        }
       }
     }
 
@@ -205,8 +211,12 @@
 }
 
 @keyframes spinCpu {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes fadeInLine {
@@ -219,4 +229,3 @@
     transform: translateY(0);
   }
 }
-

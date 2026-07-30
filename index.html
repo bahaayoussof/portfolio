@@ -4,8 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Fonts: preconnect + stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+    />
+
     <!-- SEO -->
-    <title>Bahaa Youssof &mdash; Frontend Engineer</title>
+    <title>Bahaa Youssof — Frontend Engineer</title>
     <meta
       name="description"
       content="Frontend Engineer specializing in React, TypeScript, and high-performance web interfaces. 5+ years building SaaS and FinTech applications."
@@ -24,6 +32,9 @@
       content="Frontend Engineer specializing in React, TypeScript, and high-performance web interfaces."
     />
     <meta property="og:url" content="https://bahaayoussof.com" />
+    <meta property="og:image" content="https://bahaayoussof.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -32,9 +43,21 @@
       name="twitter:description"
       content="Frontend Engineer specializing in React, TypeScript, and high-performance web interfaces."
     />
+    <meta name="twitter:image" content="https://bahaayoussof.com/og-image.png" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Set saved theme before first paint to avoid a dark->light flash on load -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          if (saved === "light") document.documentElement.setAttribute("data-theme", "light");
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

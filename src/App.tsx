@@ -19,9 +19,15 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <main>
             <Header />
-            <Work />
-            <Experience />
-            <Footer />
+            <Suspense fallback={null}>
+              <Work />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Experience />
+            </Suspense>
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
           </main>
         </Suspense>
         <Toaster position="bottom-right" />

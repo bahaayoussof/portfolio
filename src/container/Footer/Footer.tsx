@@ -11,15 +11,14 @@ const Footer = () => {
         {/* Contact Hero Banner */}
         <div className="footer-hero-banner">
           <div className="connect-badge">
-            <span>LET'S CONNECT</span>
+            <span>LET&apos;S CONNECT</span>
           </div>
           <h2 className="connect-title">
             Building a new digital product or scaling an interface?
           </h2>
           <p className="connect-subtitle">
-            I'm always open to discussing new opportunities, interesting
-            projects, or just having a chat about technology and development.
-            Feel free to reach out!
+            I&apos;m always open to discussing new opportunities, interesting projects, or just
+            having a chat about technology and development. Feel free to reach out!
           </p>
 
           <a href="mailto:bahaayoussof@gmail.com" className="email-direct-chip">
@@ -64,7 +63,7 @@ const Footer = () => {
         </div>
 
         <div className="copy-right">
-          <span>© {new Date().getFullYear()} Bahaa Youssof</span>
+          <p>© {new Date().getFullYear()} Bahaa Youssof - All rights reserved</p>
         </div>
       </div>
     </footer>
@@ -72,4 +71,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

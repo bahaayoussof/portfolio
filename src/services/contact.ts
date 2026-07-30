@@ -1,11 +1,7 @@
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export interface ContactFormValues {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+import type { ContactFormValues } from "@/shared/contactValidation";
+export type { ContactFormValues };
 
 export interface ContactSuccessResponse {
   ok: true;

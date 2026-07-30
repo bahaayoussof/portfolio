@@ -1,59 +1,17 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { IconSend } from "@tabler/icons-react";
-import Toastify from "@/components/Toastify";
-import { submitContact, type ContactFormValues } from "@/services/contact";
+import { showToast } from "@/utils/toast";
+import { submitContact } from "@/services/contact";
+import {
+  validateContactField,
+  validateContactForm,
+  type ContactField as FormField,
+  type ContactFormValues,
+} from "@/shared/contactValidation";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type FormField = keyof ContactFormValues;
-
-interface FieldError {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
-
-// ─── Validation ───────────────────────────────────────────────────────────────
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function validateField(field: FormField, value: string): string {
-  const v = value.trim();
-  switch (field) {
-    case "name":
-      if (!v) return "Name is required.";
-      if (v.length < 2) return "Name must be at least 2 characters.";
-      if (v.length > 100) return "Name must be at most 100 characters.";
-      return "";
-    case "email":
-      if (!v) return "Email is required.";
-      if (!EMAIL_RE.test(v)) return "Please enter a valid email address.";
-      if (v.length > 254) return "Email is too long.";
-      return "";
-    case "subject":
-      if (!v) return "Subject is required.";
-      if (v.length < 2) return "Subject must be at least 2 characters.";
-      if (v.length > 150) return "Subject must be at most 150 characters.";
-      return "";
-    case "message":
-      if (!v) return "Message is required.";
-      if (v.length < 10) return "Message must be at least 10 characters.";
-      if (v.length > 5000) return "Message must be at most 5000 characters.";
-      return "";
-    default:
-      return "";
-  }
-}
-
-function validateAll(values: ContactFormValues): FieldError {
-  return {
-    name: validateField("name", values.name),
-    email: validateField("email", values.email),
-    subject: validateField("subject", values.subject),
-    message: validateField("message", values.message),
-  };
-}
+type FieldError = Partial<Record<FormField, string>>;
 
 function hasErrors(errors: FieldError): boolean {
   return Object.values(errors).some(Boolean);
@@ -73,32 +31,24 @@ const INITIAL_VALUES: ContactFormValues = {
 const ContactForm = () => {
   const [values, setValues] = useState<ContactFormValues>(INITIAL_VALUES);
   const [errors, setErrors] = useState<FieldError>({});
-  const [touched, setTouched] = useState<Partial<Record<FormField, boolean>>>(
-    {},
-  );
+  const [touched, setTouched] = useState<Partial<Record<FormField, boolean>>>({});
   const [loading, setLoading] = useState(false);
 
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target as { name: FormField; value: string };
-      setValues((prev) => ({ ...prev, [name]: value }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target as { name: FormField; value: string };
+    setValues((prev) => ({ ...prev, [name]: value }));
 
-      // Live-validate only after the user has touched the field
-      if (touched[name]) {
-        setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
-      }
-    },
-    [touched],
-  );
+    // Live-validate only after the user has touched the field
+    if (touched[name]) {
+      setErrors((prev) => ({ ...prev, [name]: validateContactField(name, value) }));
+    }
+  };
 
-  const handleBlur = useCallback(
-    (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target as { name: FormField; value: string };
-      setTouched((prev) => ({ ...prev, [name]: true }));
-      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
-    },
-    [],
-  );
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target as { name: FormField; value: string };
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateContactField(name, value) }));
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -112,15 +62,11 @@ const ContactForm = () => {
     };
     setTouched(allTouched);
 
-    const validationErrors = validateAll(values);
+    const validationErrors = validateContactForm(values);
     setErrors(validationErrors);
 
     if (hasErrors(validationErrors)) {
-      Toastify({
-        type: "error",
-        message: "Please fix the errors before sending.",
-        id: "contactForm",
-      });
+      showToast("error", "Please fix the errors before sending.", "contactForm");
       return;
     }
 
@@ -128,11 +74,11 @@ const ContactForm = () => {
 
     try {
       await submitContact(values);
-      Toastify({
-        type: "success",
-        message: "Message delivered successfully! I'll be in touch soon.",
-        id: "contactForm",
-      });
+      showToast(
+        "success",
+        "Message delivered successfully! I'll be in touch soon.",
+        "contactForm",
+      );
       setValues(INITIAL_VALUES);
       setErrors({});
       setTouched({});
@@ -141,14 +87,13 @@ const ContactForm = () => {
         err instanceof Error
           ? err.message
           : "Something went wrong. Please write to bahaayoussof@gmail.com";
-      Toastify({ type: "error", message, id: "contactForm" });
+      showToast("error", message, "contactForm");
     } finally {
       setLoading(false);
     }
   };
 
-  const fieldError = (field: FormField) =>
-    touched[field] ? errors[field] : undefined;
+  const fieldError = (field: FormField) => (touched[field] ? errors[field] : undefined);
 
   return (
     <form
@@ -178,9 +123,7 @@ const ContactForm = () => {
       />
 
       {/* Name */}
-      <div
-        className={`form-field ${fieldError("name") ? "form-field--error" : ""}`}
-      >
+      <div className={`form-field ${fieldError("name") ? "form-field--error" : ""}`}>
         <label htmlFor="contact-name">Name</label>
         <input
           id="contact-name"
@@ -195,9 +138,7 @@ const ContactForm = () => {
           maxLength={100}
           disabled={loading}
           className="form-input"
-          aria-describedby={
-            fieldError("name") ? "contact-name-error" : undefined
-          }
+          aria-describedby={fieldError("name") ? "contact-name-error" : undefined}
           aria-invalid={!!fieldError("name")}
         />
         {fieldError("name") && (
@@ -208,9 +149,7 @@ const ContactForm = () => {
       </div>
 
       {/* Email */}
-      <div
-        className={`form-field ${fieldError("email") ? "form-field--error" : ""}`}
-      >
+      <div className={`form-field ${fieldError("email") ? "form-field--error" : ""}`}>
         <label htmlFor="contact-email">Email</label>
         <input
           id="contact-email"
@@ -224,9 +163,7 @@ const ContactForm = () => {
           maxLength={254}
           disabled={loading}
           className="form-input"
-          aria-describedby={
-            fieldError("email") ? "contact-email-error" : undefined
-          }
+          aria-describedby={fieldError("email") ? "contact-email-error" : undefined}
           aria-invalid={!!fieldError("email")}
         />
         {fieldError("email") && (
@@ -237,9 +174,7 @@ const ContactForm = () => {
       </div>
 
       {/* Subject */}
-      <div
-        className={`form-field ${fieldError("subject") ? "form-field--error" : ""}`}
-      >
+      <div className={`form-field ${fieldError("subject") ? "form-field--error" : ""}`}>
         <label htmlFor="contact-subject">Subject</label>
         <input
           id="contact-subject"
@@ -254,9 +189,7 @@ const ContactForm = () => {
           maxLength={150}
           disabled={loading}
           className="form-input"
-          aria-describedby={
-            fieldError("subject") ? "contact-subject-error" : undefined
-          }
+          aria-describedby={fieldError("subject") ? "contact-subject-error" : undefined}
           aria-invalid={!!fieldError("subject")}
         />
         {fieldError("subject") && (
@@ -267,9 +200,7 @@ const ContactForm = () => {
       </div>
 
       {/* Message */}
-      <div
-        className={`form-field ${fieldError("message") ? "form-field--error" : ""}`}
-      >
+      <div className={`form-field ${fieldError("message") ? "form-field--error" : ""}`}>
         <label htmlFor="contact-message">Message</label>
         <textarea
           id="contact-message"
@@ -284,9 +215,7 @@ const ContactForm = () => {
           rows={4}
           disabled={loading}
           className="form-textarea"
-          aria-describedby={
-            fieldError("message") ? "contact-message-error" : undefined
-          }
+          aria-describedby={fieldError("message") ? "contact-message-error" : undefined}
           aria-invalid={!!fieldError("message")}
         />
         {fieldError("message") && (

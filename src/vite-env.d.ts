@@ -1,8 +1,8 @@
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly VITE_WEB3FORMS_ACCESS_KEY: string;
-}
+// No VITE_ env vars — contact API runs server-side via Resend
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface ImportMetaEnv {}
 
 interface ImportMeta {
   readonly env: ImportMetaEnv;

@@ -1,96 +1,6 @@
-import { images } from "./constants";
-import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconMail,
-  IconBrandLeetcode,
-} from "@tabler/icons-react";
-import type { CompanyExperience } from "./types/experience";
+import type { CompanyExperience } from "../types/experience";
 
-export const socialLinks = [
-  {
-    id: 1,
-    name: "Github",
-    icon: <IconBrandGithub size={20} />,
-    link: "https://github.com/bahaayoussof",
-  },
-  {
-    id: 2,
-    name: "Linkedin",
-    icon: <IconBrandLinkedin size={20} />,
-    link: "https://www.linkedin.com/in/bahaayoussof/",
-  },
-  {
-    id: 3,
-    name: "Email",
-    icon: <IconMail size={20} />,
-    link: "mailto:bahaayoussof@gmail.com",
-  },
-  {
-    id: 4,
-    name: "Leetcode",
-    icon: <IconBrandLeetcode size={20} />,
-    link: "https://leetcode.com/bahaayoussof/",
-  },
-];
-
-export const heroMetrics = [
-  {
-    value: "300K+",
-    label: "Daily Transactions Handled",
-    description: "High-scale Petrotrade POS & payment engine",
-  },
-  {
-    value: "4+",
-    label: "Years Professional Experience",
-    description: "Building production Web, Mobile & SaaS applications",
-  },
-  {
-    value: "1,500+",
-    label: "POS Services & Menus Managed",
-    description: "Dynamic menu, receipt & commission calculation engine",
-  },
-  {
-    value: "7+",
-    label: "Production Enterprise Systems",
-    description: "CIB Banking, Legal Platform, Damen Portal, Petrotrade & Tassel",
-  },
-];
-
-export const featuredTechnologies = [
-  {
-    name: "React & Next.js",
-    badge: "Core",
-    description: "SSR, App Router & Component Architecture",
-  },
-  {
-    name: "React Native",
-    badge: "Mobile",
-    description: "Cross-platform Corporate Banking & Android POS apps",
-  },
-  {
-    name: "TypeScript & JS",
-    badge: "Type Safety",
-    description: "Strict typing & dynamic DOM client features",
-  },
-  {
-    name: "Vue.js 3 & Pinia",
-    badge: "Reactive",
-    description: "Composition API & reactive state management",
-  },
-  {
-    name: "Redux & Zustand & TanStack",
-    badge: "State",
-    description: "Redux Toolkit, Zustand, TanStack Query & data caching",
-  },
-  {
-    name: "UI Systems",
-    badge: "Styling",
-    description: "Tailwind CSS, Material UI, SCSS & Bootstrap",
-  },
-];
-
-export const companyExperiences: CompanyExperience[] = [
+const rawCompanyExperiences: CompanyExperience[] = [
   {
     id: "company-azm",
     company: "AZM Squad",
@@ -209,13 +119,7 @@ export const companyExperiences: CompanyExperience[] = [
           "Fixed key issues in the Aggregator module, reducing error rates by 3% and increasing transaction speed.",
         impact:
           "Improved operational efficiency by 7% through enhanced merchant charging, withdrawal, and settlement processes.",
-        techStack: [
-          "React",
-          "JavaScript",
-          "Redux Toolkit",
-          "Material UI",
-          "REST APIs",
-        ],
+        techStack: ["React", "JavaScript", "Redux Toolkit", "Material UI", "REST APIs"],
       },
       {
         id: "proj-service-editor",
@@ -253,52 +157,8 @@ export const companyExperiences: CompanyExperience[] = [
   },
 ];
 
-export const flagshipProject = {
-  id: "resumind",
-  title: "Resumind — AI Resume Analyzer",
-  subtitle: "Enterprise AI-Powered Resume Scoring & Optimization Platform",
-  category: "Full-Stack SaaS / AI",
-  description:
-    "An intelligent application that analyzes resume structure, matches keywords against target job descriptions, and provides actionable feedback using modern AI models.",
-  architecture:
-    "Next.js App Router, Tailwind CSS, Supabase Auth & Database, OpenAI API Integration, Framer Motion.",
-  impact:
-    "Instant resume analysis under 2 seconds with key skill density visualization and automated bullet point recommendations.",
-  projectLink: "https://resumind-by.vercel.app/auth?next=/",
-  codeLink: "https://github.com/bahaayoussof/resumind",
-  imageUrl: images.resumind,
-  techStack: ["Next JS", "React JS", "Tailwind CSS", "AI Engine", "TypeScript"],
-  metrics: [
-    { label: "Scoring Speed", value: "< 2s" },
-    { label: "Analysis Accuracy", value: "94%" },
-    { label: "Tech Stack", value: "Next.js + AI" },
-  ],
-};
-
-export const studioProjects = [
-  {
-    id: "live-docs",
-    title: "Live-Docs",
-    category: "Real-Time Collaboration Platform",
-    description:
-      "Google Docs clone with real-time multi-user document editing, live cursor tracking, dynamic nested comments, and active presence indicators.",
-    projectLink: "https://live-docs-by.vercel.app",
-    codeLink: "https://github.com/bahaayoussof/live-doc",
-    imageUrl: images.liveDocs,
-    tags: ["Next JS", "Tailwind", "Liveblocks", "TypeScript"],
-    highlight:
-      "Real-time sync engine with WebSocket fallback and presence tracking.",
-  },
-  {
-    id: "snapgram",
-    title: "Snapgram",
-    category: "Social Media Platform",
-    description:
-      "A modern social sharing web app featuring infinite feed scrolling, instant image uploads, post bookmarking, and interactive social feeds.",
-    projectLink: "https://snapgram-by.vercel.app/",
-    codeLink: "https://github.com/bahaayoussof/snapgram",
-    imageUrl: images.snapgram,
-    tags: ["React JS", "Tailwind", "Appwrite", "React Query"],
-    highlight: "Optimistic updates & infinite scrolling with TanStack Query.",
-  },
-];
+// Pre-reversed once at module load — newest project first — so components
+// don't re-reverse on every render.
+export const companyExperiences: CompanyExperience[] = rawCompanyExperiences.map(
+  (company) => ({ ...company, projects: [...company.projects].reverse() }),
+);

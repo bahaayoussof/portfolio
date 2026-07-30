@@ -39,8 +39,7 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          Building{" "}
-          <span className="text-gradient">high-quality interfaces</span> &
+          Building <span className="text-gradient">high-quality interfaces</span> &
           scalable web applications.
         </motion.h1>
 
@@ -51,9 +50,9 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Specializing in React, Next.js, TypeScript, and React Native.
-          Engineering high-concurrency SaaS applications, legal tech platforms,
-          and interactive POS telemetry systems.
+          Specializing in React, Next.js, TypeScript, and React Native. Engineering
+          high-concurrency SaaS applications, legal tech platforms, and interactive POS
+          telemetry systems.
         </motion.p>
 
         {/* Action Buttons & Social Links */}
@@ -66,7 +65,7 @@ const Header = () => {
           <a
             href="https://docs.google.com/document/d/1sFB48YhA56EVV90pBLlWGts-1O71cSAvuKz-9I2RZsw/edit?usp=sharing"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="btn-hero-primary"
           >
             <span>Resume</span>
@@ -86,7 +85,7 @@ const Header = () => {
                   key={social.id}
                   href={social.link}
                   target={isMail ? undefined : "_blank"}
-                  rel={isMail ? undefined : "noreferrer"}
+                  rel={isMail ? undefined : "noopener noreferrer"}
                   className="hero-social-link"
                   aria-label={social.name}
                 >
@@ -152,30 +151,30 @@ const Header = () => {
                     <span className="ln">02</span>
                     <span className="code-line indent">
                       <span className="prop">name</span>:{" "}
-                      <span className="str">"Bahaa Youssof"</span>,
+                      <span className="str">&quot;Bahaa Youssof&quot;</span>,
                     </span>
                   </div>
                   <div className="code-row">
                     <span className="ln">03</span>
                     <span className="code-line indent">
                       <span className="prop">role</span>:{" "}
-                      <span className="str">"Frontend Engineer"</span>,
+                      <span className="str">&quot;Frontend Engineer&quot;</span>,
                     </span>
                   </div>
                   <div className="code-row">
                     <span className="ln">04</span>
                     <span className="code-line indent">
                       <span className="prop">currentRole</span>:{" "}
-                      <span className="str">"Frontend Engineer @ AZM Squad"</span>,
+                      <span className="str">&quot;Frontend Engineer @ AZM Squad&quot;</span>,
                     </span>
                   </div>
                   <div className="code-row">
                     <span className="ln">05</span>
                     <span className="code-line indent">
                       <span className="prop">specialties</span>: [
-                      <span className="str">"Legal Tech"</span>,{" "}
-                      <span className="str">"Enterprise POS"</span>,{" "}
-                      <span className="str">"Real-Time Sync"</span>],
+                      <span className="str">&quot;Legal Tech&quot;</span>,{" "}
+                      <span className="str">&quot;Enterprise POS&quot;</span>,{" "}
+                      <span className="str">&quot;Real-Time Sync&quot;</span>],
                     </span>
                   </div>
                   <div className="code-row">
@@ -183,7 +182,7 @@ const Header = () => {
                     <span className="code-line indent">
                       <span className="prop">status</span>:{" "}
                       <span className="str">
-                        "Building high-scale SaaS web applications"
+                        &quot;Building high-scale SaaS web applications&quot;
                       </span>
                     </span>
                   </div>
@@ -195,8 +194,8 @@ const Header = () => {
               </div>
             ) : (
               <div className="hud-stats-grid">
-                {heroMetrics.map((metric, index) => (
-                  <div key={`metric-${index}`} className="hud-stat-tile">
+                {heroMetrics.map((metric) => (
+                  <div key={metric.label} className="hud-stat-tile">
                     <div className="stat-top">
                       <span className="stat-value">{metric.value}</span>
                       <span className="stat-live-badge">ONLINE</span>
@@ -218,8 +217,8 @@ const Header = () => {
 
             {/* Tech Matrix Chips */}
             <div className="hud-tech-matrix">
-              {featuredTechnologies.map((tech, idx) => (
-                <div key={`tech-${idx}`} className="hud-tech-chip">
+              {featuredTechnologies.map((tech) => (
+                <div key={tech.name} className="hud-tech-chip">
                   <span className="chip-badge">{tech.badge}</span>
                   <span className="chip-name">{tech.name}</span>
                 </div>

@@ -33,4 +33,3 @@ export interface CompanyExperience {
   featuredProject?: FeaturedProject;
   projects: ClientProject[];
 }
-
