@@ -25,6 +25,21 @@ export const flagshipProject: FlagshipProject = {
 
 export const studioProjects: StudioProject[] = [
   {
+    id: "customer-support-crm",
+    title: "Customer Support CRM",
+    category: "Full-Stack Customer Support Platform",
+    description:
+      "A multilingual customer support CRM that unifies ticket management, customer operations, team workflows, realtime conversations, SLA tracking, reporting, and omnichannel support across Web, Email, WhatsApp, SMS, AI assistance, and Live Chat.",
+    projectLink: "",
+    codeLink: "https://github.com/bahaayoussof/crm",
+    imageUrl: "https://opengraph.githubassets.com/1/bahaayoussof/crm",
+    imageWidth: 1280,
+    imageHeight: 640,
+    tags: ["React 19", "TypeScript", "Express", "PostgreSQL", "Prisma", "TanStack Query"],
+    highlight:
+      "Role-based support operations with realtime SSE, team-scoped ticket routing, SLA automation, and unified Email, WhatsApp, SMS, AI, and Live Chat workflows.",
+  },
+  {
     id: "live-docs",
     title: "Live-Docs",
     category: "Real-Time Collaboration Platform",
