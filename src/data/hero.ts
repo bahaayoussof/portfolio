@@ -7,9 +7,9 @@ export const heroMetrics: HeroMetric[] = [
     description: "High-scale Petrotrade POS & payment engine",
   },
   {
-    value: "4+",
+    value: "5",
     label: "Years Professional Experience",
-    description: "Building production Web, Mobile & SaaS applications",
+    description: "Building production Web, Mobile & Full-Stack applications",
   },
   {
     value: "1,500+",
@@ -17,41 +17,41 @@ export const heroMetrics: HeroMetric[] = [
     description: "Dynamic menu, receipt & commission calculation engine",
   },
   {
-    value: "7+",
-    label: "Production Enterprise Systems",
-    description: "CIB Banking, Legal Platform, Damen Portal, Petrotrade & Tassel",
+    value: "20+",
+    label: "Reusable UI Components",
+    description: "Documented ASP.NET Core MVC component system",
   },
 ];
 
 export const featuredTechnologies: FeaturedTechnology[] = [
   {
-    name: "React & Next.js",
+    name: "React & TypeScript",
     badge: "Core",
-    description: "SSR, App Router & Component Architecture",
+    description: "Scalable frontend architecture & production UI systems",
   },
   {
-    name: "React Native",
-    badge: "Mobile",
-    description: "Cross-platform Corporate Banking & Android POS apps",
+    name: "React Native & Vue 3",
+    badge: "Web & Mobile",
+    description: "Cross-platform banking, POS & real estate applications",
   },
   {
-    name: "TypeScript & JS",
-    badge: "Type Safety",
-    description: "Strict typing & dynamic DOM client features",
+    name: "TanStack & Redux",
+    badge: "State & Data",
+    description: "TanStack Query, Redux Toolkit, Zustand & server-state workflows",
   },
   {
-    name: "Vue.js 3 & Pinia",
-    badge: "Reactive",
-    description: "Composition API & reactive state management",
+    name: "Node.js & Express",
+    badge: "Full Stack",
+    description: "REST APIs, JWT, RBAC, webhooks & realtime workflows",
   },
   {
-    name: "Redux & Zustand & TanStack",
-    badge: "State",
-    description: "Redux Toolkit, Zustand, TanStack Query & data caching",
+    name: "PostgreSQL & Prisma",
+    badge: "Data",
+    description: "Relational data modeling, ORM workflows & migrations",
   },
   {
-    name: "UI Systems",
-    badge: "Styling",
-    description: "Tailwind CSS, Material UI, SCSS & Bootstrap",
+    name: "AI-Assisted Engineering",
+    badge: "AI",
+    description: "Implementation, refactoring, debugging, documentation & AI support flows",
   },
 ];

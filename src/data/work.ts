@@ -4,14 +4,14 @@ import type { FlagshipProject, StudioProject } from "../types/work";
 export const flagshipProject: FlagshipProject = {
   id: "customer-support-crm",
   title: "Customer Support CRM",
-  subtitle: "Omnichannel Customer Support & Operations Platform",
+  subtitle: "Omnichannel Customer Support & AI Operations Platform",
   category: "Full-Stack Customer Support Platform",
   description:
-    "A multilingual customer support platform that unifies ticket management, customer operations, team workflows, realtime conversations, SLA tracking, reporting, and support channels across Web, Email, WhatsApp, SMS, AI assistance, and Live Chat.",
+    "A multilingual full-stack customer support platform that unifies ticket management, customer operations, team workflows, SLA tracking, realtime messaging, reporting, and communication across Web, Email, SMS, WhatsApp, Live Chat, and AI-powered support.",
   architecture:
-    "React 19 and TypeScript frontend with TanStack Query, Express backend, Prisma ORM, PostgreSQL, JWT authentication, role-based and team-scoped authorization, realtime SSE events, and adapter-based integrations for Email, WhatsApp, SMS, AI, and storage providers.",
+    "React 19 and TypeScript frontend with TanStack Query, Node.js and Express APIs, Prisma ORM, PostgreSQL, JWT authentication, RBAC and team-scoped authorization, realtime SSE events, secure webhooks, and adapter-based integrations for Email, WhatsApp, SMS, AI, and storage providers.",
   impact:
-    "Built a complete role-aware support system where every channel converges into one ticket lifecycle with team routing, SLA automation, realtime updates, and reporting.",
+    "Built a role-aware support system with AI-generated ticket summaries, suggested replies, knowledge-base-grounded assistance, team routing, SLA automation, realtime updates, and unified omnichannel ticket workflows.",
   projectLink: "https://crm-bahaa.vercel.app/",
   codeLink: "https://github.com/bahaayoussof/crm",
   imageUrl: images.crm,
@@ -20,6 +20,7 @@ export const flagshipProject: FlagshipProject = {
   techStack: [
     "React 19",
     "TypeScript",
+    "Node.js",
     "Express",
     "PostgreSQL",
     "Prisma",

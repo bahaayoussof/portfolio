@@ -4,7 +4,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
   {
     id: "company-azm",
     company: "AZM Squad",
-    role: "Frontend Engineer",
+    role: "Senior Software Developer",
     overallPeriod: "Oct 2024 – Present",
     location: "Remote",
     isCurrent: true,
@@ -15,7 +15,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
       statusBadge: "Production / Internal Tool",
       tagline: "Enterprise ASP.NET MVC UI Components Library",
       description:
-        "Clean, fast, and accessible ASP.NET MVC Razor components. Engineered with native Razor helpers, zero-friction ViewModel bindings, and seamless Bootstrap 5 integration across enterprise applications.",
+        "An internal documentation platform for 20+ reusable ASP.NET Core MVC components with API references, examples, code snippets, ViewModel guidance, and AI-assisted development workflows.",
       techStack: [
         "ASP.NET Core MVC",
         "JavaScript",
@@ -25,7 +25,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
       ],
       liveLink: "https://momah-doc.bahaa.qzz.io",
       metrics: [
-        "19+ UI Components",
+        "20+ UI Components",
         "4 Categories",
         "100% Razor Native",
         "Code Examples",
@@ -56,7 +56,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
         id: "proj-tassel",
         projectName: "Tassel",
         tagline:
-          "A real estate platform, designed to streamline property listings and managment for market users.",
+          "A real estate platform designed to streamline property listings and management for market users.",
         whatWasBuilt:
           "Improved the codebase by adding feature updates, making it more responsive, and refining user interface elements to make the platform easier to use.",
         engineeringChallenges:
@@ -72,15 +72,15 @@ const rawCompanyExperiences: CompanyExperience[] = [
         tagline:
           "Digitizes legal admin, streamlines committee requests, and manages legal forms.",
         whatWasBuilt:
-          "Refactored frontend codebases into modular ASP.NET Core Partial Views, streamlining the development of complex UI components like file uploaders and dynamic forms.",
+          "Refactored frontend features into reusable ASP.NET Core MVC components, improving maintainability and consistency across complex forms and workflows.",
         engineeringChallenges:
-          "Engineered dynamic client-side features using JavaScript and jQuery, including drag-and-drop validation and interactive table management, to ensure robust data integrity and a seamless user experience.",
+          "Built an internal documentation platform for 20+ reusable components with API references, examples, and code snippets.",
         impact:
-          "Ensured robust data integrity, streamlined committee decision requests, and eliminated manual paper submission delays.",
+          "Used AI-assisted development workflows to accelerate UI implementation, component refactoring, debugging, documentation, and repetitive engineering tasks.",
         techStack: [
           "JavaScript",
-          "ASP.NET Core",
-          "Partial Views",
+          "ASP.NET Core MVC",
+          "Razor Partial Views",
           "Sass",
           "Bootstrap",
           "jQuery",
@@ -92,20 +92,20 @@ const rawCompanyExperiences: CompanyExperience[] = [
     id: "company-damen",
     company: "Damen E-Payment",
     role: "Software Developer",
-    overallPeriod: "May 2022 – Oct 2024",
+    overallPeriod: "May 2021 – Oct 2024",
     location: "Cairo, Egypt",
     projects: [
       {
         id: "proj-damen-portal",
         projectName: "Damen Portal",
         tagline:
-          "A business-to-business transaction monitoring solution that improves transparency and reduces audit time.",
+          "A B2B transaction monitoring solution that improves transparency and reduces audit time.",
         whatWasBuilt:
-          "Developed advanced transaction management and user management modules to enhance platform functionality.",
+          "Developed transaction and user management modules to enhance platform functionality.",
         engineeringChallenges:
-          "Designing streamlined administrative workflows and real-time transaction monitoring interfaces.",
+          "Improved workflows and interfaces to reduce administrative overhead and improve usability.",
         impact:
-          "Improved user satisfaction by 15% and reduced administrative overhead by 10% through optimized workflows and interfaces.",
+          "Enhanced transaction visibility and monitoring to support faster operational review and auditing.",
         techStack: ["React", "JavaScript", "Redux", "Material UI", "SCSS"],
       },
       {
@@ -114,7 +114,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
         tagline:
           "A management platform for aggregators and merchants, serving operations and financial teams.",
         whatWasBuilt:
-          "Introduced multi-account functionality and self-charging features, saving 15 hours weekly and increasing merchant transaction availability by 100%.",
+          "Added multi-account and self-charging functionality while resolving key Aggregator module issues.",
         engineeringChallenges:
           "Fixed key issues in the Aggregator module, reducing error rates by 3% and increasing transaction speed.",
         impact:
@@ -125,7 +125,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
         id: "proj-service-editor",
         projectName: "Service Editor",
         tagline:
-          "A platform designed to create pos menu, receipt templates, and financial calculations.",
+          "A platform designed to create POS menus, receipt templates, and financial calculations.",
         whatWasBuilt:
           "Built dynamic menu and receipt modules to manage 1500+ services more efficiently.",
         engineeringChallenges:
@@ -142,7 +142,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
         whatWasBuilt:
           "Redesigned system architecture for a specialized POS app, improving scalability, maintainability, and readability.",
         engineeringChallenges:
-          "Enhanced app to handle 300k daily transactions, reducing processing time by 10% and increasing system reliability.",
+          "Enhanced the app to handle 300k daily transactions, reducing processing time by 10% and increasing system reliability.",
         impact:
           "Reduced error rates by 5%, boosted team productivity by 10%, and optimized fetch request speed by 5%.",
         techStack: [
