@@ -2,42 +2,51 @@ import { images } from "../constants";
 import type { FlagshipProject, StudioProject } from "../types/work";
 
 export const flagshipProject: FlagshipProject = {
-  id: "resumind",
-  title: "Resumind — AI Resume Analyzer",
-  subtitle: "Enterprise AI-Powered Resume Scoring & Optimization Platform",
-  category: "Full-Stack SaaS / AI",
+  id: "customer-support-crm",
+  title: "Customer Support CRM",
+  subtitle: "Omnichannel Customer Support & Operations Platform",
+  category: "Full-Stack Customer Support Platform",
   description:
-    "An intelligent application that analyzes resume structure, matches keywords against target job descriptions, and provides actionable feedback using modern AI models.",
+    "A multilingual customer support platform that unifies ticket management, customer operations, team workflows, realtime conversations, SLA tracking, reporting, and support channels across Web, Email, WhatsApp, SMS, AI assistance, and Live Chat.",
   architecture:
-    "Next.js App Router, Tailwind CSS, Supabase Auth & Database, OpenAI API Integration, Framer Motion.",
+    "React 19 and TypeScript frontend with TanStack Query, Express backend, Prisma ORM, PostgreSQL, JWT authentication, role-based and team-scoped authorization, realtime SSE events, and adapter-based integrations for Email, WhatsApp, SMS, AI, and storage providers.",
   impact:
-    "Instant resume analysis under 2 seconds with key skill density visualization and automated bullet point recommendations.",
-  projectLink: "https://resumind-by.vercel.app/auth?next=/",
-  codeLink: "https://github.com/bahaayoussof/resumind",
-  imageUrl: images.resumind,
-  techStack: ["Next JS", "React JS", "Tailwind CSS", "AI Engine", "TypeScript"],
+    "Built a complete role-aware support system where every channel converges into one ticket lifecycle with team routing, SLA automation, realtime updates, and reporting.",
+  projectLink: "https://crm-bahaa.vercel.app/",
+  codeLink: "https://github.com/bahaayoussof/crm",
+  imageUrl: images.crm,
+  imageWidth: 1672,
+  imageHeight: 941,
+  techStack: [
+    "React 19",
+    "TypeScript",
+    "Express",
+    "PostgreSQL",
+    "Prisma",
+    "TanStack Query",
+  ],
   metrics: [
-    { label: "Scoring Speed", value: "< 2s" },
-    { label: "Analysis Accuracy", value: "94%" },
-    { label: "Tech Stack", value: "Next.js + AI" },
+    { label: "User Roles", value: "4 Roles" },
+    { label: "Support Channels", value: "6 Channels" },
+    { label: "Architecture", value: "Full Stack" },
   ],
 };
 
 export const studioProjects: StudioProject[] = [
   {
-    id: "customer-support-crm",
-    title: "Customer Support CRM",
-    category: "Full-Stack Customer Support Platform",
+    id: "resumind",
+    title: "Resumind — AI Resume Analyzer",
+    category: "Full-Stack SaaS / AI",
     description:
-      "A multilingual customer support CRM that unifies ticket management, customer operations, team workflows, realtime conversations, SLA tracking, reporting, and omnichannel support across Web, Email, WhatsApp, SMS, AI assistance, and Live Chat.",
-    projectLink: "",
-    codeLink: "https://github.com/bahaayoussof/crm",
-    imageUrl: "https://opengraph.githubassets.com/1/bahaayoussof/crm",
-    imageWidth: 1280,
-    imageHeight: 640,
-    tags: ["React 19", "TypeScript", "Express", "PostgreSQL", "Prisma", "TanStack Query"],
+      "An AI-powered resume analysis platform that evaluates resume structure, matches skills and keywords against job descriptions, and provides actionable optimization feedback.",
+    projectLink: "https://resumind-by.vercel.app/auth?next=/",
+    codeLink: "https://github.com/bahaayoussof/resumind",
+    imageUrl: images.resumind,
+    imageWidth: 1225,
+    imageHeight: 1268,
+    tags: ["Next JS", "React JS", "Tailwind CSS", "AI Engine", "TypeScript"],
     highlight:
-      "Role-based support operations with realtime SSE, team-scoped ticket routing, SLA automation, and unified Email, WhatsApp, SMS, AI, and Live Chat workflows.",
+      "AI-assisted resume scoring, keyword analysis, skill density visualization, and actionable optimization feedback.",
   },
   {
     id: "live-docs",

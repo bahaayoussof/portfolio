@@ -10,6 +10,17 @@ import { flagshipProject, studioProjects } from "../../data";
 
 import "./Work.scss";
 
+const getMockupLabel = () => {
+  if (flagshipProject.projectLink) {
+    try {
+      return new URL(flagshipProject.projectLink).hostname;
+    } catch {
+      return flagshipProject.projectLink;
+    }
+  }
+  return flagshipProject.title;
+};
+
 const Work = () => {
   const [activeTab, setActiveTab] = useState("overview");
 
@@ -40,13 +51,16 @@ const Work = () => {
             <span>FLAGSHIP PROJECT</span>
           </div>
 
-          <div className="flagship-grid">
+          {/* Full-width identity header */}
+          <div className="flagship-header">
+            <span className="flagship-category">{flagshipProject.category}</span>
+            <h3 className="flagship-title">{flagshipProject.title}</h3>
+            <p className="flagship-desc">{flagshipProject.description}</p>
+          </div>
+
+          <div className="flagship-main">
             {/* Left: Product Info */}
             <div className="flagship-info">
-              <span className="flagship-category">{flagshipProject.category}</span>
-              <h3 className="flagship-title">{flagshipProject.title}</h3>
-              <p className="flagship-desc">{flagshipProject.description}</p>
-
               {/* Sub-nav Tabs */}
               <div className="flagship-tabs">
                 <button
@@ -103,7 +117,7 @@ const Work = () => {
                     rel="noopener noreferrer"
                     className="btn-live-demo"
                   >
-                    <span>Launch Application</span>
+                    <span>View Demo</span>
                     <IconArrowUpRight size={16} />
                   </a>
                 )}
@@ -127,7 +141,7 @@ const Work = () => {
                   <span className="dot yellow" />
                   <span className="dot green" />
                 </div>
-                <span className="mockup-url">https://resumind-by.vercel.app</span>
+                <span className="mockup-url">{getMockupLabel()}</span>
               </div>
               <div className="mockup-image-wrap">
                 <img
@@ -135,8 +149,8 @@ const Work = () => {
                   alt={flagshipProject.title}
                   loading="lazy"
                   decoding="async"
-                  width={1225}
-                  height={1268}
+                  width={flagshipProject.imageWidth}
+                  height={flagshipProject.imageHeight}
                 />
               </div>
             </div>

@@ -14,6 +14,8 @@ export interface FlagshipProject {
   projectLink: string;
   codeLink: string;
   imageUrl: string;
+  imageWidth: number;
+  imageHeight: number;
   techStack: string[];
   metrics: FlagshipMetric[];
 }
