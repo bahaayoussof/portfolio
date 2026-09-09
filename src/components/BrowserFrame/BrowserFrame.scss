@@ -1,0 +1,83 @@
+// UI-024 — shared browser-chrome shell. Callers add a context class for
+// outer sizing/shadow; everything below is the common shell.
+
+.browser-frame {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: #121215;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  &__chrome {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0.85rem;
+    background: #0b0b0d;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    box-sizing: border-box;
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+
+    &--red {
+      background: #ff5f56;
+    }
+    &--yellow {
+      background: #ffbd2e;
+    }
+    &--green {
+      background: #27c93f;
+    }
+  }
+
+  &__address {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 1;
+    min-width: 0;
+    padding: 0.2rem 0.65rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-2xs);
+    color: var(--text-muted);
+    max-width: 240px;
+  }
+
+  &__address-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--emerald-accent);
+  }
+
+  &__address-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+}

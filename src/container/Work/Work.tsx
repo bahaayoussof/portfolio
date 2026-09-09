@@ -7,6 +7,8 @@ import {
   IconCpu,
 } from "@tabler/icons-react";
 import { flagshipProject, studioProjects } from "../../data";
+import { BrowserFrame } from "../../components/BrowserFrame/BrowserFrame";
+import { ProjectShowcase } from "../../components/ProjectShowcase/ProjectShowcase";
 import {
   useReveal,
   useTabPanelMotion,
@@ -71,146 +73,141 @@ const Work = () => {
           viewport={{ once: true }}
           transition={rFlagship.transition}
         >
-          <div className="flagship-badge">
-            <IconSparkles size={14} />
-            <span>FLAGSHIP PROJECT</span>
-          </div>
+          <ProjectShowcase
+            className="flagship-showcase"
+            eyebrow={
+              <div className="flagship-badge">
+                <IconSparkles size={14} />
+                <span>FLAGSHIP PROJECT</span>
+              </div>
+            }
+            heading={
+              <>
+                <span className="flagship-category">{flagshipProject.category}</span>
+                <h3 className="flagship-title">{flagshipProject.title}</h3>
+                <p className="flagship-desc">{flagshipProject.description}</p>
+              </>
+            }
+            media={
+              <BrowserFrame url={getMockupLabel()} className="flagship-preview">
+                <div className="mockup-image-wrap">
+                  <img
+                    src={flagshipProject.imageUrl}
+                    alt={flagshipProject.title}
+                    loading="lazy"
+                    decoding="async"
+                    width={flagshipProject.imageWidth}
+                    height={flagshipProject.imageHeight}
+                  />
+                </div>
+              </BrowserFrame>
+            }
+            info={
+              <>
+                {/* Sub-nav Tabs — UI-013 */}
+                <div className="flagship-tabs" role="tablist" aria-label="Project detail">
+                  {FLAGSHIP_TABS.map((tab, index) => {
+                    const selected = activeTab === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        ref={(el) => {
+                          tabRefs.current[index] = el;
+                        }}
+                        id={`flagship-tab-${tab.id}`}
+                        role="tab"
+                        type="button"
+                        aria-selected={selected}
+                        aria-controls={`flagship-panel-${tab.id}`}
+                        tabIndex={selected ? 0 : -1}
+                        className={`tab-btn ${selected ? "active" : ""}`}
+                        onClick={() => setActiveTab(tab.id)}
+                        onKeyDown={(event) => onTabKeyDown(event, index)}
+                      >
+                        {tab.label}
+                        {selected && !panelMotion.reduce && (
+                          <motion.span
+                            className="tab-underline"
+                            layoutId="flagship-tab-underline"
+                            transition={springPhysical}
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
 
-          {/* Full-width identity header */}
-          <div className="flagship-header">
-            <span className="flagship-category">{flagshipProject.category}</span>
-            <h3 className="flagship-title">{flagshipProject.title}</h3>
-            <p className="flagship-desc">{flagshipProject.description}</p>
-          </div>
-
-          <div className="flagship-main">
-            {/* Left: Product Info */}
-            <div className="flagship-info">
-              {/* Sub-nav Tabs — UI-013 */}
-              <div className="flagship-tabs" role="tablist" aria-label="Project detail">
-                {FLAGSHIP_TABS.map((tab, index) => {
-                  const selected = activeTab === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      ref={(el) => {
-                        tabRefs.current[index] = el;
-                      }}
-                      id={`flagship-tab-${tab.id}`}
-                      role="tab"
-                      type="button"
-                      aria-selected={selected}
-                      aria-controls={`flagship-panel-${tab.id}`}
-                      tabIndex={selected ? 0 : -1}
-                      className={`tab-btn ${selected ? "active" : ""}`}
-                      onClick={() => setActiveTab(tab.id)}
-                      onKeyDown={(event) => onTabKeyDown(event, index)}
+                <div className="flagship-tab-content">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.p
+                      key={activeTab}
+                      id={`flagship-panel-${activeTab}`}
+                      role="tabpanel"
+                      aria-labelledby={`flagship-tab-${activeTab}`}
+                      className="tab-text"
+                      initial={panelMotion.initial}
+                      animate={panelMotion.animate}
+                      exit={panelMotion.exit}
+                      transition={panelMotion.transition}
                     >
-                      {tab.label}
-                      {selected && !panelMotion.reduce && (
-                        <motion.span
-                          className="tab-underline"
-                          layoutId="flagship-tab-underline"
-                          transition={springPhysical}
-                        />
+                      {activeTab === "overview" ? (
+                        <>
+                          <strong>Impact:</strong> {flagshipProject.impact}
+                        </>
+                      ) : (
+                        <>
+                          <strong>Architecture:</strong> {flagshipProject.architecture}
+                        </>
                       )}
-                    </button>
-                  );
-                })}
-              </div>
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
 
-              <div className="flagship-tab-content">
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.p
-                    key={activeTab}
-                    id={`flagship-panel-${activeTab}`}
-                    role="tabpanel"
-                    aria-labelledby={`flagship-tab-${activeTab}`}
-                    className="tab-text"
-                    initial={panelMotion.initial}
-                    animate={panelMotion.animate}
-                    exit={panelMotion.exit}
-                    transition={panelMotion.transition}
-                  >
-                    {activeTab === "overview" ? (
-                      <>
-                        <strong>Impact:</strong> {flagshipProject.impact}
-                      </>
-                    ) : (
-                      <>
-                        <strong>Architecture:</strong> {flagshipProject.architecture}
-                      </>
-                    )}
-                  </motion.p>
-                </AnimatePresence>
-              </div>
+                {/* Impact Metrics Row */}
+                <div className="flagship-metrics">
+                  {flagshipProject.metrics.map((m) => (
+                    <div key={m.label} className="metric-box">
+                      <span className="box-value">{m.value}</span>
+                      <span className="box-label">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
 
-              {/* Impact Metrics Row */}
-              <div className="flagship-metrics">
-                {flagshipProject.metrics.map((m) => (
-                  <div key={m.label} className="metric-box">
-                    <span className="box-value">{m.value}</span>
-                    <span className="box-label">{m.label}</span>
-                  </div>
-                ))}
-              </div>
+                {/* Tech Stack Badges */}
+                <div className="flagship-tech-list">
+                  {flagshipProject.techStack.map((tech) => (
+                    <span key={tech} className="tech-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-              {/* Tech Stack Badges */}
-              <div className="flagship-tech-list">
-                {flagshipProject.techStack.map((tech) => (
-                  <span key={tech} className="tech-tag">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flagship-actions">
-                {flagshipProject.projectLink && (
+                {/* Action Buttons */}
+                <div className="flagship-actions">
+                  {flagshipProject.projectLink && (
+                    <a
+                      href={flagshipProject.projectLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-live-demo"
+                    >
+                      <span>View Demo</span>
+                      <IconArrowUpRight size={16} />
+                    </a>
+                  )}
                   <a
-                    href={flagshipProject.projectLink}
+                    href={flagshipProject.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-live-demo"
+                    className="btn-code-link"
                   >
-                    <span>View Demo</span>
-                    <IconArrowUpRight size={16} />
+                    <IconBrandGithub size={18} />
+                    <span>Repository</span>
                   </a>
-                )}
-                <a
-                  href={flagshipProject.codeLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-code-link"
-                >
-                  <IconBrandGithub size={18} />
-                  <span>Repository</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Right: Immersive Screenshot */}
-            <div className="flagship-preview">
-              <div className="browser-mockup-header">
-                <div className="mockup-dots">
-                  <span className="dot red" />
-                  <span className="dot yellow" />
-                  <span className="dot green" />
                 </div>
-                <span className="mockup-url">{getMockupLabel()}</span>
-              </div>
-              <div className="mockup-image-wrap">
-                <img
-                  src={flagshipProject.imageUrl}
-                  alt={flagshipProject.title}
-                  loading="lazy"
-                  decoding="async"
-                  width={flagshipProject.imageWidth}
-                  height={flagshipProject.imageHeight}
-                />
-              </div>
-            </div>
-          </div>
+              </>
+            }
+          />
         </motion.div>
 
         {/* 2. Secondary Curated Studio Projects */}

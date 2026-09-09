@@ -36,12 +36,12 @@
 
 .loader-hud-card {
   width: 100%;
-  max-width: 520px;
+  max-width: 420px;
   background: var(--card-bg);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  /* UI-012 — floating surface (loader redesign itself stays deferred). */
+  /* UI-012 — floating surface. */
   box-shadow: var(--elevation-3);
   position: relative;
   z-index: 1;
@@ -83,14 +83,6 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: var(--text-secondary);
-
-      .status-indicator {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-color: var(--emerald-accent);
-        box-shadow: 0 0 8px var(--emerald-accent);
-      }
     }
 
     .hud-tag {
@@ -112,7 +104,7 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.1rem;
 
     .hud-cmd-row {
       display: flex;
@@ -130,105 +122,75 @@
         color: var(--text-primary);
         font-weight: 600;
       }
-
-      .cmd-flag {
-        color: var(--text-muted);
-        font-size: 0.75rem;
-      }
     }
 
-    .progress-section {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-
-      .progress-bar-track {
-        width: 100%;
-        height: 6px;
-        background: var(--surface);
-        border: 1px solid var(--surface-border);
-        border-radius: var(--radius-full);
-        overflow: hidden;
-      }
-
-      .progress-bar-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
-        border-radius: var(--radius-full);
-        transition: width 0.15s ease-out;
-        box-shadow: 0 0 12px var(--accent-glow);
-      }
-
-      .progress-meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-family: var(--font-mono);
-        font-size: 0.75rem;
-
-        .progress-percent {
-          font-weight: 800;
-          color: var(--text-primary);
-        }
-
-        .progress-status {
-          display: flex;
-          align-items: center;
-          gap: 0.35rem;
-          color: var(--emerald-accent);
-          font-weight: 600;
-
-          .icon-spin {
-            animation: spinCpu 1.5s linear infinite;
-          }
-        }
-      }
-    }
-
-    .hud-log-console {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 0.85rem 1rem;
+    .loader-track {
+      position: relative;
+      width: 100%;
+      height: 4px;
       background: var(--surface);
       border: 1px solid var(--surface-border);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+
+      .loader-track-bar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 40%;
+        border-radius: var(--radius-full);
+        background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+        animation: loaderIndeterminate 1.15s ease-in-out infinite;
+      }
+    }
+
+    .loader-status-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      min-height: 110px;
+      font-weight: 600;
+      color: var(--text-secondary);
 
-      .log-line {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--text-secondary);
-        animation: fadeInLine 0.25s ease-out forwards;
-
-        .log-icon-check {
-          color: var(--emerald-accent);
-          flex-shrink: 0;
-        }
+      .icon-spin {
+        color: var(--accent-light);
+        animation: spinCpu 0.9s linear infinite;
       }
     }
   }
 }
 
 @keyframes spinCpu {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 
-@keyframes fadeInLine {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
+@keyframes loaderIndeterminate {
+  0% {
+    left: -40%;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  100% {
+    left: 100%;
+  }
+}
+
+/* UI-002 / UI-003 — reduced motion: no travelling bar, no spin. The track
+   shows a static filled state and the "Loading content…" text carries the
+   meaning. (`.icon-spin` is also halted by the global rule in index.css.) */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-loader {
+    .loader-track .loader-track-bar {
+      position: static;
+      width: 100%;
+      animation: none;
+      opacity: 0.5;
+    }
+
+    .loader-status-row .icon-spin {
+      animation: none;
+    }
   }
 }

@@ -83,16 +83,16 @@
   font-size: var(--fs-2xs);
   font-weight: 700;
   letter-spacing: 0.08em;
-  margin-bottom: 1.5rem;
+  /* UI-024 — vertical spacing now owned by `.project-showcase__eyebrow`. */
 }
 
-.flagship-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  max-width: 70rem;
-  margin-bottom: 2rem;
+/* UI-024 — the flagship keeps its own column ratio; the two-column
+   scaffolding, eyebrow band and heading block come from `ProjectShowcase`. */
+.flagship-showcase .project-showcase__body {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+}
 
+.flagship-showcase .project-showcase__heading {
   .flagship-category {
     font-family: var(--font-mono);
     font-size: var(--fs-2xs);
@@ -119,28 +119,12 @@
     color: var(--text-secondary);
     line-height: var(--leading-body);
   }
-
-  @include bp-down(lg) {
-    margin-bottom: 1.5rem;
-  }
 }
 
-.flagship-main {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 2rem;
-  align-items: start;
-
-  @include bp-down(lg) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.flagship-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-
+/* UI-024 — section-specific body pieces. The flex/gap of the info column and
+   the grid layout are provided by `ProjectShowcase`; only the flagship's own
+   tabs / metrics / tech / actions live here. */
+.flagship-showcase {
   .flagship-tabs {
     display: flex;
     gap: 0.5rem;
@@ -335,56 +319,19 @@
   }
 }
 
-.flagship-preview {
+/* UI-024 — the chrome (dots + address) is now the shared `BrowserFrame`;
+   `.flagship-preview` only tunes the frame's outer surface and the image slot. */
+.flagship-preview.browser-frame {
   background: #09090b;
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  /* Detached device mockup — floats above the card it sits in. */
   box-shadow: var(--elevation-3);
   align-self: stretch;
-  display: flex;
-  flex-direction: column;
 
   @include bp-down(lg) {
     order: -1;
   }
+}
 
-  .browser-mockup-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0.85rem;
-    background: #121215;
-    border-bottom: 1px solid var(--surface-border);
-
-    .mockup-dots {
-      display: flex;
-      gap: 0.35rem;
-
-      .dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        &.red {
-          background: #ef4444;
-        }
-        &.yellow {
-          background: #f59e0b;
-        }
-        &.green {
-          background: #10b981;
-        }
-      }
-    }
-
-    .mockup-url {
-      font-family: var(--font-mono);
-      font-size: var(--fs-2xs);
-      color: var(--text-muted);
-    }
-  }
-
+.flagship-preview {
   .mockup-image-wrap {
     width: 100%;
     flex: 1;
@@ -588,11 +535,7 @@
   .studio-project-card .project-image-container .project-overlay {
     opacity: 1;
     inset: auto 0 0 0;
-    background: linear-gradient(
-      to top,
-      rgba(9, 9, 11, 0.88) 0%,
-      rgba(9, 9, 11, 0) 100%
-    );
+    background: linear-gradient(to top, rgba(9, 9, 11, 0.88) 0%, rgba(9, 9, 11, 0) 100%);
     backdrop-filter: none;
     align-items: flex-end;
     justify-content: center;

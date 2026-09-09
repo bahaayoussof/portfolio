@@ -1,87 +1,51 @@
-import { useState, useEffect } from "react";
-import { IconTerminal2, IconCpu, IconCheck } from "@tabler/icons-react";
+import { IconTerminal2, IconLoader2 } from "@tabler/icons-react";
 import "./loader.scss";
 
-const BOOT_STEPS = [
-  "Initializing core modules...",
-  "Mounting design tokens & UI components...",
-  "Establishing telemetry connection...",
-  "System ready. Launching portfolio...",
-];
-
+/**
+ * Suspense fallback.
+ *
+ * UI-003 — this used to run a `setInterval` that incremented a random fake
+ * percentage and revealed scripted "boot" log lines, implying real load
+ * progress it never had. It now communicates only what the app actually knows:
+ * content is loading. The indeterminate track and spinner represent genuine
+ * pending work (an unresolved Suspense boundary) and stop the instant it
+ * resolves — there is no artificial minimum display time and no timers.
+ */
 export function Loader() {
-  const [progress, setProgress] = useState(15);
-
-  // Derive step index purely from progress — no secondary effect needed
-  const stepIndex = progress >= 100 ? 3 : progress > 70 ? 2 : progress > 35 ? 1 : 0;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        const next = prev + Math.floor(Math.random() * 20) + 12;
-        return next > 100 ? 100 : next;
-      });
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="portfolio-loader">
-      <div className="loader-ambient-glow" />
+    <div className="portfolio-loader" role="status" aria-live="polite" aria-busy="true">
+      <div className="loader-ambient-glow" aria-hidden="true" />
 
       <div className="loader-hud-card">
-        {/* Terminal Header */}
         <div className="hud-header">
-          <div className="hud-controls">
+          <div className="hud-controls" aria-hidden="true">
             <span className="dot dot-red" />
             <span className="dot dot-yellow" />
             <span className="dot dot-green" />
           </div>
           <div className="hud-title">
-            <span className="status-indicator" />
-            <span className="title-text">bahaa-youssof ~ boot.sys</span>
+            <span className="title-text">bahaa-youssof ~ portfolio</span>
           </div>
-          <div className="hud-tag">
+          <div className="hud-tag" aria-hidden="true">
             <IconTerminal2 size={13} />
-            <span>BOOTING</span>
+            <span>LOADING</span>
           </div>
         </div>
 
-        {/* Terminal Body */}
         <div className="hud-body">
-          <div className="hud-cmd-row">
+          <div className="hud-cmd-row" aria-hidden="true">
             <span className="cmd-prompt">$</span>
-            <span className="cmd-text">sys.initSequence()</span>
-            <span className="cmd-flag">--verbose</span>
+            <span className="cmd-text">portfolio.load()</span>
           </div>
 
-          {/* Progress Section */}
-          <div className="progress-section">
-            <div className="progress-bar-track">
-              <div className="progress-bar-fill" style={{ width: `${progress}%` }} />
-            </div>
-            <div className="progress-meta">
-              <span className="progress-percent">{progress}%</span>
-              <span className="progress-status">
-                <IconCpu size={14} className="icon-spin" />
-                <span>{progress === 100 ? "READY" : "LOADING"}</span>
-              </span>
-            </div>
+          {/* Indeterminate — the app does not know a percentage, so it shows none. */}
+          <div className="loader-track" aria-hidden="true">
+            <span className="loader-track-bar" />
           </div>
 
-          {/* Log Console Output */}
-          <div className="hud-log-console">
-            {BOOT_STEPS.slice(0, stepIndex + 1).map((step) => (
-              <div key={step} className="log-line">
-                <IconCheck size={13} className="log-icon-check" />
-                <span>{step}</span>
-              </div>
-            ))}
+          <div className="loader-status-row">
+            <IconLoader2 size={15} className="icon-spin" aria-hidden="true" />
+            <span>Loading content…</span>
           </div>
         </div>
       </div>

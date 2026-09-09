@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { IconSend } from "@tabler/icons-react";
+import { useRef, useState } from "react";
+import { IconSend, IconCircleCheck } from "@tabler/icons-react";
 import { showToast } from "@/utils/toast";
 import { submitContact } from "@/services/contact";
 import {
@@ -33,6 +33,11 @@ const ContactForm = () => {
   const [errors, setErrors] = useState<FieldError>({});
   const [touched, setTouched] = useState<Partial<Record<FormField, boolean>>>({});
   const [loading, setLoading] = useState(false);
+  // UI-023 — after a successful send the form region is replaced by an inline
+  // confirmation. Values are kept until the user chooses "Send another", so a
+  // mistaken resend or a "wait, I forgot something" is still recoverable.
+  const [sent, setSent] = useState(false);
+  const successRef = useRef<HTMLDivElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target as { name: FormField; value: string };
@@ -74,14 +79,18 @@ const ContactForm = () => {
 
     try {
       await submitContact(values);
+      // Toast stays as secondary feedback; the inline state is the primary one.
       showToast(
         "success",
         "Message delivered successfully! I'll be in touch soon.",
         "contactForm",
       );
-      setValues(INITIAL_VALUES);
       setErrors({});
       setTouched({});
+      setSent(true);
+      // Deliberate focus move: the submit button the user was on is gone;
+      // land them on the confirmation so keyboard/SR users stay oriented.
+      requestAnimationFrame(() => successRef.current?.focus());
     } catch (err) {
       const message =
         err instanceof Error
@@ -94,6 +103,40 @@ const ContactForm = () => {
   };
 
   const fieldError = (field: FormField) => (touched[field] ? errors[field] : undefined);
+
+  const handleSendAnother = () => {
+    setValues(INITIAL_VALUES);
+    setErrors({});
+    setTouched({});
+    setSent(false);
+  };
+
+  if (sent) {
+    return (
+      <div
+        ref={successRef}
+        tabIndex={-1}
+        className="studio-form form-success"
+        role="status"
+        aria-live="polite"
+      >
+        <span className="form-success-icon" aria-hidden="true">
+          <IconCircleCheck size={28} />
+        </span>
+        <h3 className="form-success-title">Message sent</h3>
+        <p className="form-success-text">
+          Thanks for reaching out — I&apos;ll get back to you soon.
+        </p>
+        <button
+          type="button"
+          className="btn-submit form-success-again"
+          onClick={handleSendAnother}
+        >
+          <span>Send another message</span>
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form

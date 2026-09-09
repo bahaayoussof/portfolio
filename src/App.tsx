@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
-import { Navbar, Loader } from "./components";
+import { Navbar, Loader, ErrorBoundary } from "./components";
 import { ThemeProvider } from "./context/theme";
 
 import "./App.scss";
@@ -16,20 +16,22 @@ const App = () => {
     <ThemeProvider>
       <div className="app bg-grid-pattern">
         <Navbar />
-        <Suspense fallback={<Loader />}>
-          <main>
-            <Header />
-            <Suspense fallback={null}>
-              <Work />
-            </Suspense>
-            <Suspense fallback={null}>
-              <Experience />
-            </Suspense>
-            <Suspense fallback={null}>
-              <Footer />
-            </Suspense>
-          </main>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<Loader />}>
+            <main>
+              <Header />
+              <Suspense fallback={null}>
+                <Work />
+              </Suspense>
+              <Suspense fallback={null}>
+                <Experience />
+              </Suspense>
+              <Suspense fallback={null}>
+                <Footer />
+              </Suspense>
+            </main>
+          </Suspense>
+        </ErrorBoundary>
         <Toaster position="bottom-right" />
       </div>
     </ThemeProvider>

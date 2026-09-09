@@ -17,8 +17,8 @@ const Footer = () => {
             Building a new digital product or scaling an interface?
           </h2>
           <p className="connect-subtitle">
-            I&apos;m always open to discussing new opportunities, interesting projects, or just
-            having a chat about technology and development. Feel free to reach out!
+            I&apos;m always open to discussing new opportunities, interesting projects, or
+            just having a chat about technology and development. Feel free to reach out!
           </p>
 
           <a href="mailto:bahaayoussof@gmail.com" className="email-direct-chip">
@@ -41,10 +41,11 @@ const Footer = () => {
                       target={isMail ? undefined : "_blank"}
                       rel={isMail ? undefined : "noreferrer"}
                       className="social-icon-chip"
-                      title={social.name}
-                      aria-label={social.name}
                     >
-                      {social.icon}
+                      <span className="social-icon-glyph" aria-hidden="true">
+                        {social.icon}
+                      </span>
+                      <span className="social-icon-label">{social.name}</span>
                     </a>
                   );
                 })}

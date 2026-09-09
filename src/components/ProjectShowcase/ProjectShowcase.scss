@@ -1,0 +1,62 @@
+@use "../../styles/breakpoints" as *;
+
+// UI-024 — shared featured-project skeleton. Sections add a context class
+// (`.flagship-showcase`, `.featured-showcase`) for the column ratio and their
+// own descendant styling.
+
+.project-showcase {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  &__eyebrow {
+    margin-bottom: 1.5rem;
+  }
+
+  &__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: 70rem;
+    margin-bottom: 2rem;
+
+    @include bp-down(lg) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 2rem;
+    align-items: start;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    @include bp-down(lg) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  &__media {
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}

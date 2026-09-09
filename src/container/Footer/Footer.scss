@@ -141,7 +141,8 @@
     .social-icon-chip {
       display: inline-flex;
       align-items: center;
-      padding: 0.5rem 1rem;
+      gap: 0.45rem;
+      padding: 0.5rem 0.9rem;
       border-radius: var(--radius-md);
       background: var(--surface);
       border: 1px solid var(--surface-border);
@@ -168,6 +169,13 @@
         border-color: var(--accent);
         background: rgba(237, 111, 99, 0.08);
         transform: translateY(-2px);
+      }
+
+      /* UI-027 — visible service name replaces the old native `title` tooltip;
+         keyboard, touch and pointer users all get the same label. */
+      .social-icon-glyph {
+        display: inline-flex;
+        flex-shrink: 0;
       }
     }
   }
@@ -303,6 +311,65 @@
     border-radius: 50%;
     animation: contact-spin 0.7s linear infinite;
     flex-shrink: 0;
+  }
+
+  /* UI-023 — inline success state that replaces the form region after a send. */
+  &.form-success {
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+    padding: 1.5rem 0;
+    outline: none;
+    animation: contact-success-in 200ms ease both;
+
+    .form-success-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--emerald-accent);
+    }
+
+    .form-success-title {
+      font-size: var(--fs-lg);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .form-success-text {
+      font-size: var(--fs-sm);
+      color: var(--text-secondary);
+      line-height: var(--leading-body);
+      max-width: 32ch;
+    }
+
+    .form-success-again {
+      width: auto;
+      margin-top: 0.35rem;
+    }
+  }
+}
+
+@keyframes contact-success-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* UI-002 — the success swap respects reduced motion: appear, don't slide. */
+@media (prefers-reduced-motion: reduce) {
+  .studio-form.form-success {
+    animation: none;
   }
 }
 
