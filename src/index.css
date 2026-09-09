@@ -94,6 +94,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* UI-014 — theme colour transition.
+   Applied ONLY while <html> carries `theme-transitioning`, which the theme
+   context adds for ~260ms after a *user* toggle and never on first paint. The
+   transition names only colour properties (never `all`), so layout/transform
+   animations are untouched. `will-change` is deliberately not set — the window
+   is short and one-shot. */
+html.theme-transitioning,
+html.theme-transitioning * {
+  transition-property: background-color, border-color, color, fill, stroke,
+    box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -176,16 +190,21 @@ body {
     scroll-behavior: auto;
   }
 
-  /* Stop decorative / infinite loops. The contact spinner freezes but the
-     "Sending…" label still communicates the pending state. */
-  .pulse-dot,
-  .live-pulse-dot,
+  /* Stop the remaining loops. The contact spinner freezes but the "Sending…"
+     label still communicates the pending state. (The decorative status-dot pulse
+     was removed outright in Phase 2 — UI-016 — so it needs no override here.) */
   .status-indicator,
   .icon-spin,
   .btn-spinner,
-  .log-line,
-  .theme-toggle-btn.rotating svg {
+  .log-line {
     animation: none !important;
+  }
+
+  /* UI-014 — reduced-motion users get an instant theme swap, never an animated
+     brightness sweep across the page. */
+  html.theme-transitioning,
+  html.theme-transitioning * {
+    transition: none !important;
   }
 
   /* Drop hover lifts and image zooms; color / border / opacity feedback stays. */

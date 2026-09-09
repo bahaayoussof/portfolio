@@ -298,7 +298,11 @@
         font-size: 0.725rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.2s ease;
+        /* UI-013 / motion-perf — was `transition: all`; only colour changes here. */
+        transition:
+          color 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease;
 
         &:hover {
           color: var(--text-primary);
@@ -375,6 +379,13 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    /* UI-013 — the two HUD panels differ in height; this wrapper animates that
+       delta (Framer `layout`) so switching tabs slides instead of teleporting.
+       `min-height` keeps a short panel from collapsing distractingly. */
+    .hud-panel-wrap {
+      min-height: 8.5rem;
+    }
 
     @media screen and (max-width: 600px) {
       padding: 1.25rem;

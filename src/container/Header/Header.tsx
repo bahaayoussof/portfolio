@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   IconArrowRight,
   IconTerminal2,
@@ -8,18 +8,38 @@ import {
   IconChartBar,
 } from "@tabler/icons-react";
 import { heroMetrics, featuredTechnologies, socialLinks } from "../../data";
-import { useReveal } from "../../shared/motion";
+import { useReveal, useTabPanelMotion, springPhysical } from "../../shared/motion";
+import { nextTabIndex } from "../../shared/tabList";
 
 import "./Header.scss";
 
+type HudTabId = "code" | "metrics";
+
+const HUD_TABS: { id: HudTabId; label: string; Icon: typeof IconCode }[] = [
+  { id: "code", label: "engineer.ts", Icon: IconCode },
+  { id: "metrics", label: "telemetry.stats", Icon: IconChartBar },
+];
+
 const Header = () => {
-  const [hudTab, setHudTab] = useState<"code" | "metrics">("code");
+  const [hudTab, setHudTab] = useState<HudTabId>("code");
+  const hudTabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const panelMotion = useTabPanelMotion();
+
+  // UI-008 — small travel, fast settle, a total stagger window of ~200ms so the
+  // hero reads immediately rather than presenting itself over ~1s.
   const reveal = useReveal();
-  const rBadge = reveal({ y: 15, duration: 0.5 });
-  const rTitle = reveal({ y: 20, duration: 0.6, delay: 0.1 });
-  const rSubtitle = reveal({ y: 20, duration: 0.6, delay: 0.2 });
-  const rActions = reveal({ y: 20, duration: 0.6, delay: 0.3 });
-  const rHud = reveal({ y: 30, duration: 0.7, delay: 0.4 });
+  const rBadge = reveal({ duration: 0.4 });
+  const rTitle = reveal({ duration: 0.4, delay: 0.05 });
+  const rSubtitle = reveal({ duration: 0.4, delay: 0.1 });
+  const rActions = reveal({ duration: 0.4, delay: 0.15 });
+  const rHud = reveal({ duration: 0.45, delay: 0.2 });
+
+  const onHudTabKeyDown = (event: React.KeyboardEvent, index: number) => {
+    const next = nextTabIndex(event, index, HUD_TABS.length);
+    if (next === null) return;
+    hudTabRefs.current[next]?.focus();
+    setHudTab(HUD_TABS[next].id);
+  };
 
   return (
     <section className="studio-hero-section" id="home">
@@ -118,21 +138,30 @@ const Header = () => {
               <span className="dot dot-green" />
             </div>
 
-            <div className="hud-tab-switcher">
-              <button
-                className={`hud-tab-btn ${hudTab === "code" ? "active" : ""}`}
-                onClick={() => setHudTab("code")}
-              >
-                <IconCode size={13} />
-                <span>engineer.ts</span>
-              </button>
-              <button
-                className={`hud-tab-btn ${hudTab === "metrics" ? "active" : ""}`}
-                onClick={() => setHudTab("metrics")}
-              >
-                <IconChartBar size={13} />
-                <span>telemetry.stats</span>
-              </button>
+            <div className="hud-tab-switcher" role="tablist" aria-label="Terminal view">
+              {HUD_TABS.map((tab, index) => {
+                const selected = hudTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    ref={(el) => {
+                      hudTabRefs.current[index] = el;
+                    }}
+                    id={`hud-tab-${tab.id}`}
+                    role="tab"
+                    type="button"
+                    aria-selected={selected}
+                    aria-controls={`hud-panel-${tab.id}`}
+                    tabIndex={selected ? 0 : -1}
+                    className={`hud-tab-btn ${selected ? "active" : ""}`}
+                    onClick={() => setHudTab(tab.id)}
+                    onKeyDown={(event) => onHudTabKeyDown(event, index)}
+                  >
+                    <tab.Icon size={13} />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
             </div>
 
             <div className="hud-tag">
@@ -143,75 +172,98 @@ const Header = () => {
 
           {/* Terminal Body */}
           <div className="hud-body">
-            {hudTab === "code" ? (
-              <div className="hud-code-snippet">
-                <div className="code-table">
-                  <div className="code-row">
-                    <span className="ln">01</span>
-                    <span className="code-line">
-                      <span className="kw">const</span>{" "}
-                      <span className="var">engineer</span>:{" "}
-                      <span className="type">Developer</span> = &#123;
-                    </span>
-                  </div>
-                  <div className="code-row">
-                    <span className="ln">02</span>
-                    <span className="code-line indent">
-                      <span className="prop">name</span>:{" "}
-                      <span className="str">&quot;Bahaa Youssof&quot;</span>,
-                    </span>
-                  </div>
-                  <div className="code-row">
-                    <span className="ln">03</span>
-                    <span className="code-line indent">
-                      <span className="prop">role</span>:{" "}
-                      <span className="str">&quot;Frontend Engineer&quot;</span>,
-                    </span>
-                  </div>
-                  <div className="code-row">
-                    <span className="ln">04</span>
-                    <span className="code-line indent">
-                      <span className="prop">currentRole</span>:{" "}
-                      <span className="str">&quot;Frontend Engineer @ AZM Squad&quot;</span>,
-                    </span>
-                  </div>
-                  <div className="code-row">
-                    <span className="ln">05</span>
-                    <span className="code-line indent">
-                      <span className="prop">specialties</span>: [
-                      <span className="str">&quot;Legal Tech&quot;</span>,{" "}
-                      <span className="str">&quot;Enterprise POS&quot;</span>,{" "}
-                      <span className="str">&quot;Real-Time Sync&quot;</span>],
-                    </span>
-                  </div>
-                  <div className="code-row">
-                    <span className="ln">06</span>
-                    <span className="code-line indent">
-                      <span className="prop">status</span>:{" "}
-                      <span className="str">
-                        &quot;Building high-scale SaaS web applications&quot;
-                      </span>
-                    </span>
-                  </div>
-                  <div className="code-row">
-                    <span className="ln">07</span>
-                    <span className="code-line">&#125;;</span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="hud-stats-grid">
-                {heroMetrics.map((metric) => (
-                  <div key={metric.label} className="hud-stat-tile">
-                    <div className="stat-top">
-                      <span className="stat-value">{metric.value}</span>
-                      <span className="stat-live-badge">ONLINE</span>
+            <motion.div
+              className="hud-panel-wrap"
+              layout={!panelMotion.reduce}
+              transition={springPhysical}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={hudTab}
+                  id={`hud-panel-${hudTab}`}
+                  role="tabpanel"
+                  aria-labelledby={`hud-tab-${hudTab}`}
+                  tabIndex={0}
+                  initial={panelMotion.initial}
+                  animate={panelMotion.animate}
+                  exit={panelMotion.exit}
+                  transition={panelMotion.transition}
+                >
+                  {hudTab === "code" ? (
+                    <div className="hud-code-snippet">
+                      <div className="code-table">
+                        <div className="code-row">
+                          <span className="ln">01</span>
+                          <span className="code-line">
+                            <span className="kw">const</span>{" "}
+                            <span className="var">engineer</span>:{" "}
+                            <span className="type">Developer</span> = &#123;
+                          </span>
+                        </div>
+                        <div className="code-row">
+                          <span className="ln">02</span>
+                          <span className="code-line indent">
+                            <span className="prop">name</span>:{" "}
+                            <span className="str">&quot;Bahaa Youssof&quot;</span>,
+                          </span>
+                        </div>
+                        <div className="code-row">
+                          <span className="ln">03</span>
+                          <span className="code-line indent">
+                            <span className="prop">role</span>:{" "}
+                            <span className="str">&quot;Frontend Engineer&quot;</span>,
+                          </span>
+                        </div>
+                        <div className="code-row">
+                          <span className="ln">04</span>
+                          <span className="code-line indent">
+                            <span className="prop">currentRole</span>:{" "}
+                            <span className="str">
+                              &quot;Frontend Engineer @ AZM Squad&quot;
+                            </span>
+                            ,
+                          </span>
+                        </div>
+                        <div className="code-row">
+                          <span className="ln">05</span>
+                          <span className="code-line indent">
+                            <span className="prop">specialties</span>: [
+                            <span className="str">&quot;Legal Tech&quot;</span>,{" "}
+                            <span className="str">&quot;Enterprise POS&quot;</span>,{" "}
+                            <span className="str">&quot;Real-Time Sync&quot;</span>],
+                          </span>
+                        </div>
+                        <div className="code-row">
+                          <span className="ln">06</span>
+                          <span className="code-line indent">
+                            <span className="prop">status</span>:{" "}
+                            <span className="str">
+                              &quot;Building high-scale SaaS web applications&quot;
+                            </span>
+                          </span>
+                        </div>
+                        <div className="code-row">
+                          <span className="ln">07</span>
+                          <span className="code-line">&#125;;</span>
+                        </div>
+                      </div>
                     </div>
-                    <span className="stat-label">{metric.label}</span>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ) : (
+                    <div className="hud-stats-grid">
+                      {heroMetrics.map((metric) => (
+                        <div key={metric.label} className="hud-stat-tile">
+                          <div className="stat-top">
+                            <span className="stat-value">{metric.value}</span>
+                            <span className="stat-live-badge">ONLINE</span>
+                          </div>
+                          <span className="stat-label">{metric.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
 
             {/* Terminal Command Line */}
             <div className="hud-cmd-line">

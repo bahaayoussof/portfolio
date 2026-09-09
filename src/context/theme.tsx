@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect, useContext, useRef } from "react";
 
 type Theme = "light" | "dark";
 
@@ -18,9 +18,24 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     return "dark";
   });
 
+ const isFirstRun = useRef(true);
+
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    const root = document.documentElement;
+    root.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
+
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+
+    root.classList.add("theme-transitioning");
+    const timer = window.setTimeout(
+      () => root.classList.remove("theme-transitioning"),
+      260,
+    );
+    return () => window.clearTimeout(timer);
   }, [theme]);
 
   const toggleTheme = () => {

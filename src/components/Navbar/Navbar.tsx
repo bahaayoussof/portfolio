@@ -8,6 +8,7 @@ import {
   IconArrowUpRight,
 } from "@tabler/icons-react";
 import { useTheme } from "../../context/theme";
+import { springPhysical } from "../../shared/motion";
 
 import "./Navbar.scss";
 
@@ -23,24 +24,14 @@ const MENU_ID = "mobile-menu";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [activeId, setActiveId] = useState<string>(NAV_ITEMS[0].id);
-  const [isRotating, setIsRotating] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const reduceMotion = useReducedMotion();
 
-  const rotateTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   const closeMenu = useCallback(() => setToggle(false), []);
 
-  useEffect(() => {
-    return () => {
-      if (rotateTimerRef.current) clearTimeout(rotateTimerRef.current);
-    };
-  }, []);
-
-  // UI-004B — lightweight scroll-spy. Sections are lazy-loaded, so retry via rAF
-  // until every target exists, then observe once. No dependency added.
   useEffect(() => {
     const ids = NAV_ITEMS.map((item) => item.id);
     let observer: IntersectionObserver | null = null;
@@ -79,8 +70,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // UI-007 — mobile menu: body scroll lock, Escape to close, focus move-in,
-  // focus trap while open, focus restore to the trigger on close, outside-dismiss.
   useEffect(() => {
     if (!toggle) return;
 
@@ -141,13 +130,6 @@ const Navbar = () => {
     };
   }, [toggle]);
 
-  const handleThemeToggle = () => {
-    setIsRotating(true);
-    toggleTheme();
-    if (rotateTimerRef.current) clearTimeout(rotateTimerRef.current);
-    rotateTimerRef.current = setTimeout(() => setIsRotating(false), 600);
-  };
-
   return (
     <header className="studio-nav-header">
       <nav className="studio-nav" aria-label="Main navigation">
@@ -178,15 +160,32 @@ const Navbar = () => {
 
         <div className="studio-nav-right">
           <button
-            className={`theme-toggle-btn ${isRotating ? "rotating" : ""}`}
-            onClick={handleThemeToggle}
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
             aria-label="Toggle theme"
           >
-            {theme === "light" ? (
-              <IconMoonFilled size={18} />
-            ) : (
-              <IconSunFilled size={18} />
-            )}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={theme}
+                className="theme-toggle-icon"
+                initial={
+                  reduceMotion ? { opacity: 0 } : { opacity: 0, rotate: -45, scale: 0.6 }
+                }
+                animate={
+                  reduceMotion ? { opacity: 1 } : { opacity: 1, rotate: 0, scale: 1 }
+                }
+                exit={
+                  reduceMotion ? { opacity: 0 } : { opacity: 0, rotate: 45, scale: 0.6 }
+                }
+                transition={{ duration: reduceMotion ? 0.12 : 0.2, ease: "easeOut" }}
+              >
+                {theme === "light" ? (
+                  <IconMoonFilled size={18} />
+                ) : (
+                  <IconSunFilled size={18} />
+                )}
+              </motion.span>
+            </AnimatePresence>
           </button>
 
           <a
@@ -220,7 +219,9 @@ const Navbar = () => {
               initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
               animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
               exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
-              transition={{ duration: reduceMotion ? 0.15 : 0.22, ease: "easeOut" }}
+              transition={
+                reduceMotion ? { duration: 0.15, ease: "easeOut" } : springPhysical
+              }
             >
               <ul>
                 {NAV_ITEMS.map((item) => {

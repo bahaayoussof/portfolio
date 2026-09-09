@@ -9,7 +9,7 @@ import {
   IconChevronUp,
 } from "@tabler/icons-react";
 import { companyExperiences } from "../../data";
-import { useReveal } from "../../shared/motion";
+import { useReveal, cappedStagger } from "../../shared/motion";
 import MomahShowcaseMockup from "./MomahShowcaseMockup";
 import ProjectNestedCard from "./ProjectNestedCard";
 
@@ -47,7 +47,12 @@ const Experience = () => {
             const projectsList = item.projects;
             const isExpanded = !!expandedCompanies[item.id];
             const visibleProjects = isExpanded ? projectsList : projectsList.slice(0, 1);
-            const rCard = reveal({ y: 35, duration: 0.6, delay: companyIndex * 0.1 });
+            // UI-008 — small travel, capped stagger.
+            const rCard = reveal({
+              y: 16,
+              duration: 0.45,
+              delay: cappedStagger(companyIndex),
+            });
 
             return (
               <motion.article

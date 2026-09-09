@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   IconArrowUpRight,
   IconBrandGithub,
@@ -7,9 +7,22 @@ import {
   IconCpu,
 } from "@tabler/icons-react";
 import { flagshipProject, studioProjects } from "../../data";
-import { useReveal } from "../../shared/motion";
+import {
+  useReveal,
+  useTabPanelMotion,
+  cappedStagger,
+  springPhysical,
+} from "../../shared/motion";
+import { nextTabIndex } from "../../shared/tabList";
 
 import "./Work.scss";
+
+type FlagshipTabId = "overview" | "architecture";
+
+const FLAGSHIP_TABS: { id: FlagshipTabId; label: string }[] = [
+  { id: "overview", label: "Overview" },
+  { id: "architecture", label: "Architecture" },
+];
 
 const getMockupLabel = () => {
   if (flagshipProject.projectLink) {
@@ -23,9 +36,18 @@ const getMockupLabel = () => {
 };
 
 const Work = () => {
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState<FlagshipTabId>("overview");
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const panelMotion = useTabPanelMotion();
   const reveal = useReveal();
-  const rFlagship = reveal({ y: 30, duration: 0.6 });
+  const rFlagship = reveal({ y: 16, duration: 0.45 });
+
+  const onTabKeyDown = (event: React.KeyboardEvent, index: number) => {
+    const next = nextTabIndex(event, index, FLAGSHIP_TABS.length);
+    if (next === null) return;
+    tabRefs.current[next]?.focus();
+    setActiveTab(FLAGSHIP_TABS[next].id);
+  };
 
   return (
     <section className="studio-work-section" id="work">
@@ -64,32 +86,63 @@ const Work = () => {
           <div className="flagship-main">
             {/* Left: Product Info */}
             <div className="flagship-info">
-              {/* Sub-nav Tabs */}
-              <div className="flagship-tabs">
-                <button
-                  className={`tab-btn ${activeTab === "overview" ? "active" : ""}`}
-                  onClick={() => setActiveTab("overview")}
-                >
-                  Overview
-                </button>
-                <button
-                  className={`tab-btn ${activeTab === "architecture" ? "active" : ""}`}
-                  onClick={() => setActiveTab("architecture")}
-                >
-                  Architecture
-                </button>
+              {/* Sub-nav Tabs — UI-013 */}
+              <div className="flagship-tabs" role="tablist" aria-label="Project detail">
+                {FLAGSHIP_TABS.map((tab, index) => {
+                  const selected = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      ref={(el) => {
+                        tabRefs.current[index] = el;
+                      }}
+                      id={`flagship-tab-${tab.id}`}
+                      role="tab"
+                      type="button"
+                      aria-selected={selected}
+                      aria-controls={`flagship-panel-${tab.id}`}
+                      tabIndex={selected ? 0 : -1}
+                      className={`tab-btn ${selected ? "active" : ""}`}
+                      onClick={() => setActiveTab(tab.id)}
+                      onKeyDown={(event) => onTabKeyDown(event, index)}
+                    >
+                      {tab.label}
+                      {selected && !panelMotion.reduce && (
+                        <motion.span
+                          className="tab-underline"
+                          layoutId="flagship-tab-underline"
+                          transition={springPhysical}
+                        />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
 
               <div className="flagship-tab-content">
-                {activeTab === "overview" ? (
-                  <p className="tab-text">
-                    <strong>Impact:</strong> {flagshipProject.impact}
-                  </p>
-                ) : (
-                  <p className="tab-text">
-                    <strong>Architecture:</strong> {flagshipProject.architecture}
-                  </p>
-                )}
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.p
+                    key={activeTab}
+                    id={`flagship-panel-${activeTab}`}
+                    role="tabpanel"
+                    aria-labelledby={`flagship-tab-${activeTab}`}
+                    className="tab-text"
+                    initial={panelMotion.initial}
+                    animate={panelMotion.animate}
+                    exit={panelMotion.exit}
+                    transition={panelMotion.transition}
+                  >
+                    {activeTab === "overview" ? (
+                      <>
+                        <strong>Impact:</strong> {flagshipProject.impact}
+                      </>
+                    ) : (
+                      <>
+                        <strong>Architecture:</strong> {flagshipProject.architecture}
+                      </>
+                    )}
+                  </motion.p>
+                </AnimatePresence>
               </div>
 
               {/* Impact Metrics Row */}
@@ -163,70 +216,76 @@ const Work = () => {
         {/* 2. Secondary Curated Studio Projects */}
         <div className="studio-projects-grid">
           {studioProjects.map((project, index) => {
-            const rCard = reveal({ y: 30, duration: 0.5, delay: index * 0.1 });
+            // UI-008 — capped stagger: never grows past ~150ms however long the
+            // grid gets, so fast scrolling doesn't leave cards catching up.
+            const rCard = reveal({
+              y: 14,
+              duration: 0.4,
+              delay: cappedStagger(index),
+            });
             return (
-            <motion.div
-              key={project.id}
-              className="studio-project-card"
-              initial={rCard.initial}
-              whileInView={rCard.target}
-              viewport={{ once: true }}
-              transition={rCard.transition}
-            >
-              <div className="project-image-container">
-                <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  loading="lazy"
-                  decoding="async"
-                  width={project.imageWidth}
-                  height={project.imageHeight}
-                />
-                <div className="project-overlay">
-                  <div className="overlay-actions">
-                    {project.projectLink && (
+              <motion.div
+                key={project.id}
+                className="studio-project-card"
+                initial={rCard.initial}
+                whileInView={rCard.target}
+                viewport={{ once: true }}
+                transition={rCard.transition}
+              >
+                <div className="project-image-container">
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    width={project.imageWidth}
+                    height={project.imageHeight}
+                  />
+                  <div className="project-overlay">
+                    <div className="overlay-actions">
+                      {project.projectLink && (
+                        <a
+                          href={project.projectLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="overlay-btn"
+                        >
+                          Live
+                          <IconArrowUpRight size={18} />
+                        </a>
+                      )}
                       <a
-                        href={project.projectLink}
+                        href={project.codeLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="overlay-btn"
                       >
-                        Live
-                        <IconArrowUpRight size={18} />
+                        <IconBrandGithub size={18} />
+                        Repo
                       </a>
-                    )}
-                    <a
-                      href={project.codeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="overlay-btn"
-                    >
-                      <IconBrandGithub size={18} />
-                      Repo
-                    </a>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="project-content">
-                <div className="project-top">
-                  <span className="project-cat">{project.category}</span>
-                  <h4 className="project-title">{project.title}</h4>
+                <div className="project-content">
+                  <div className="project-top">
+                    <span className="project-cat">{project.category}</span>
+                    <h4 className="project-title">{project.title}</h4>
+                  </div>
+                  <p className="project-desc">{project.description}</p>
+                  <div className="project-highlight">
+                    <IconCpu size={16} />
+                    <span>{project.highlight}</span>
+                  </div>
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="project-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <p className="project-desc">{project.description}</p>
-                <div className="project-highlight">
-                  <IconCpu size={16} />
-                  <span>{project.highlight}</span>
-                </div>
-                <div className="project-tags">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="project-tag">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
             );
           })}
         </div>

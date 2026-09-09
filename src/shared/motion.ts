@@ -1,16 +1,6 @@
 import { useReducedMotion } from "framer-motion";
+import type { Transition } from "framer-motion";
 
-/**
- * Entrance / scroll-reveal transition props, reduced-motion aware.
- *
- * Normal motion: unchanged from before — a short opacity fade plus a small
- * vertical travel, with optional stagger delay.
- * Reduced motion (`prefers-reduced-motion: reduce`): a short opacity fade only,
- * no vertical travel, no stagger — feedback is preserved, vestibular motion is not.
- *
- * `useReveal()` is a hook (reads the OS preference once); the value it returns is a
- * plain builder function that is safe to call in a render loop / `.map()`.
- */
 export interface RevealOptions {
   y?: number;
   delay?: number;
@@ -27,7 +17,7 @@ export function useReveal(): (options?: RevealOptions) => RevealProps {
   const reduce = useReducedMotion();
 
   return (options: RevealOptions = {}): RevealProps => {
-    const { y = 20, delay = 0, duration = 0.6 } = options;
+    const { y = 10, delay = 0, duration = 0.4 } = options;
 
     if (reduce) {
       return {
@@ -42,5 +32,44 @@ export function useReveal(): (options?: RevealOptions) => RevealProps {
       target: { opacity: 1, y: 0 },
       transition: { duration, delay },
     };
+  };
+}
+
+export const cappedStagger = (index: number, step = 0.05, max = 0.15): number =>
+  Math.min(index * step, max);
+
+export const springPhysical: Transition = {
+  type: "spring",
+  bounce: 0,
+  duration: 0.35,
+};
+
+export interface TabPanelMotion {
+  reduce: boolean;
+  initial: Record<string, number>;
+  animate: Record<string, number>;
+  exit: Record<string, number>;
+  transition: Transition;
+}
+
+export function useTabPanelMotion(): TabPanelMotion {
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return {
+      reduce: true,
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0 },
+      transition: { duration: 0.1 },
+    };
+  }
+
+  return {
+    reduce: false,
+    initial: { opacity: 0, y: 4 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -2 },
+    transition: { duration: 0.18, ease: "easeOut" },
   };
 }

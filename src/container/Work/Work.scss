@@ -149,6 +149,7 @@
     border-bottom: 1px solid var(--surface-border);
 
     .tab-btn {
+      position: relative;
       padding: 0.5rem 0.85rem;
       border: none;
       background: transparent;
@@ -157,11 +158,25 @@
       font-weight: 600;
       cursor: pointer;
       border-bottom: 2px solid transparent;
-      transition: all 0.2s ease;
+      /* UI-013 / motion-perf — was `transition: all`; only colour animates now,
+         the selected marker is the shared-layout `.tab-underline` element. */
+      transition: color 0.2s ease;
 
       &.active {
         color: var(--text-primary);
-        border-bottom-color: var(--accent);
+      }
+
+      /* UI-013 — animated selected indicator. It physically moves between two
+         user-chosen targets, so a critically-damped spring (via `layoutId`) is
+         the right tool. Reduced motion falls back to a static border below. */
+      .tab-underline {
+        position: absolute;
+        left: 0.4rem;
+        right: 0.4rem;
+        bottom: -1px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--accent);
       }
 
       @media (hover: none), (pointer: coarse) {
@@ -171,6 +186,9 @@
   }
 
   .flagship-tab-content {
+    /* UI-013 — hold height across the two panels so the crossfade doesn't jump. */
+    min-height: 4.5rem;
+
     .tab-text {
       font-size: 0.875rem;
       color: var(--text-secondary);
@@ -178,6 +196,12 @@
       strong {
         color: var(--text-primary);
       }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flagship-tabs .tab-btn.active {
+      border-bottom-color: var(--accent);
     }
   }
 
