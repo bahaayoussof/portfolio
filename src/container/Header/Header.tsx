@@ -163,11 +163,6 @@ const Header = () => {
                 );
               })}
             </div>
-
-            <div className="hud-tag">
-              <IconTerminal2 size={16} />
-              <span>LIVE SYSTEM</span>
-            </div>
           </div>
 
           {/* Terminal Body */}
@@ -252,10 +247,7 @@ const Header = () => {
                     <div className="hud-stats-grid">
                       {heroMetrics.map((metric) => (
                         <div key={metric.label} className="hud-stat-tile">
-                          <div className="stat-top">
-                            <span className="stat-value">{metric.value}</span>
-                            <span className="stat-live-badge">ONLINE</span>
-                          </div>
+                          <span className="stat-value">{metric.value}</span>
                           <span className="stat-label">{metric.label}</span>
                         </div>
                       ))}
@@ -270,7 +262,6 @@ const Header = () => {
               <div className="cmd-left">
                 <span className="cmd-prompt">$</span>
                 <span className="cmd-text">sys.getTechStack()</span>
-                <span className="cmd-flag">--verified</span>
               </div>
             </div>
 

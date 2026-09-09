@@ -1,9 +1,11 @@
+@use "../../styles/breakpoints" as *;
+
 .studio-work-section {
   position: relative;
   padding: 6rem 2rem;
   background-color: var(--bg-primary);
 
-  @media screen and (max-width: 768px) {
+  @include bp-down(md) {
     padding: 4rem 1.25rem;
   }
 }
@@ -33,27 +35,24 @@
     border: 1px solid var(--surface-border);
     color: var(--accent-light);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--fs-2xs);
     font-weight: 600;
     letter-spacing: 0.08em;
   }
 
   .work-title {
-    font-size: 2.5rem;
+    font-size: var(--fs-section);
     font-weight: 800;
     letter-spacing: -0.02em;
+    line-height: var(--leading-tight);
     color: var(--text-primary);
-
-    @media screen and (max-width: 768px) {
-      font-size: 1.85rem;
-    }
   }
 
   .work-subtitle {
-    font-size: 1.05rem;
+    font-size: var(--fs-md);
     color: var(--text-secondary);
     max-width: 650px;
-    line-height: 1.6;
+    line-height: var(--leading-body);
   }
 }
 
@@ -61,14 +60,13 @@
 .flagship-card {
   position: relative;
   background: var(--card-bg);
+  border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--elevation-2);
   overflow: hidden;
 
-
-
-  @media screen and (max-width: 768px) {
+  @include bp-down(md) {
     padding: 1.5rem;
   }
 }
@@ -82,7 +80,7 @@
   background: rgba(237, 111, 99, 0.15);
   color: var(--accent-light);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   font-weight: 700;
   letter-spacing: 0.08em;
   margin-bottom: 1.5rem;
@@ -97,7 +95,7 @@
 
   .flagship-category {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--fs-2xs);
     font-weight: 600;
     color: var(--accent);
     letter-spacing: 0.05em;
@@ -105,24 +103,24 @@
   }
 
   .flagship-title {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
     font-weight: 800;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    line-height: 1.2;
+    line-height: var(--leading-snug);
 
-    @media screen and (max-width: 768px) {
-      font-size: 1.5rem;
+    @include bp-down(md) {
+      font-size: var(--fs-xl);
     }
   }
 
   .flagship-desc {
-    font-size: 0.975rem;
+    font-size: var(--fs-sm);
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: var(--leading-body);
   }
 
-  @media screen and (max-width: 960px) {
+  @include bp-down(lg) {
     margin-bottom: 1.5rem;
   }
 }
@@ -133,7 +131,7 @@
   gap: 2rem;
   align-items: start;
 
-  @media screen and (max-width: 960px) {
+  @include bp-down(lg) {
     grid-template-columns: 1fr;
   }
 }
@@ -154,7 +152,7 @@
       border: none;
       background: transparent;
       color: var(--text-muted);
-      font-size: 0.825rem;
+      font-size: var(--fs-xs);
       font-weight: 600;
       cursor: pointer;
       border-bottom: 2px solid transparent;
@@ -190,9 +188,9 @@
     min-height: 4.5rem;
 
     .tab-text {
-      font-size: 0.875rem;
+      font-size: var(--fs-sm);
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: var(--leading-body);
       strong {
         color: var(--text-primary);
       }
@@ -220,37 +218,33 @@
 
       .box-value {
         font-family: var(--font-mono);
-        font-size: 1.05rem;
+        font-size: var(--fs-md);
         font-weight: 800;
         color: var(--text-primary);
       }
 
       .box-label {
-        font-size: 0.725rem;
+        font-size: var(--fs-2xs);
         color: var(--text-muted);
       }
     }
 
-    @media screen and (max-width: 600px) {
+    @include bp-down(sm) {
       gap: 0.45rem;
 
       .metric-box {
         padding: 0.5rem 0.55rem;
 
         .box-value {
-          font-size: 0.875rem;
+          font-size: var(--fs-sm);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
         }
-
-        .box-label {
-          font-size: 0.65rem;
-        }
       }
     }
 
-    @media screen and (max-width: 400px) {
+    @include bp-down(xs) {
       grid-template-columns: repeat(2, 1fr);
 
       .metric-box:last-child {
@@ -266,7 +260,7 @@
 
     .tech-tag {
       font-family: var(--font-mono);
-      font-size: 0.725rem;
+      font-size: var(--fs-2xs);
       padding: 0.25rem 0.6rem;
       border-radius: var(--radius-sm);
       background: var(--surface);
@@ -292,8 +286,11 @@
       color: white;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.875rem;
-      transition: all 0.2s ease;
+      font-size: var(--fs-sm);
+      transition:
+        background-color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
 
       &:hover {
         background: var(--accent-light);
@@ -313,8 +310,10 @@
       color: var(--text-primary);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.875rem;
-      transition: all 0.2s ease;
+      font-size: var(--fs-sm);
+      transition:
+        background-color 160ms ease,
+        border-color 160ms ease;
 
       &:hover {
         background: var(--surface-hover);
@@ -322,7 +321,7 @@
       }
     }
 
-    @media screen and (max-width: 550px) {
+    @include bp-down(sm) {
       flex-direction: column;
       width: 100%;
 
@@ -341,12 +340,13 @@
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  /* Detached device mockup — floats above the card it sits in. */
+  box-shadow: var(--elevation-3);
   align-self: stretch;
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 960px) {
+  @include bp-down(lg) {
     order: -1;
   }
 
@@ -380,7 +380,7 @@
 
     .mockup-url {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: var(--fs-2xs);
       color: var(--text-muted);
     }
   }
@@ -404,7 +404,7 @@
       transform: scale(1.03);
     }
 
-    @media screen and (max-width: 960px) {
+    @include bp-down(lg) {
       min-height: 0;
       aspect-ratio: 1672 / 941;
     }
@@ -417,7 +417,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 
-  @media screen and (max-width: 850px) {
+  @include bp-down(lg) {
     grid-template-columns: 1fr;
   }
 }
@@ -426,10 +426,14 @@
   background: var(--card-bg);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-md);
+  box-shadow: var(--elevation-2);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
+  /* UI-010 — explicit; elevation is static, only lift + border animate. */
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease;
 
   &:hover {
     border-color: var(--border-glow);
@@ -479,13 +483,18 @@
           border: 1px solid var(--surface-border);
           color: var(--text-primary);
           font-family: var(--font-mono);
-          font-size: 0.8rem;
+          font-size: var(--fs-xs);
           font-weight: 600;
           display: inline-flex;
           align-items: center;
           gap: 0.4rem;
           text-decoration: none;
-          transition: all 0.2s ease;
+          transition:
+            background-color 160ms ease,
+            color 160ms ease,
+            border-color 160ms ease,
+            transform 160ms ease,
+            box-shadow 160ms ease;
 
           &:hover {
             background: var(--accent);
@@ -519,21 +528,21 @@
 
       .project-cat {
         font-family: var(--font-mono);
-        font-size: 0.725rem;
+        font-size: var(--fs-2xs);
         font-weight: 600;
         color: var(--accent);
         text-transform: uppercase;
       }
 
       .project-title {
-        font-size: 1.25rem;
+        font-size: var(--fs-lg);
         font-weight: 700;
         color: var(--text-primary);
       }
     }
 
     .project-desc {
-      font-size: 0.875rem;
+      font-size: var(--fs-sm);
       color: var(--text-secondary);
       line-height: 1.5;
     }
@@ -542,7 +551,7 @@
       display: flex;
       align-items: flex-start;
       gap: 0.5rem;
-      font-size: 0.825rem;
+      font-size: var(--fs-xs);
       color: var(--emerald-accent);
       font-weight: 500;
       line-height: 1.4;
@@ -561,7 +570,7 @@
 
       .project-tag {
         font-family: var(--font-mono);
-        font-size: 0.7rem;
+        font-size: var(--fs-2xs);
         padding: 0.2rem 0.5rem;
         border-radius: var(--radius-sm);
         background: var(--surface);

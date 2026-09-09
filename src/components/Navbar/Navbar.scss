@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as *;
+
 .studio-nav-header {
   position: fixed;
   top: 0;
@@ -10,7 +12,10 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--glass-border);
-  transition: all 0.3s ease;
+  /* UI-010 — only colour properties actually change here. */
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
 }
 
 .studio-nav {
@@ -55,7 +60,7 @@
     align-items: center;
     gap: 2rem;
 
-    @media screen and (max-width: 868px) {
+    @include bp-down(nav) {
       display: none;
     }
 
@@ -71,9 +76,9 @@
         align-items: center;
         text-decoration: none;
         color: var(--text-secondary);
-        font-size: 0.875rem;
+        font-size: var(--fs-sm);
         font-weight: 500;
-        transition: color 0.2s ease;
+        transition: color 160ms ease;
 
         &:hover {
           color: var(--text-primary);
@@ -159,16 +164,18 @@
       border: 1px solid var(--surface-border);
       color: var(--text-primary);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: var(--fs-xs);
       font-weight: 600;
-      transition: all 0.2s ease;
+      transition:
+        background-color 160ms ease,
+        border-color 160ms ease;
 
       &:hover {
         background: var(--surface-hover);
         border-color: var(--text-muted);
       }
 
-      @media screen and (max-width: 500px) {
+      @include bp-down(xs) {
         display: none;
       }
 
@@ -193,7 +200,7 @@
       align-items: center;
       justify-content: center;
 
-      @media screen and (max-width: 868px) {
+      @include bp-down(nav) {
         display: flex;
       }
     }
@@ -225,7 +232,7 @@
       min-height: 44px;
       text-decoration: none;
       color: var(--text-primary);
-      font-size: 1.1rem;
+      font-size: var(--fs-md);
       font-weight: 600;
 
       &.is-active {

@@ -1,10 +1,12 @@
+@use "../../styles/breakpoints" as *;
+
 .studio-journey-section {
   position: relative;
   padding: 6rem 2rem;
   background-color: var(--bg-secondary);
   border-top: 1px solid var(--surface-border);
 
-  @media screen and (max-width: 768px) {
+  @include bp-down(md) {
     padding: 4rem 1.25rem;
   }
 }
@@ -34,27 +36,24 @@
     border: 1px solid var(--surface-border);
     color: var(--accent-light);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: var(--fs-2xs);
     font-weight: 600;
     letter-spacing: 0.08em;
   }
 
   .journey-title {
-    font-size: 2.5rem;
+    font-size: var(--fs-section);
     font-weight: 800;
     letter-spacing: -0.02em;
+    line-height: var(--leading-tight);
     color: var(--text-primary);
-
-    @media screen and (max-width: 768px) {
-      font-size: 1.85rem;
-    }
   }
 
   .journey-subtitle {
-    font-size: 1.05rem;
+    font-size: var(--fs-md);
     color: var(--text-secondary);
     max-width: 650px;
-    line-height: 1.6;
+    line-height: var(--leading-body);
   }
 }
 
@@ -69,8 +68,8 @@
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.25s ease;
+  box-shadow: var(--elevation-2);
+  transition: border-color 160ms ease;
 
   &:hover {
     border-color: var(--border-glow);
@@ -87,7 +86,7 @@
   flex-wrap: wrap;
   gap: 1rem;
 
-  @media screen and (max-width: 768px) {
+  @include bp-down(md) {
     padding: 1rem 1.25rem;
   }
 
@@ -109,13 +108,13 @@
     }
 
     .company-name {
-      font-size: 1.45rem;
+      font-size: var(--fs-xl);
       font-weight: 800;
       color: var(--text-primary);
-      line-height: 1.2;
+      line-height: var(--leading-snug);
 
-      @media screen and (max-width: 768px) {
-        font-size: 1.2rem;
+      @include bp-down(md) {
+        font-size: var(--fs-lg);
       }
     }
 
@@ -128,7 +127,7 @@
     }
 
     .role-title {
-      font-size: 0.95rem;
+      font-size: var(--fs-base);
       font-weight: 600;
       color: var(--accent-light);
     }
@@ -143,7 +142,7 @@
       border: 1px solid rgba(16, 185, 129, 0.25);
       color: #10b981;
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: var(--fs-2xs);
       font-weight: 700;
       letter-spacing: 0.05em;
 
@@ -167,7 +166,7 @@
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      font-size: 0.825rem;
+      font-size: var(--fs-xs);
       color: var(--text-muted);
       font-family: var(--font-mono);
     }
@@ -189,7 +188,7 @@
   flex-direction: column;
   gap: 2.25rem;
 
-  @media screen and (max-width: 768px) {
+  @include bp-down(md) {
     padding: 1.25rem;
     gap: 1.75rem;
   }
@@ -229,7 +228,7 @@
 
       .project-index-badge {
         font-family: var(--font-mono);
-        font-size: 0.75rem;
+        font-size: var(--fs-2xs);
         font-weight: 800;
         color: var(--accent-light);
         background: rgba(237, 111, 99, 0.1);
@@ -247,10 +246,10 @@
       }
 
       .project-name {
-        font-size: 1.2rem;
+        font-size: var(--fs-lg);
         font-weight: 700;
         color: var(--text-primary);
-        line-height: 1.3;
+        line-height: var(--leading-snug);
       }
 
       .current-project-badge {
@@ -263,7 +262,7 @@
         border: 1px solid rgba(16, 185, 129, 0.35);
         color: #10b981;
         font-family: var(--font-mono);
-        font-size: 0.675rem;
+        font-size: var(--fs-2xs);
         font-weight: 700;
         letter-spacing: 0.05em;
       }
@@ -271,13 +270,13 @@
 
     .project-period {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: var(--fs-xs);
       color: var(--text-muted);
     }
   }
 
   .project-tagline {
-    font-size: 1rem;
+    font-size: var(--fs-base);
     font-weight: 600;
     color: var(--accent);
   }
@@ -288,7 +287,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 
-  @media screen and (max-width: 900px) {
+  @include bp-down(lg) {
     grid-template-columns: 1fr;
   }
 
@@ -306,7 +305,7 @@
       align-items: center;
       gap: 0.4rem;
       font-family: var(--font-mono);
-      font-size: 0.725rem;
+      font-size: var(--fs-2xs);
       font-weight: 700;
       letter-spacing: 0.05em;
 
@@ -322,7 +321,7 @@
     }
 
     p {
-      font-size: 0.875rem;
+      font-size: var(--fs-sm);
       color: var(--text-secondary);
       line-height: 1.55;
     }
@@ -337,7 +336,7 @@
 
   .tech-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--fs-2xs);
     font-weight: 700;
     color: var(--text-muted);
   }
@@ -349,7 +348,7 @@
 
     .tech-chip {
       font-family: var(--font-mono);
-      font-size: 0.725rem;
+      font-size: var(--fs-2xs);
       padding: 0.2rem 0.55rem;
       border-radius: var(--radius-sm);
       background: var(--surface);
@@ -374,10 +373,13 @@
   border: 1px solid var(--surface-border);
   color: var(--accent-light);
   font-family: var(--font-mono);
-  font-size: 0.825rem;
+  font-size: var(--fs-xs);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
 
   &:hover {
     background: rgba(237, 111, 99, 0.12);
@@ -385,7 +387,7 @@
     transform: translateY(-1px);
   }
 
-  @media screen and (max-width: 600px) {
+  @include bp-down(sm) {
     padding: 0.6rem;
   }
 
@@ -395,23 +397,22 @@
 }
 
 .featured-project-wrapper {
+  /* UI-011/UI-019 — the dashed bottom border was a second boundary directly
+     outside the card's own border. The card border alone marks the edge. */
   padding: 0.5rem;
-  border-bottom: 1px dashed var(--surface-border);
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   overflow: hidden;
-
-  @media screen and (max-width: 768px) {
-    padding: 0.5rem;
-  }
 }
 
 .featured-project-card {
+  /* UI-011 — the mid gradient stop is now fully opaque (#18181b); only the
+     intentional accent/cyan tints at the ends keep alpha. */
   background: linear-gradient(
     135deg,
     rgba(237, 111, 99, 0.08) 0%,
-    rgba(24, 24, 27, 0.95) 40%,
+    #18181b 40%,
     rgba(56, 189, 248, 0.05) 100%
   );
   border: 1px solid rgba(237, 111, 99, 0.3);
@@ -420,8 +421,9 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
+  box-shadow: var(--elevation-2);
+  /* UI-010 — no animated shadow interpolation; the accent border carries hover. */
+  transition: border-color 160ms ease;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -429,10 +431,9 @@
 
   &:hover {
     border-color: rgba(237, 111, 99, 0.5);
-    box-shadow: 0 6px 24px rgba(237, 111, 99, 0.12);
   }
 
-  @media screen and (max-width: 600px) {
+  @include bp-down(sm) {
     padding: 1rem;
   }
 }
@@ -465,7 +466,7 @@
     border: 1px solid rgba(237, 111, 99, 0.35);
     color: var(--accent-light);
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--fs-2xs);
     font-weight: 700;
     letter-spacing: 0.06em;
     max-width: 100%;
@@ -482,7 +483,7 @@
     border: 1px solid rgba(16, 185, 129, 0.3);
     color: #10b981;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--fs-2xs);
     font-weight: 700;
     letter-spacing: 0.04em;
     max-width: 100%;
@@ -508,7 +509,7 @@
   min-width: 0;
   box-sizing: border-box;
 
-  @media screen and (max-width: 960px) {
+  @include bp-down(lg) {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
   }
@@ -525,32 +526,31 @@
   overflow: hidden;
 
   .featured-project-title {
-    font-size: 1.4rem;
+    font-size: var(--fs-xl);
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.01em;
-    line-height: 1.25;
-    word-break: break-word;
+    line-height: var(--leading-snug);
+    /* UI-026 — wrap on whitespace only; the non-standard `word-break: break-word`
+       alias was redundant with overflow-wrap and is dropped. */
     overflow-wrap: break-word;
 
-    @media screen and (max-width: 600px) {
-      font-size: 1.15rem;
+    @include bp-down(sm) {
+      font-size: var(--fs-lg);
     }
   }
 
   .featured-project-tagline {
-    font-size: 0.95rem;
+    font-size: var(--fs-base);
     font-weight: 600;
     color: var(--accent-light);
-    word-break: break-word;
     overflow-wrap: break-word;
   }
 
   .featured-project-description {
-    font-size: 0.875rem;
+    font-size: var(--fs-sm);
     color: var(--text-secondary);
-    line-height: 1.6;
-    word-break: break-word;
+    line-height: var(--leading-body);
     overflow-wrap: break-word;
   }
 }
@@ -570,7 +570,7 @@
     background: var(--surface);
     border: 1px solid var(--surface-border);
     font-family: var(--font-mono);
-    font-size: 0.725rem;
+    font-size: var(--fs-2xs);
     font-weight: 600;
     color: var(--text-primary);
 
@@ -589,7 +589,7 @@
 
   .tech-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: var(--fs-2xs);
     font-weight: 700;
     color: var(--text-muted);
   }
@@ -601,7 +601,7 @@
 
     .tech-chip {
       font-family: var(--font-mono);
-      font-size: 0.725rem;
+      font-size: var(--fs-2xs);
       padding: 0.2rem 0.55rem;
       border-radius: var(--radius-sm);
       background: var(--surface);
@@ -609,9 +609,11 @@
       color: var(--text-secondary);
     }
 
+    /* UI-011 — solid surface instead of a near-invisible white-alpha fill;
+       matches every other chip and the light-theme override. */
     .featured-tech-chip {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: var(--surface-hover);
+      border: 1px solid var(--surface-border);
       color: var(--text-primary);
       font-weight: 500;
     }
@@ -634,9 +636,12 @@
     background: var(--accent);
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: var(--fs-sm);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition:
+      background-color 160ms ease,
+      transform 160ms ease,
+      box-shadow 160ms ease;
     cursor: pointer;
 
     &:hover {
@@ -656,9 +661,11 @@
     border: 1px solid var(--surface-border);
     color: var(--text-primary);
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: var(--fs-xs);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease;
 
     &:hover {
       background: var(--surface-hover);
@@ -686,7 +693,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  /* Detached device mockup — floats above the featured card. */
+  box-shadow: var(--elevation-3);
   font-family: var(--font-mono);
 
   .browser-header {
@@ -831,7 +839,7 @@
         font-weight: 800;
         line-height: 1.3;
         color: #ffffff;
-        word-break: break-word;
+        overflow-wrap: break-word;
 
         .highlight {
           color: #38bdf8;
@@ -899,8 +907,10 @@
         font-size: 0.58rem;
         line-height: 1.45;
         color: #cbd5e1;
+        /* UI-026 — wrap on whitespace, keep identifiers/strings whole. */
         white-space: pre-wrap;
-        word-break: break-all;
+        overflow-wrap: anywhere;
+        word-break: normal;
 
         .code-keyword {
           color: #f43f5e;
@@ -965,11 +975,10 @@
       rgba(56, 189, 248, 0.04) 100%
     );
     border: 1px solid rgba(237, 111, 99, 0.25);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--elevation-2);
 
     &:hover {
       border-color: rgba(237, 111, 99, 0.45);
-      box-shadow: 0 6px 22px rgba(237, 111, 99, 0.12);
     }
   }
 
@@ -1026,12 +1035,12 @@
 
   .browser-mockup {
     border-color: rgba(0, 0, 0, 0.12);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--elevation-3);
   }
 }
 
 /* Mobile Responsiveness for Featured System Showcase */
-@media screen and (max-width: 600px) {
+@include bp-down(sm) {
   .featured-project-wrapper {
     padding: 1rem 0.75rem 0.5rem 0.75rem;
   }
@@ -1052,7 +1061,6 @@
 
     .featured-flagship-badge,
     .featured-status-badge {
-      font-size: 0.625rem;
       padding: 0.2rem 0.5rem;
     }
   }
@@ -1061,15 +1069,15 @@
     gap: 0.65rem;
 
     .featured-project-title {
-      font-size: 1.15rem;
+      font-size: var(--fs-lg);
     }
 
     .featured-project-tagline {
-      font-size: 0.85rem;
+      font-size: var(--fs-sm);
     }
 
     .featured-project-description {
-      font-size: 0.825rem;
+      font-size: var(--fs-sm);
       line-height: 1.5;
     }
   }
@@ -1078,7 +1086,6 @@
     gap: 0.35rem;
 
     .metric-tag {
-      font-size: 0.675rem;
       padding: 0.2rem 0.45rem;
     }
   }
@@ -1092,7 +1099,6 @@
       gap: 0.35rem;
 
       .tech-chip {
-        font-size: 0.675rem;
         padding: 0.18rem 0.45rem;
       }
     }
@@ -1106,14 +1112,12 @@
       width: 100%;
       justify-content: center;
       padding: 0.65rem 1rem;
-      font-size: 0.825rem;
     }
 
     .btn-github-repo {
       width: 100%;
       justify-content: center;
       padding: 0.6rem 1rem;
-      font-size: 0.825rem;
     }
   }
 
@@ -1154,7 +1158,8 @@
           padding: 0.35rem 0.4rem;
           font-size: 0.52rem;
           line-height: 1.35;
-          word-break: break-all;
+          overflow-wrap: anywhere;
+          word-break: normal;
         }
       }
     }

@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as *;
+
 .studio-hero-section {
   position: relative;
   /* UI-022 — svh keeps the initial hero stable against mobile browser chrome. */
@@ -10,7 +12,7 @@
   overflow: hidden;
   background-color: var(--bg-primary);
 
-  @media screen and (max-width: 768px) {
+  @include bp-down(md) {
     padding: 7rem 1.25rem 4rem;
   }
 }
@@ -66,7 +68,7 @@
   border: 1px solid var(--surface-border);
   color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--fs-2xs);
   font-weight: 600;
   letter-spacing: 0.05em;
   margin-bottom: 2rem;
@@ -80,9 +82,11 @@
 }
 
 .hero-main-title {
-  font-size: 4.25rem;
+  /* UI-015 — one fluid step replaces four closely-spaced media-query overrides
+     (4.25 / 3.5 / 2.75 / 2.1rem). Negative display tracking is preserved. */
+  font-size: var(--fs-hero);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: var(--leading-tight);
   letter-spacing: -0.03em;
   color: var(--text-primary);
   max-width: 950px;
@@ -110,31 +114,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-
-  @media screen and (max-width: 1024px) {
-    font-size: 3.5rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 2.75rem;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 2.1rem;
-  }
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: var(--fs-md);
   color: var(--text-secondary);
   max-width: 720px;
-  line-height: 1.6;
+  line-height: var(--leading-body);
   font-weight: 400;
   margin-top: 1.25rem;
   margin-bottom: 2rem;
 
-  @media screen and (max-width: 768px) {
-    font-size: 1.05rem;
+  @include bp-down(md) {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
   }
@@ -159,15 +150,20 @@
     background: var(--accent);
     color: #ffffff;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: var(--fs-base);
     text-decoration: none;
-    transition: all 0.25s ease;
+    /* UI-010 — explicit list; the accent glow is a small brand-feedback shadow,
+       not elevation, so it stays but is named rather than swept via `all`. */
+    transition:
+      background-color 160ms ease,
+      transform 160ms ease,
+      box-shadow 160ms ease;
 
     &:hover {
       background: var(--accent-light);
       color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px var(--accent-glow);
+      box-shadow: 0 8px 20px var(--accent-glow);
     }
   }
 
@@ -183,9 +179,12 @@
     border: 1px solid var(--surface-border);
     color: var(--text-primary);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: var(--fs-base);
     text-decoration: none;
-    transition: all 0.25s ease;
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
 
     &:hover {
       background: var(--surface-hover);
@@ -211,7 +210,10 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition:
+        color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
 
       &:hover {
         color: var(--accent-light);
@@ -230,13 +232,14 @@
   background: var(--card-bg);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--elevation-2);
   overflow: hidden;
-  transition: all 0.3s ease;
+  /* UI-010 — the card no longer interpolates a blurred shadow on hover; only
+     the border colour shifts. Elevation stays constant. */
+  transition: border-color 160ms ease;
 
   &:hover {
     border-color: var(--border-glow);
-    box-shadow: 0 4px 16px rgba(237, 111, 99, 0.08);
   }
 
   /* Terminal Window Header */
@@ -295,14 +298,14 @@
         border: none;
         color: var(--text-muted);
         font-family: var(--font-mono);
-        font-size: 0.725rem;
+        font-size: var(--fs-2xs);
         font-weight: 600;
         cursor: pointer;
         /* UI-013 / motion-perf — was `transition: all`; only colour changes here. */
         transition:
-          color 0.2s ease,
-          background 0.2s ease,
-          border-color 0.2s ease;
+          color 160ms ease,
+          background-color 160ms ease,
+          border-color 160ms ease;
 
         &:hover {
           color: var(--text-primary);
@@ -320,27 +323,12 @@
       }
     }
 
-    .hud-tag {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-family: var(--font-mono);
-      font-size: 0.725rem;
-      font-weight: 700;
-      color: var(--accent-light);
-      background: rgba(237, 111, 99, 0.1);
-      border: 1px solid rgba(237, 111, 99, 0.2);
-      padding: 0.3rem 0.65rem;
-      border-radius: var(--radius-sm);
-      white-space: nowrap;
-      flex-shrink: 0;
+    /* UI-019 — the "LIVE SYSTEM" tag was removed: it reported no real state and
+       only restated the terminal identity already carried by the window dots,
+       the mono type and the tab labels. Its removal also un-crowds this header
+       so it no longer needs to wrap on small screens. */
 
-      svg {
-        flex-shrink: 0;
-      }
-    }
-
-    @media screen and (max-width: 600px) {
+    @include bp-down(sm) {
       flex-wrap: wrap;
       padding: 0.65rem 0.85rem;
       gap: 0.65rem;
@@ -349,14 +337,8 @@
         order: 1;
       }
 
-      .hud-tag {
-        order: 2;
-        font-size: 0.65rem;
-        padding: 0.25rem 0.5rem;
-      }
-
       .hud-tab-switcher {
-        order: 3;
+        order: 2;
         flex: 1 1 100%;
         width: 100%;
         box-sizing: border-box;
@@ -366,7 +348,7 @@
           flex: 1;
           justify-content: center;
           padding: 0.3rem 0.4rem;
-          font-size: 0.7rem;
+          font-size: var(--fs-2xs);
           white-space: nowrap;
         }
       }
@@ -387,7 +369,7 @@
       min-height: 8.5rem;
     }
 
-    @media screen and (max-width: 600px) {
+    @include bp-down(sm) {
       padding: 1.25rem;
       gap: 1.25rem;
     }
@@ -399,8 +381,8 @@
       border-radius: var(--radius-md);
       padding: 1.15rem 1.35rem;
       font-family: var(--font-mono);
-      font-size: 0.85rem;
-      line-height: 1.6;
+      font-size: var(--fs-xs);
+      line-height: var(--leading-body);
       overflow-x: auto;
       text-align: left;
 
@@ -469,17 +451,20 @@
         }
       }
 
-      @media screen and (max-width: 600px) {
+      @include bp-down(sm) {
         padding: 0.85rem 0.75rem;
-        font-size: 0.725rem;
+        font-size: var(--fs-2xs);
 
         .code-table {
           .code-row {
             gap: 0.65rem;
 
             .code-line {
+              /* UI-026 — wrap at whitespace, never split identifiers/strings
+                 character-by-character. */
               white-space: pre-wrap;
-              word-break: break-word;
+              overflow-wrap: anywhere;
+              word-break: normal;
 
               &.indent {
                 padding-left: 0.75rem;
@@ -496,11 +481,11 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
 
-      @media screen and (max-width: 800px) {
+      @include bp-down(lg) {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      @media screen and (max-width: 480px) {
+      @include bp-down(xs) {
         grid-template-columns: 1fr;
       }
 
@@ -512,7 +497,10 @@
         background: var(--surface);
         border: 1px solid var(--surface-border);
         border-radius: var(--radius-md);
-        transition: all 0.25s ease;
+        transition:
+          border-color 160ms ease,
+          background-color 160ms ease,
+          transform 160ms ease;
 
         &:hover {
           border-color: var(--accent-light);
@@ -520,40 +508,28 @@
           transform: translateY(-2px);
         }
 
-        .stat-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          .stat-value {
-            font-family: var(--font-mono);
-            font-size: 1.65rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: -0.03em;
-          }
-
-          .stat-live-badge {
-            font-family: var(--font-mono);
-            font-size: 0.625rem;
-            font-weight: 700;
-            color: #27c93f;
-            background: rgba(39, 201, 63, 0.1);
-            padding: 0.15rem 0.45rem;
-            border-radius: var(--radius-sm);
-          }
+        /* UI-019 — the per-tile "ONLINE" badge was removed: four identical fake
+           status pills add noise without carrying state. The value + label is
+           the real information. */
+        .stat-value {
+          font-family: var(--font-mono);
+          font-size: 1.65rem;
+          font-weight: 800;
+          color: var(--text-primary);
+          letter-spacing: -0.03em;
         }
 
         .stat-label {
-          font-size: 0.775rem;
+          font-size: var(--fs-2xs);
           font-weight: 600;
           color: var(--text-secondary);
-          line-height: 1.3;
+          line-height: var(--leading-snug);
         }
       }
     }
 
-    /* Command Prompt Line */
+    /* Command Prompt Line — a single terminal motif that labels the tech matrix
+       below it (UI-019: retained as identity, `--verified` flag dropped). */
     .hud-cmd-line {
       display: flex;
       align-items: center;
@@ -561,7 +537,7 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       font-family: var(--font-mono);
-      font-size: 0.825rem;
+      font-size: var(--fs-xs);
       padding-top: 0.25rem;
 
       .cmd-left {
@@ -579,15 +555,6 @@
         color: var(--text-primary);
         font-weight: 600;
       }
-
-      .cmd-flag {
-        color: var(--text-muted);
-        font-size: 0.75rem;
-      }
-
-      @media screen and (max-width: 480px) {
-        font-size: 0.75rem;
-      }
     }
 
     /* Tech Matrix Chips */
@@ -604,8 +571,11 @@
         border-radius: var(--radius-md);
         background: var(--surface);
         border: 1px solid var(--surface-border);
-        font-size: 0.825rem;
-        transition: all 0.2s ease;
+        font-size: var(--fs-xs);
+        transition:
+          border-color 160ms ease,
+          background-color 160ms ease,
+          transform 160ms ease;
 
         &:hover {
           border-color: var(--accent);
@@ -615,7 +585,7 @@
 
         .chip-badge {
           font-family: var(--font-mono);
-          font-size: 0.675rem;
+          font-size: var(--fs-2xs);
           font-weight: 700;
           color: var(--accent-light);
           background: rgba(237, 111, 99, 0.1);
@@ -630,23 +600,16 @@
         }
       }
 
-      @media screen and (max-width: 600px) {
+      @include bp-down(sm) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 0.5rem;
 
         .hud-tech-chip {
           padding: 0.45rem 0.65rem;
-          font-size: 0.775rem;
           gap: 0.35rem;
 
-          .chip-badge {
-            font-size: 0.6rem;
-            padding: 0.1rem 0.35rem;
-          }
-
           .chip-name {
-            font-size: 0.75rem;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -654,7 +617,7 @@
         }
       }
 
-      @media screen and (max-width: 380px) {
+      @include bp-down(xs) {
         grid-template-columns: 1fr;
       }
     }
@@ -699,9 +662,7 @@
   .hero-telemetry-hud {
     background: #ffffff;
     border-color: #e2e8f0;
-    box-shadow:
-      0 10px 30px -5px rgba(0, 0, 0, 0.05),
-      0 4px 12px -2px rgba(0, 0, 0, 0.02);
+    box-shadow: var(--elevation-2);
 
     .hud-header {
       background: #f8fafc;
@@ -723,15 +684,9 @@
             color: #0f172a;
             font-weight: 700;
             border-color: #cbd5e1;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--elevation-1);
           }
         }
-      }
-
-      .hud-tag {
-        color: #dc2626;
-        background: #fef2f2;
-        border-color: #fecaca;
       }
     }
 
@@ -779,15 +734,12 @@
       .cmd-text {
         color: #0f172a;
       }
-      .cmd-flag {
-        color: #64748b;
-      }
     }
 
     .hud-tech-chip {
       background: #ffffff;
       border-color: #e2e8f0;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      box-shadow: var(--elevation-1);
 
       &:hover {
         border-color: #fca5a5;
@@ -816,11 +768,6 @@
 
       .stat-label {
         color: #475569;
-      }
-
-      .stat-live-badge {
-        color: #15803d;
-        background: #dcfce7;
       }
     }
   }

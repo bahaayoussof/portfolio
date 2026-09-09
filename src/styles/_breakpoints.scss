@@ -1,0 +1,38 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Shared breakpoint vocabulary — Apple Design audit Phase 3 (UI-025).
+//
+// Before Phase 3 the SCSS used 13 ad-hoc max-width values (380/400/480/500/550/
+// 600/768/800/850/868/900/960/1024). They are consolidated to four layout
+// thresholds plus one component threshold:
+//
+//   xs   480px  small mobile   — single-column collapse, tightest padding
+//   sm   600px  mobile         — grids drop to 1–2 col, stacked actions
+//   md   768px  tablet         — global section padding / title step-down
+//   lg   960px  small desktop  — multi-column feature layouts collapse
+//
+//   nav  868px  Navbar only    — the desktop link row genuinely stops fitting
+//                                beside the logo + actions here, between md and
+//                                lg. Kept as a documented component exception.
+//
+// Usage:  @use "../../styles/breakpoints" as *;
+//         .thing { @include bp-down(sm) { ... } }
+// ─────────────────────────────────────────────────────────────────────────────
+
+@use "sass:map";
+
+$breakpoints: (
+  "xs": 480px,
+  "sm": 600px,
+  "md": 768px,
+  "lg": 960px,
+  "nav": 868px,
+);
+
+@mixin bp-down($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "Unknown breakpoint `#{$name}`. Use one of: #{map.keys($breakpoints)}.";
+  }
+  @media screen and (max-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
