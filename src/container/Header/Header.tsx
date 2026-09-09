@@ -8,11 +8,18 @@ import {
   IconChartBar,
 } from "@tabler/icons-react";
 import { heroMetrics, featuredTechnologies, socialLinks } from "../../data";
+import { useReveal } from "../../shared/motion";
 
 import "./Header.scss";
 
 const Header = () => {
   const [hudTab, setHudTab] = useState<"code" | "metrics">("code");
+  const reveal = useReveal();
+  const rBadge = reveal({ y: 15, duration: 0.5 });
+  const rTitle = reveal({ y: 20, duration: 0.6, delay: 0.1 });
+  const rSubtitle = reveal({ y: 20, duration: 0.6, delay: 0.2 });
+  const rActions = reveal({ y: 20, duration: 0.6, delay: 0.3 });
+  const rHud = reveal({ y: 30, duration: 0.7, delay: 0.4 });
 
   return (
     <section className="studio-hero-section" id="home">
@@ -24,9 +31,9 @@ const Header = () => {
         {/* Top Tagline Badge */}
         <motion.div
           className="hero-tag-badge"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={rBadge.initial}
+          animate={rBadge.target}
+          transition={rBadge.transition}
         >
           <IconTerminal2 size={16} className="tag-icon" />
           <span>SOFTWARE ENGINEER // FRONTEND & MOBILE</span>
@@ -35,9 +42,9 @@ const Header = () => {
         {/* Main Powerful Headline */}
         <motion.h1
           className="hero-main-title"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={rTitle.initial}
+          animate={rTitle.target}
+          transition={rTitle.transition}
         >
           Building <span className="text-gradient">high-quality interfaces</span> &
           scalable web applications.
@@ -46,9 +53,9 @@ const Header = () => {
         {/* Supporting Subheading */}
         <motion.p
           className="hero-subtitle"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={rSubtitle.initial}
+          animate={rSubtitle.target}
+          transition={rSubtitle.transition}
         >
           Specializing in React, Next.js, TypeScript, and React Native. Engineering
           high-concurrency SaaS applications, legal tech platforms, and interactive POS
@@ -58,9 +65,9 @@ const Header = () => {
         {/* Action Buttons & Social Links */}
         <motion.div
           className="hero-actions"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          initial={rActions.initial}
+          animate={rActions.target}
+          transition={rActions.transition}
         >
           <a
             href="https://docs.google.com/document/d/1sFB48YhA56EVV90pBLlWGts-1O71cSAvuKz-9I2RZsw/edit?usp=sharing"
@@ -99,9 +106,9 @@ const Header = () => {
         {/* Interactive Developer Telemetry HUD */}
         <motion.div
           className="hero-telemetry-hud"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          initial={rHud.initial}
+          animate={rHud.target}
+          transition={rHud.transition}
         >
           {/* Terminal Window Header */}
           <div className="hud-header">

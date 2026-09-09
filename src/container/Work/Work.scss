@@ -163,6 +163,10 @@
         color: var(--text-primary);
         border-bottom-color: var(--accent);
       }
+
+      @media (hover: none), (pointer: coarse) {
+        min-height: 44px;
+      }
     }
   }
 
@@ -470,7 +474,9 @@
       }
     }
 
-    &:hover .project-overlay {
+    /* UI-001 — keyboard focus must reveal the actions, never land on invisible links. */
+    &:hover .project-overlay,
+    &:focus-within .project-overlay {
       opacity: 1;
     }
   }
@@ -539,5 +545,28 @@
         color: var(--text-muted);
       }
     }
+  }
+}
+
+/* UI-001 — touch / coarse pointers have no hover: surface the project actions
+   as a persistent bottom action bar instead of a hover-reveal full overlay,
+   so the image stays mostly visible and no links are duplicated. */
+@media (hover: none), (pointer: coarse) {
+  .studio-project-card .project-image-container .project-overlay {
+    opacity: 1;
+    inset: auto 0 0 0;
+    background: linear-gradient(
+      to top,
+      rgba(9, 9, 11, 0.88) 0%,
+      rgba(9, 9, 11, 0) 100%
+    );
+    backdrop-filter: none;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2.75rem 1rem 0.9rem;
+  }
+
+  .studio-project-card .project-image-container .overlay-btn {
+    min-height: 44px;
   }
 }

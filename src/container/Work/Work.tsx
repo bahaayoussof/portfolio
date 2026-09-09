@@ -7,6 +7,7 @@ import {
   IconCpu,
 } from "@tabler/icons-react";
 import { flagshipProject, studioProjects } from "../../data";
+import { useReveal } from "../../shared/motion";
 
 import "./Work.scss";
 
@@ -23,6 +24,8 @@ const getMockupLabel = () => {
 
 const Work = () => {
   const [activeTab, setActiveTab] = useState("overview");
+  const reveal = useReveal();
+  const rFlagship = reveal({ y: 30, duration: 0.6 });
 
   return (
     <section className="studio-work-section" id="work">
@@ -41,10 +44,10 @@ const Work = () => {
         {/* 1. Large Flagship Project Showcase */}
         <motion.div
           className="flagship-card"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={rFlagship.initial}
+          whileInView={rFlagship.target}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={rFlagship.transition}
         >
           <div className="flagship-badge">
             <IconSparkles size={14} />
@@ -159,14 +162,16 @@ const Work = () => {
 
         {/* 2. Secondary Curated Studio Projects */}
         <div className="studio-projects-grid">
-          {studioProjects.map((project, index) => (
+          {studioProjects.map((project, index) => {
+            const rCard = reveal({ y: 30, duration: 0.5, delay: index * 0.1 });
+            return (
             <motion.div
               key={project.id}
               className="studio-project-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={rCard.initial}
+              whileInView={rCard.target}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={rCard.transition}
             >
               <div className="project-image-container">
                 <img
@@ -222,7 +227,8 @@ const Work = () => {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

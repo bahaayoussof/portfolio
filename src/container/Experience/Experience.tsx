@@ -9,6 +9,7 @@ import {
   IconChevronUp,
 } from "@tabler/icons-react";
 import { companyExperiences } from "../../data";
+import { useReveal } from "../../shared/motion";
 import MomahShowcaseMockup from "./MomahShowcaseMockup";
 import ProjectNestedCard from "./ProjectNestedCard";
 
@@ -16,6 +17,7 @@ import "./Experience.scss";
 
 const Experience = () => {
   const [expandedCompanies, setExpandedCompanies] = useState<Record<string, boolean>>({});
+  const reveal = useReveal();
 
   const toggleCompanyExpanded = (companyId: string) => {
     setExpandedCompanies((prev) => ({
@@ -45,15 +47,16 @@ const Experience = () => {
             const projectsList = item.projects;
             const isExpanded = !!expandedCompanies[item.id];
             const visibleProjects = isExpanded ? projectsList : projectsList.slice(0, 1);
+            const rCard = reveal({ y: 35, duration: 0.6, delay: companyIndex * 0.1 });
 
             return (
               <motion.article
                 key={item.id}
                 className="company-card"
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={rCard.initial}
+                whileInView={rCard.target}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: companyIndex * 0.1 }}
+                transition={rCard.transition}
               >
                 {/* Company Header Bar */}
                 <div className="company-top-bar">

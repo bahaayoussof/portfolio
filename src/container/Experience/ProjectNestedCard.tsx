@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { IconCheck, IconFlame, IconTrendingUp } from "@tabler/icons-react";
 import type { ClientProject } from "../../types/experience";
 
@@ -9,14 +9,15 @@ interface ProjectNestedCardProps {
 
 const ProjectNestedCard = ({ project, displayNumber }: ProjectNestedCardProps) => {
   const isCurrent = Boolean(project.isCurrent);
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.div
       className="project-nested-card"
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.3 }}
+      initial={reduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+      animate={reduceMotion ? { opacity: 1 } : { opacity: 1, height: "auto" }}
+      exit={reduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+      transition={{ duration: reduceMotion ? 0.15 : 0.3 }}
     >
       {/* Project Title & Badge */}
       <div className="project-header">
