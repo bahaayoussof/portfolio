@@ -23,7 +23,7 @@ const rawCompanyExperiences: CompanyExperience[] = [
         "Bootstrap 5",
         "Razor Partial Views",
       ],
-      liveLink: "https://momah-doc.bahaa.qzz.io",
+      liveLink: "https://momah-kit.vercel.app",
       metrics: [
         "20+ UI Components",
         "4 Categories",
